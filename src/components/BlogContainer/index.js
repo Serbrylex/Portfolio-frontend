@@ -6,9 +6,8 @@ import { useEffect } from 'react'
 
 import imageDefault from '../../images/Walk.svg'
 
-const linkWeb = 'https://portafolioserbrylex.herokuapp.com'
 
-const BlogContainer = ({ blog }) => { 
+const BlogContainer = ({ blog, url }) => { 
 
 	const lestResume = () => {		
 		blog.resume = blog.resume.slice(0, 100) + '...'
@@ -23,7 +22,7 @@ const BlogContainer = ({ blog }) => {
 			<BlogDiv>
 				<ImageContainer>					
 					{ blog.main_image ?
-						<Image src={`${linkWeb}${blog.main_image}`} /> :
+						<Image src={`${url}${blog.main_image}`} /> :
 						<Image src={imageDefault} /> 
 					}
 				</ImageContainer>	

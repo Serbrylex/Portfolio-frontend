@@ -21,19 +21,16 @@ import {
 	AiOutlineGithub, AiOutlineLink
 } from 'react-icons/ai'
 
-const linkWeb = 'https://portafolioserbrylex.herokuapp.com'
 
-const Blog = () => {
+const Blog = ({ url }) => {
 
 	
 	const { id } = useParams()
 	const [allBlog, setAllBlog] = useState([])	
 
 	const blogDetail = async () => {
-		const data = await apiCall({urlDirection: `blog-detail/${id}/`})
-		console.log(data)
-		data['topics'] = data['topics'].split(',')
-		console.log(data['subtem'])
+		const data = await apiCall({urlDirection: `blog-detail/${id}/`})		
+		data['topics'] = data['topics'].split(',')		
 		setAllBlog(data)
 	}
 
@@ -46,7 +43,7 @@ const Blog = () => {
 	return (
 		<>	
 			<Helmet>
-                <title>@Serbrylex | {allBlog.title}</title>
+                <title>@Serbrylex | {allBlog.title ? allBlog.title : ''}</title>
 				<meta name='description' content={`Este es el blog sobre: ${allBlog.title}, ${setAllBlog.topics}`} />
 			</Helmet>
 			<Header admin={true}/>
@@ -62,7 +59,7 @@ const Blog = () => {
 								<ParagraphResponse>{allBlog.questions}</ParagraphResponse>								
 							</QuestionSection>
 							{ allBlog.main_image ?
-								<ImageSection edit={false} image={`${linkWeb}${allBlog.main_image}`} /> :
+								<ImageSection edit={false} image={`${url}${allBlog.main_image}`} /> :
 								<ImageSection edit={false} image={imageDefault} /> 
 							}
 							<ResumeSection>
@@ -85,23 +82,23 @@ const Blog = () => {
 									<ParagraphSectionOne>								
 										<ParagraphResponse>{eachSubtem.first_paragraph}</ParagraphResponse>			
 									</ParagraphSectionOne>
-									<ImageSection edit={false} image={`${linkWeb}${eachSubtem.first_image}`} />			
+									<ImageSection edit={false} image={`${url}${eachSubtem.first_image}`} />			
 									<ParagraphSectionOne>								
 										<ParagraphResponse>{eachSubtem.second_paragraph}</ParagraphResponse>								
 									</ParagraphSectionOne>
-									<ImageSection edit={false} image={`${linkWeb}${eachSubtem.second_image}`} />
+									<ImageSection edit={false} image={`${url}${eachSubtem.second_image}`} />
 									<ParagraphSectionOne>								
 										<ParagraphResponse>{eachSubtem.third_paragraph}</ParagraphResponse>								
 									</ParagraphSectionOne>
-									<ImageSection edit={false} image={`${linkWeb}${eachSubtem.third_image}`} />
+									<ImageSection edit={false} image={`${url}${eachSubtem.third_image}`} />
 									<ParagraphSectionOne>
 										<ParagraphResponse>{eachSubtem.fourth_paragraph}</ParagraphResponse>							
 									</ParagraphSectionOne>
-									<ImageSection edit={false} image={`${linkWeb}${eachSubtem.fourth_image}`}/>
+									<ImageSection edit={false} image={`${url}${eachSubtem.fourth_image}`}/>
 									<ParagraphSectionOne>
 										<ParagraphResponse>{eachSubtem.fifth_paragraph}</ParagraphResponse>								
 									</ParagraphSectionOne>
-									<ImageSection edit={false} image={`${linkWeb}${eachSubtem.fifth_image}`}/>			
+									<ImageSection edit={false} image={`${url}${eachSubtem.fifth_image}`}/>			
 								</div>
 							))}	
 							<LinksContainer>

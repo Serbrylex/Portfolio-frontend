@@ -16,7 +16,7 @@ import {
 	QuestionSection, ResumeSection, TopicsSection, TextArea, ParagraphResponse, Subtitle,
 	InputList, TopicList, TopicsUl, SendPost, SendPostContainer, LinksContainer, InputLinks, TheLinks
 } from './style' 
-
+ 
 import imageDefault from '../../images/MainImage.png'
 import { 
 	AiOutlineGithub, AiOutlineLink
@@ -243,7 +243,7 @@ const CreateBlog = () => {
 								imagenTwo={imagenTwo}
 								imagenThree={imagenThree}
 								imagenFour={imagenFour}
-								imagenFive={imagenFive}
+								imagenFive={imagenFive}								
 							/>
 							<LinksContainer>
 								{linkPage.show ? 

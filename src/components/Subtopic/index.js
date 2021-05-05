@@ -4,7 +4,7 @@ import {
 	SubtitleSection, ParagraphSectionOne, InputTitle, HTitle, TextArea, ParagraphResponse
 } from './style'
 
-const Subtopic = ({ subtitle, paragraphOne, paragraphTwo, paragraphThree, paragraphFour, paragraphFive, imagenOne, imagenTwo, imagenThree, imagenFour, imagenFive }) => {	
+const Subtopic = ({ subtitle, paragraphOne, paragraphTwo, paragraphThree, paragraphFour, paragraphFive, imagenOne, imagenTwo, imagenThree, imagenFour, imagenFive, url }) => {	
 	
 	return(
 		<>
@@ -28,7 +28,7 @@ const Subtopic = ({ subtitle, paragraphOne, paragraphTwo, paragraphThree, paragr
 					<ParagraphResponse onClick={() => paragraphOne.setShow(true)}>{paragraphOne.value}</ParagraphResponse>
 				}				
 			</ParagraphSectionOne>
-			<ImageSection {...imagenOne} />			
+			<ImageSection {...imagenOne} />	 		
 			<ParagraphSectionOne>
 				{paragraphTwo.show ? 
 					<TextArea 

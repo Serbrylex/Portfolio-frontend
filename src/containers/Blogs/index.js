@@ -16,11 +16,9 @@ import apiCall from '../../api'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import loading from '../../images/loading.gif'
 
-const linkWeb = 'https://portafolioserbrylex.herokuapp.com'
-
 const img = 'https://i.ytimg.com/vi/9sftDDfrdMI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCtXZRUWyl4s3uOOTcgYq8XdpRobw'
 
-const Blogs = () => {
+const Blogs = ({ url }) => {
 
 	const { filters } = useParams()
 	const [blogs, setBlogs] = useState([])
@@ -28,11 +26,12 @@ const Blogs = () => {
 	const [showDelete, setShowDelete] = useState(false)
 	const [element, setElement] = useState({})
 
-	const handleFirstDelete = (id, index) => {
+	const handleFirstDelete = (id, index, title) => {
 		setShowDelete(true)
 		setElement({
 			id,
-			index
+			index,
+			title
 		})
 	}
 
@@ -87,7 +86,7 @@ const Blogs = () => {
 			<Container>
 				<WindowAlert show={showDelete.toString()}>
 					<WindowAlertItems>
-						<AlerText>Are you sure that you want to delete: ?</AlerText>
+						<AlerText>Are you sure that you want to delete: {element.title}?</AlerText>
 						<Buttons>
 							<Acept onClick={handleDeleteBlog}>Yeah</Acept>
 							<Declite onClick={() => setShowDelete(false)}>Nop</Declite>
@@ -99,11 +98,11 @@ const Blogs = () => {
 					{blogs?.map((blog, index) => (
 						<Blog key={blog.id}>
 							{true &&
-								<Delete onClick={()=> handleFirstDelete(blog.id, index)}><AiFillCloseCircle /></Delete>
+								<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
 							}
 							{
 								blog.main_image ?
-								<Image src={`${linkWeb}${blog.main_image}`} /> :
+								<Image src={`${url}${blog.main_image}`} /> :
 								<Image src={img} />
 							}							
 							<Title>

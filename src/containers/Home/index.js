@@ -18,9 +18,9 @@ import Proyect from '../../components/Proyect'
 import Footer from '../../components/Footer'
 import SeeMore from '../../components/SeeMore'
  
-import apiCall from '../../api'
+import apiCall from '../../api' 
 
-const Home = () => {
+const Home = ({ url }) => {
 
 	const [allBlogs, setAllBlogs] = useState([])
 	const [allProyects, setAllProyects] = useState([])
@@ -42,7 +42,7 @@ const Home = () => {
 
 	// Hace falta configurar los idiomas y el tema, así como agregar los eventos aslfjas
 	// se va a guardar en un contexto
-	return(
+	return( 
 		<>	
 			<Helmet>
                 <title>@Serbrylex</title>
@@ -74,7 +74,7 @@ const Home = () => {
 						</SectionContainerTitle>
 						<SectionContainerContent>
 							{allBlogs?.map((blog, index)=>(
-								<BlogContainer key={index} blog={blog}/>												
+								<BlogContainer key={index} blog={blog} url={url} />
 							))}									
 						</SectionContainerContent>				
 						<SeeMore link='/Blogs' title='All blogs' color="false"/>				
@@ -86,7 +86,7 @@ const Home = () => {
 						</SectionContainerTitle>
 						<SectionContainerContentProyects>
 							{allProyects?.map((proyect, index)=>(
-								<Proyect key={index} proyect={proyect}/>
+								<Proyect key={index} proyect={proyect} url={url}/>
 							))}
 						</SectionContainerContentProyects>
 						<SeeMore link="/Blogs/proyects" title='Proyects Blogs' color='true' />				

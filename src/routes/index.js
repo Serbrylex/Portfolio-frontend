@@ -12,23 +12,23 @@ import FourOFour from '../containers/FourOFour'
 import Login from '../containers/Login'
 //import { useScrollToTop } from '../hooks/useScrollToTop'
 
-const Routes = () => {
+const Routes = ({ url }) => {
 
 	return(
 
 		<Router>								
 			<Switch>
 				<Route path="/" exact>
-					<Home />
+					<Home url={url} />
 				</Route>
 				<Route path="/Admin" exact>
 					<Login />
 				</Route>
 				<Route path="/Blog/:id" exact>
-					<Blog />
+					<Blog url={url} />
 				</Route>
 				<Route path="/Blogs/:filters" exact>
-					<Blogs />
+					<Blogs url={url} />
 				</Route>
 				<Route path="/CreateBlog" exact>
 					<CreateBlog />

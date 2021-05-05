@@ -6,9 +6,8 @@ import {
 } from './style' 
 
 import imageDefault from '../../images/Walk.svg'
-const linkWeb = 'https://portafolioserbrylex.herokuapp.com'
 
-const Proyect = ({ proyect }) => {
+const Proyect = ({ proyect, url }) => {
   
 	const [showResume, setShowResume] = useState('false')
 	const [focus, setFocus] = useState('false')	
@@ -17,7 +16,7 @@ const Proyect = ({ proyect }) => {
 		<ProyectContainer>
 			<ImageDataContainer onMouseOver={()=>{setShowResume('true')}} onMouseOut={()=>{setShowResume('false')}}>				
 				{ proyect.main_image ?
-					<Image src={`${linkWeb}${proyect.main_image}`} /> :
+					<Image src={`${url}${proyect.main_image}`} /> :
 					<Image  src={imageDefault} /> 
 				}
 				<DataImage show={showResume}>
