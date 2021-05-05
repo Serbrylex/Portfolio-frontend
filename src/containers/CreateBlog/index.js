@@ -58,8 +58,8 @@ const CreateBlog = () => {
 	const topicFour = useInputValue('MySql')
 	const topicFive = useInputValue('How to plant an aguacate?')
 	
-	const linkPage = useInputValue('Page Link')
-	const linkGitHub = useInputValue('GitHub')
+	const linkPage = useInputValue('www.page.com')
+	const linkGitHub = useInputValue('www.github.com/proyect')
 
 	const subtitle = useInputValue('Subtitle')
 	const paragraphOne = useInputValue('Click me and set your paragraph')
@@ -94,8 +94,10 @@ const CreateBlog = () => {
 		objectOne.append('resume', resume.value)		
 		objectOne.append('topics', `${topicOne.value},${topicTwo.value},${topicThree.value},${topicFour.value},${topicFive.value}`)
 		objectOne.append('views', 0)
-		objectOne.append('github', linkPage.value)
-		objectOne.append('link', linkGitHub.value)			
+
+		objectOne.append('github', linkGitHub.value)
+		objectOne.append('link', linkPage.value)
+
 		objectOne.append('token', token.access_token)
 
 		const newToken = `Token ${token.access_token}`
@@ -252,15 +254,15 @@ const CreateBlog = () => {
 										onBlur={() => linkPage.setShow(false)}									
 										{...linkPage}
 									/> : 
-									<TheLinks onClick={() => linkPage.setShow(true)}><AiOutlineLink />{linkPage.value}</TheLinks>
+									<TheLinks onClick={() => linkPage.setShow(true)}><AiOutlineLink />Web Site</TheLinks>
 								}
 								{linkGitHub.show ? 
 									<InputLinks 
 										type="text" 									
 										onBlur={() => linkGitHub.setShow(false)}									
 										{...linkGitHub}
-									/> : 
-									<TheLinks onClick={() => linkGitHub.setShow(true)}><AiOutlineGithub />{linkGitHub.value}</TheLinks>
+									/> :  
+									<TheLinks onClick={() => linkGitHub.setShow(true)}><AiOutlineGithub />GitHub</TheLinks>
 								}
 							</LinksContainer>
 							<SendPostContainer>
