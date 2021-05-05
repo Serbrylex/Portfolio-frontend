@@ -89,24 +89,34 @@ const Blog = ({ url }) => {
 									</SubtitleSection>
 									<ParagraphSectionOne>								
 										<ParagraphResponse>{eachSubtem.first_paragraph}</ParagraphResponse>			
-									</ParagraphSectionOne>
-									<ImageSection edit={false} image={`${url}${eachSubtem.first_image}`} />			
+									</ParagraphSectionOne>									
+									{eachSubtem.first_image !== null &&
+										<ImageSection edit={false} image={`${url}${eachSubtem.first_image}`} />			
+									}
 									<ParagraphSectionOne>								
 										<ParagraphResponse>{eachSubtem.second_paragraph}</ParagraphResponse>								
 									</ParagraphSectionOne>
-									<ImageSection edit={false} image={`${url}${eachSubtem.second_image}`} />
+									{eachSubtem.second_image !== null &&
+										<ImageSection edit={false} image={`${url}${eachSubtem.second_image}`} />
+									}
 									<ParagraphSectionOne>								
 										<ParagraphResponse>{eachSubtem.third_paragraph}</ParagraphResponse>								
 									</ParagraphSectionOne>
-									<ImageSection edit={false} image={`${url}${eachSubtem.third_image}`} />
+									{eachSubtem.third_image !== null &&
+										<ImageSection edit={false} image={`${url}${eachSubtem.third_image}`} />
+									}
 									<ParagraphSectionOne>
 										<ParagraphResponse>{eachSubtem.fourth_paragraph}</ParagraphResponse>							
 									</ParagraphSectionOne>
-									<ImageSection edit={false} image={`${url}${eachSubtem.fourth_image}`}/>
+									{eachSubtem.fourth_image !== null &&
+										<ImageSection edit={false} image={`${url}${eachSubtem.fourth_image}`}/>
+									}
 									<ParagraphSectionOne>
 										<ParagraphResponse>{eachSubtem.fifth_paragraph}</ParagraphResponse>								
 									</ParagraphSectionOne>
-									<ImageSection edit={false} image={`${url}${eachSubtem.fifth_image}`}/>			
+									{eachSubtem.fifth_image !== null &&
+										<ImageSection edit={false} image={`${url}${eachSubtem.fifth_image}`}/>
+									}
 								</div>
 							))}	
 							<LinksContainer>

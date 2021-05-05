@@ -1,35 +1,36 @@
 import {
-	FooterContainer, ContactTitle, ContactList, Ancor
+	FooterContainer, ContactTitleLarge, ContactTitleShort, ContactList, List, Ancor
 } from './style' 
 
 import { 
 	AiOutlineFacebook, AiFillTwitterCircle, AiOutlineGithub, AiOutlineWhatsApp, AiOutlineMail, AiOutlineLinkedin 
 } from 'react-icons/ai'
 
-const Footer = () => {
+const Footer = () => { 
 
 	return(
 		<FooterContainer>
-			<ContactTitle>@Serbrylex</ContactTitle>
+			<ContactTitleLarge>Sergio Bryan Madrid Nuñez @Serbrylex</ContactTitleLarge>
+			<ContactTitleShort>@Serbrylex</ContactTitleShort>
 			<ContactList>
-				<p>
+				<List>
 					<Ancor href="https://www.facebook.com/bryan.madridnunez"><AiOutlineFacebook /></Ancor>
-				</p>
-				<p>
+				</List>
+				<List>
 					<Ancor href="https://twitter.com/Serbrylex"><AiFillTwitterCircle /></Ancor>
-				</p>
-				<p>
+				</List>
+				<List>
 					<Ancor href="https://wa.me/9983963548?text=I%20wanna%20work%20with%20you"><AiOutlineWhatsApp /></Ancor>
-				</p>
-				<p>
+				</List>
+				<List>
 					<Ancor href="mailto:sbryanmadridn@gmail.com"><AiOutlineMail /></Ancor>
-				</p>
-				<p>
+				</List>
+				<List>
 					<Ancor href="https://github.com/Serbrylex"><AiOutlineGithub /></Ancor>
-				</p>
-				<p>
+				</List>
+				<List>
 					<Ancor href="https://www.linkedin.com/in/sergio-bryan-madrid-nu%C3%B1ez-a5b8541a7/"><AiOutlineLinkedin /></Ancor>
-				</p>
+				</List>
 			</ContactList>
 		</FooterContainer>
 	)

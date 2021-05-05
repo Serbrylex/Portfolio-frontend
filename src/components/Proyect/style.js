@@ -49,10 +49,10 @@ export const DataImage = styled.div`
 	@media (max-width: 500px) {
 		background: rgba(0, 0, 0, 0.6);			
 		width: 98%;
-		height: 98%;		
+		height: 100%;		
 		display: flex;
 		font-size: 18px;
-		padding: 1%;
+		padding: 0 1%;
 	}
 
 `

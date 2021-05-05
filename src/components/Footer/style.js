@@ -9,39 +9,68 @@ export const FooterContainer = styled.div`
 	background-color: #07080a;
 	padding: 1% 5%;
 	@media (max-width: 500px) {
-		width: 96%;		
-		padding: 1% 2%;
+		width: 100%;				
+		height: 7vh; 
+		padding: 0;
 	}
 `
 
-export const ContactTitle = styled.h4`
+export const ContactTitleLarge = styled.h4`
+	display: flex;
 	font-size: 20px;
 	color: white;
 	width: 50%
-	height: 100%;
-	display: flex;
+	height: 100%;	
 	align-items: center;
 	justify-content: center;		
 	@media (max-width: 500px) {
-		font-size: 18px;		
+		font-size: 16px;		
 		width: 40%;
-		justify-content: start;		
+		justify-content: center;		
+		display: none;
+	}
+`
+
+export const ContactTitleShort = styled.h4`
+	display: none;
+	font-size: 20px;
+	color: white;
+	width: 50%
+	height: 100%;	
+	align-items: center;
+	justify-content: center;		
+	@media (max-width: 500px) {
+		font-size: 16px;		
+		width: 40%;
+		justify-content: center;		
+		display: flex;
 	}
 ` 
 
 export const ContactList = styled.ul`
 	display: flex;
 	align-items: center;
-	width: 25%;
+	width: 30%;
 	height: 100%;
 	justify-content: space-around;
 	@media (max-width: 500px) {
 		width: 60%;
-		justify-content: space-between;
+		justify-content: space-evenly;
+		align-items: end;
+		height: auto;
 	}
+`
+
+export const List = styled.li`
+	height: auto;
+	width: auto;	
 `
 
 export const Ancor = styled.a`
 	font-size: 30px;
 	color: white;	
+	@media (max-width: 500px) {
+		font-size: 20px;
+		height: 90%;						
+	}
 `

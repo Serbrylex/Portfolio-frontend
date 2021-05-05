@@ -9,7 +9,7 @@ import {
 	SectionContainerContentProyects, LastSectionContainer, LastSectionContainerTitle, 
 	LastSectionContainerContent, LastSection, LastSectionList, WeAre, WeAreTitle, WeAreWho, Link, WeAreImage
 } from './style'
-import image from '../../images/Walk.svg'
+import image from '../../images/Walk.svg' 
 
 // Components
 import Header from '../../components/Header'

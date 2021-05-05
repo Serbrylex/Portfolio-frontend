@@ -122,6 +122,7 @@ export const SubtitleSection = styled.div`
 export const ParagraphSectionOne = styled.div`
 	width: 100%;
 	height: auto;
+	margin: 20px 0 30px 0;
 `
 
 export const HSubtitle = styled.h1`

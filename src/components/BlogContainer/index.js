@@ -10,8 +10,8 @@ import imageDefault from '../../images/Walk.svg'
 const BlogContainer = ({ blog, url }) => { 
 
 	const lestResume = () => {		
-		blog.resume = blog.resume.slice(0, 100) + '...'
-	}
+		blog.resume = blog.resume.slice(0, 80) + '...'
+	} 
 
 	useEffect(()=>{
 		lestResume()

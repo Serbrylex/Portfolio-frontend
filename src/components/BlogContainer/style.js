@@ -5,18 +5,18 @@ export const BlogDiv = styled.div`
 	width: 25vw;
 	height: 70vh;			
 	color: white;	
-	display: flex;
+	display: flex; 
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	margin: auto;
 	@media (max-width: 500px) {		
 		width: 93%;
-		height: 45vh;
+		height: 50vh;
 		border-radius: 5px;
 		margin: 10px 0;	
 		background-color: #2f3a45;
-		padding: 1%;	
+		padding: 0 1%;	
 	}
 `  
 
@@ -27,6 +27,10 @@ export const DataContainer = styled.div`
 	height: 25vh;
 	align-content: center;
 	justify-content: space-evenly;
+	@media (max-width: 500px) {		
+		width: 96%;
+		padding: 0 2%;	
+	}
 	
 `
 
@@ -56,10 +60,21 @@ export const Title = styled.h4`
 	@media (max-width: 500px) {		
 		width: 100%;
 		height: 25%;
-		font-size: 20px;		
+		font-size: 18px;		
 		align-items: start;
 	}
 ` 
+export const Link = styled(Linked)`
+	color: white;
+	text-decoration: none;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	color: white;
+	@media (max-width: 500px) {		
+		margin: 5px 0;				
+	}
+`
 
 export const DateTime = styled.time`
 	height: 10%;
@@ -73,21 +88,7 @@ export const Resume = styled.p`
 	font-size: 20px;
 	color: #bec5cb;
 	@media (max-width: 500px) {		
-		font-size: 16px;		
+		font-size: 14px;		
 		height: 50%;
-	}
-`
-
-export const Link = styled(Linked)`
-	color: white;
-	text-decoration: none;
-	width: 25vw;
-	margin: auto;
-	color: white;
-	@media (max-width: 500px) {		
-		margin: 5px 0;
-		width: 100%;
-		height: 100%;
-		font-size: 20px;		
 	}
 `
