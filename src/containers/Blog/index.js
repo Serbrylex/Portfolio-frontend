@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Helmet } from 'react-helmet'
 
 import Header from '../../components/Header'
@@ -21,12 +21,16 @@ import {
 	AiOutlineGithub, AiOutlineLink
 } from 'react-icons/ai'
 
+import TokenContext from '../../context/tokens'
+
 
 const Blog = ({ url }) => {
 
 	
 	const { id } = useParams()
 	const [allBlog, setAllBlog] = useState([])	
+	const { token } = useContext(TokenContext)
+	const [admin, setAdmin] = useState(false)
 
 	const blogDetail = async () => {
 		const data = await apiCall({urlDirection: `blog-detail/${id}/`})		
@@ -37,6 +41,10 @@ const Blog = ({ url }) => {
 
 	useEffect(()=>{
 		blogDetail()
+
+		if (token.length !== 0){
+			setAdmin(true)
+		}	
 	}, [])
 		
 
@@ -46,7 +54,7 @@ const Blog = ({ url }) => {
                 <title>@Serbrylex | {allBlog.title ? allBlog.title : ''}</title>
 				<meta name='description' content={`Este es el blog sobre: ${allBlog.title}, ${setAllBlog.topics}`} />
 			</Helmet>
-			<Header admin={true}/>
+			<Header admin={admin}/>
 			<Container>
 				<SecondContainer>
 					<Main>

@@ -10,11 +10,9 @@ const TokenProvider = ({ children }) => {
 	const getToken = async ({ urlDirection, method = "POST", headers, body }) => {
 		try{			
 			const tokenResult = await apiCall({ urlDirection, method, headers, body })		
-			console.log(tokenResult)	
 			setToken(tokenResult)
 		}catch(error){
-			setToken([])
-			console.log(error)
+			setToken([])			
 		}
 	}
 

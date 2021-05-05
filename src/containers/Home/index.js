@@ -1,5 +1,5 @@
 // React dependencies
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Helmet } from "react-helmet";
  
 // Styles and images
@@ -20,11 +20,14 @@ import SeeMore from '../../components/SeeMore'
  
 import apiCall from '../../api' 
 
+import TokenContext from '../../context/tokens'
+
 const Home = ({ url }) => {
 
 	const [allBlogs, setAllBlogs] = useState([])
 	const [allProyects, setAllProyects] = useState([])
-	const [admin] = useState(true)
+	const [admin, setAdmin] = useState(false)
+	const { token } = useContext(TokenContext)
 
 	const ApiAsync = async () => {
 		let data = await apiCall({urlDirection: `blog-list/all/`})
@@ -35,8 +38,19 @@ const Home = ({ url }) => {
 		setAllProyects(data)
 	}
 
+	useEffect(()=>{
+		console.log(token)
+		if (token.length !== 0){
+			if (token.access_token){
+				setAdmin(true)
+			} else {
+				console.log('¿Qué has encontrao, wacho?')
+			}
+		}	
+	},[token])
+
 	useEffect( () => {
-		ApiAsync().catch(null)			
+		ApiAsync().catch(null)	 
 	},[])
 
 

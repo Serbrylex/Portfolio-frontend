@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { Helmet } from 'react-helmet'
 
 // Components
@@ -15,6 +15,7 @@ import apiCall from '../../api'
 
 import { AiFillCloseCircle } from 'react-icons/ai'
 import loading from '../../images/loading.gif'
+import TokenContext from '../../context/tokens'
 
 const img = 'https://i.ytimg.com/vi/9sftDDfrdMI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCtXZRUWyl4s3uOOTcgYq8XdpRobw'
 
@@ -25,6 +26,8 @@ const Blogs = ({ url }) => {
 	const [isLoading, setIsLoading] = useState(false)
 	const [showDelete, setShowDelete] = useState(false)
 	const [element, setElement] = useState({})
+	const [admin, setAdmin] = useState(false)
+	const { token } = useContext(TokenContext)
 
 	const handleFirstDelete = (id, index, title) => {
 		setShowDelete(true)
@@ -59,12 +62,16 @@ const Blogs = ({ url }) => {
 	}
 	useEffect(()=>{	
 		ApiAsync().catch(null)
+
+		if (token.length !== 0){
+			setAdmin(true)
+		}	
 	},[])
 
 	if (isLoading) {
 		return (
 			<>
-				<Header admin={true}/>
+				<Header admin={admin}/>
 				<Container>
 					<BlogsContainer>
 						<MainTitle>{filters}</MainTitle>	
@@ -82,7 +89,7 @@ const Blogs = ({ url }) => {
                 <title>@Serbrylex | Blogs</title>
 				<meta name='description' content='Aquí veras todos los blogs escritos por @Serbrylex' />
 			</Helmet>
-			<Header admin={true}/>
+			<Header admin={admin}/>
 			<Container>
 				<WindowAlert show={showDelete.toString()}>
 					<WindowAlertItems>
@@ -97,7 +104,7 @@ const Blogs = ({ url }) => {
 					<MainTitle>{filters}</MainTitle>
 					{blogs?.map((blog, index) => (
 						<Blog key={blog.id}>
-							{true &&
+							{admin &&
 								<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
 							}
 							{
