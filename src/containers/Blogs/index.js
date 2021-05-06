@@ -11,7 +11,7 @@ import {
 	ImageLoading, WindowAlert, AlerText, Acept, Declite, WindowAlertItems, Buttons
 } from './style'
 
-import apiCall from '../../api'
+import apiCall from '../../api' 
 
 import { AiFillCloseCircle } from 'react-icons/ai'
 import loading from '../../images/loading.gif'
@@ -39,7 +39,7 @@ const Blogs = ({ url }) => {
 	}
 
 	const handleDeleteBlog = () => {		
-		apiCall({urlDirection: `blog-delete/${element.id}/`, method: 'POST'})
+		apiCall({urlDirection: `blog-delete/${element.id}/`, body: {token}, method: 'POST'})
 
 		let newBlog = blogs
 		
