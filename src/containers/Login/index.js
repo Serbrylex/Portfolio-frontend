@@ -37,7 +37,7 @@ const Login = () => {
 	return(
 		<Contaier>			
 			<LoginContainer>				
-				<Title>Login @Serbrylex</Title>			
+				<Title>Login</Title>			
 				<Input type="text" placeholder="Username" {...user} />
 				<Input type="password" placeholder="Password" {...password} />
 				<Button onClick={handleLogin}>Sign in</Button>			

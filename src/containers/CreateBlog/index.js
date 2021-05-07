@@ -10,46 +10,38 @@ import Adds from '../../components/Adds'
 import TokenContext from '../../context/tokens'
 
 import { useInputValue } from '../../hooks/useInputValue'  
-
+import { useImage } from '../../hooks/useImage'
+ 
 import {
 	Container, SecondContainer, Main, Content, TitleSection, InputTitle, HTitle, 
 	QuestionSection, ResumeSection, TopicsSection, TextArea, ParagraphResponse, Subtitle,
-	InputList, TopicList, TopicsUl, SendPost, SendPostContainer, LinksContainer, InputLinks, TheLinks
+	InputList, TopicList, TopicsUl, SendPost, SendPostContainer, LinksContainer, InputLinks, TheLinks,
+	AddSubtopic, PlusSubtopic
 } from './style' 
  
-import imageDefault from '../../images/MainImage.png'
 import { 
 	AiOutlineGithub, AiOutlineLink
 } from 'react-icons/ai'
 
 import apiCall from '../../api'
 
-const useImage = ({ defaultImage = imageDefault }) => {
-	const [image, setImage] = useState(defaultImage)
-	const [fileImage, setFileImage] = useState('')
-
-	return {
-		image,
-		setImage,
-		fileImage, 
-		setFileImage
-	}
-}
 
 const CreateBlog = () => {
 
-	/*
-	return {
-	    value,
-	    onChange,
-	    show,
-		setShow
-	}
-	*/
 	let history = useHistory()
 	const { token } = useContext(TokenContext)
 
+	if (!token.access_token){
+		history.push("/Admin")
+	}
+
+	// Subtopic
+	const [idBlog, setIdBlog] = useState(0)
+	const [send, setSend] = useState(false)
+	const [subtopics, setSubtopics] = useState(1)
+
 	const title = useInputValue('Title')
+	const imagen = useImage('')
 	const question = useInputValue('¿What the fuck is JavaScript?')
 	const resume = useInputValue('muchas cosas han sigo escritas antes en esta web, pero ninguna como la que te voy a presentar en este instante, are you ready?')
 	const topicOne = useInputValue('React.js')
@@ -57,33 +49,18 @@ const CreateBlog = () => {
 	const topicThree = useInputValue('Scrapy (yes, the python framework)')
 	const topicFour = useInputValue('MySql')
 	const topicFive = useInputValue('How to plant an aguacate?')
-	
 	const linkPage = useInputValue('www.page.com')
 	const linkGitHub = useInputValue('www.github.com/proyect')
 
-	const subtitle = useInputValue('Subtitle')
-	const paragraphOne = useInputValue('Click me and set your paragraph')
-	const paragraphTwo = useInputValue('Click me and set your paragraph')
-	const paragraphThree = useInputValue('Click me and set your paragraph')
-	const paragraphFour = useInputValue('Click me and set your paragraph')
-	const paragraphFive = useInputValue('Click me and set your paragraph')
-
-	const imagen = useImage('')
-	const imagenOne = useImage('')
-	const imagenTwo = useImage('')
-	const imagenThree = useImage('')
-	const imagenFour = useImage('')
-	const imagenFive = useImage('')	
-
-	const asyncFetch = async ({ urlDirection, method, body }) => {
-		const responseData = await apiCall({urlDirection, method, body})
+	const asyncFetch = async ({ urlDirection, method, headers, body }) => {
+		const responseData = await apiCall({urlDirection, method, headers, body})
 		return(responseData)
 	}
 
 	const handleEndPost = async () => {		
 		
-		let objectOne = new FormData()	    
-		let objectTwo = new FormData()		
+		let objectOne = new FormData()	    		
+		const newToken = `Token ${token.access_token}`
 	
 		objectOne.append('user', 1)
 		objectOne.append('title', title.value)
@@ -98,9 +75,7 @@ const CreateBlog = () => {
 		objectOne.append('github', linkGitHub.value)
 		objectOne.append('link', linkPage.value)
 
-		objectOne.append('token', token.access_token)
-
-		const newToken = `Token ${token.access_token}`
+		//objectOne.append('token', newToken)
 
 		let idPost = await asyncFetch({
 			urlDirection: 'blog-create/', 
@@ -110,41 +85,8 @@ const CreateBlog = () => {
 			},
 			body: objectOne
 		})
-		
-		objectTwo.append('blog', idPost.id)
-		objectTwo.append('title', subtitle.value)
-		objectTwo.append('first_paragraph', paragraphOne.value)
-		objectTwo.append('second_paragraph', paragraphTwo.value)
-		objectTwo.append('third_paragraph', paragraphThree.value)
-		objectTwo.append('fourth_paragraph', paragraphFour.value)
-		objectTwo.append('fifth_paragraph', paragraphFive.value)
-
-		objectTwo.append('token', token.access_token)
-
-		if (imagenOne.fileImage.name?.length){
-			objectTwo.append('first_image', imagenOne.fileImage, imagenOne.fileImage.name)
-		}
-		if (imagenTwo.fileImage.name?.length){			
-			objectTwo.append('second_image', imagenTwo.fileImage, imagenTwo.fileImage.name)
-		}
-		if (imagenThree.fileImage.name?.length){			
-			objectTwo.append('third_image', imagenThree.fileImage, imagenThree.fileImage.name)
-		}
-		if (imagenFour.fileImage.name?.length){			
-			objectTwo.append('fourth_image', imagenFour.fileImage, imagenFour.fileImage.name)
-		}
-		if (imagenFive.fileImage.name?.length){			
-			objectTwo.append('fifth_image', imagenFive.fileImage, imagenFive.fileImage.name)
-		}
-		
-		asyncFetch({
-			urlDirection: 'subtem-create/', 
-			method: 'POST', 
-			headers: {
-				'Authorization': newToken,
-			},
-			body: objectTwo
-		})		
+		setIdBlog(idPost.id)
+		setSend(true)
 
 		history.push("/Blogs/All")		
 	}
@@ -171,6 +113,7 @@ const CreateBlog = () => {
 								{question.show ? 
 									<TextArea
 										type="text" 									
+										maxlength='600'
 										onBlur={() => question.setShow(false)}									
 										{...question}
 									/> : 
@@ -235,18 +178,46 @@ const CreateBlog = () => {
 								</TopicsUl>
 							</TopicsSection>
 							<Subtopic 
-								subtitle={subtitle}
-								paragraphOne={paragraphOne}
-								paragraphTwo={paragraphTwo}
-								paragraphThree={paragraphThree}
-								paragraphFour={paragraphFour}
-								paragraphFive={paragraphFive}
-								imagenOne={imagenOne}
-								imagenTwo={imagenTwo}
-								imagenThree={imagenThree}
-								imagenFour={imagenFour}
-								imagenFive={imagenFive}								
+								idBlog={idBlog}
+								send={send}
+								token={token.access_token}	
+								orderId={1}						
 							/>
+							{subtopics > 1 &&
+								<Subtopic 
+									idBlog={idBlog}
+									send={send}
+									token={token.access_token}							
+									orderId={2}
+								/>
+							}
+							{subtopics > 2 &&
+								<Subtopic 
+									idBlog={idBlog}
+									send={send}
+									token={token.access_token}							
+									orderId={3}
+								/>
+							}
+							{subtopics > 3 &&
+								<Subtopic 
+									idBlog={idBlog}
+									send={send}
+									token={token.access_token}							
+									orderId={4}
+								/>
+							}
+							{subtopics > 4 &&
+								<Subtopic 
+									idBlog={idBlog}
+									send={send}
+									token={token.access_token}							
+									orderId={5}
+								/>
+							}
+							<AddSubtopic>
+								<PlusSubtopic onClick={()=>setSubtopics(subtopics+1)}>+ Subtopic</PlusSubtopic>
+							</AddSubtopic>
 							<LinksContainer>
 								{linkPage.show ? 
 									<InputLinks 

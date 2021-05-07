@@ -39,7 +39,15 @@ const Blogs = ({ url }) => {
 	}
 
 	const handleDeleteBlog = () => {		
-		apiCall({urlDirection: `blog-delete/${element.id}/`, body: JSON.stringify({token}), method: 'POST'})
+		const newToken = `Token ${token.access_token}`
+		apiCall({
+			urlDirection: `blog-delete/${element.id}/`, 
+			headers: {
+				'Authorization': newToken,
+				'Content-Type': 'application/json',				
+			}, 
+			method: 'POST'
+		})
 
 		let newBlog = blogs
 		

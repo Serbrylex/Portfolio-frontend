@@ -7,7 +7,7 @@ export const SubtitleSection = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: start;
-	margin: 20px 0;
+	margin: 20px 0; 
 `
 
 export const ParagraphSectionOne = styled.div`

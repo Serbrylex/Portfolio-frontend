@@ -6,7 +6,7 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import ImageSection from '../../components/ImageSection'
 import Adds from '../../components/Adds'
-
+ 
 import apiCall from '../../api' 
 
 import {
@@ -59,8 +59,8 @@ const Blog = ({ url }) => {
 				<SecondContainer>
 					<Main>
 						<Content>
-							<TitleSection>								
-								<HTitle>{allBlog.title}</HTitle>
+							<TitleSection>							
+								<HTitle>{allBlog.title}</HTitle>							
 							</TitleSection>
 							<QuestionSection>
 								<Subtitle>Initial Questions</Subtitle>								
@@ -84,9 +84,11 @@ const Blog = ({ url }) => {
 							</TopicsSection>
 							{allBlog.subtem?.map((eachSubtem, index)=>(
 								<div key={index}>
-									<SubtitleSection>								
-										<HTitle>{eachSubtem.title}</HTitle>
-									</SubtitleSection>
+									{eachSubtem.title &&										
+										<SubtitleSection>								
+											<HTitle>{eachSubtem.title}</HTitle>
+										</SubtitleSection>
+									}									
 									<ParagraphSectionOne>								
 										<ParagraphResponse>{eachSubtem.first_paragraph}</ParagraphResponse>			
 									</ParagraphSectionOne>									

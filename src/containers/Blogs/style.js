@@ -141,7 +141,7 @@ export const WindowAlert = styled.div`
 `
 
 export const WindowAlertItems = styled.div`
-	width: 70vw;
+	width: 300px;
 	height: 30vh;
 	background-color: white;
 	display: flex;

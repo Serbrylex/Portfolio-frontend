@@ -106,7 +106,7 @@ export const Subtitle = styled.h3`
 
 export const TextArea = styled.textarea`
 	width: 98%;
-	height: 50px;
+	height: 150px;
 	padding: 5px 1%;
 `
 
@@ -186,4 +186,25 @@ export const TheLinks = styled.p`
 	@media (max-width: 500px){
 		width: 30%;
 	}
+`
+
+export const AddSubtopic = styled.div`
+	border-top: 1px solid black;	
+	width: 100%;
+	height: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 50px 0;
+`
+
+export const PlusSubtopic = styled.button`
+	background-color: #1A2026;
+	border-radius: 4px;	
+	padding: 5px 15px;
+	width: auto;
+	font-size: 17px;
+	color: white;
+	border: none;
+	cursor: pointer;
 `

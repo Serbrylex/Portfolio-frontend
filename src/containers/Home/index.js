@@ -38,8 +38,7 @@ const Home = ({ url }) => {
 		setAllProyects(data)
 	}
 
-	useEffect(()=>{
-		console.log(token)
+	useEffect(()=>{		
 		if (token.length !== 0){
 			if (token.access_token){
 				setAdmin(true)

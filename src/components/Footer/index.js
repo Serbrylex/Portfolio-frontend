@@ -6,6 +6,8 @@ import {
 	AiOutlineFacebook, AiFillTwitterCircle, AiOutlineGithub, AiOutlineWhatsApp, AiOutlineMail, AiOutlineLinkedin 
 } from 'react-icons/ai'
 
+import { SiPlatzi } from 'react-icons/si'
+
 const Footer = () => { 
 
 	return(
@@ -13,6 +15,9 @@ const Footer = () => {
 			<ContactTitleLarge>Sergio Bryan Madrid Nuñez @Serbrylex</ContactTitleLarge>
 			<ContactTitleShort>@Serbrylex</ContactTitleShort>
 			<ContactList>
+				<List>
+					<Ancor href="https://platzi.com/p/bryan-madrid-nunez/"><SiPlatzi /></Ancor>
+				</List>
 				<List>
 					<Ancor href="https://www.facebook.com/bryan.madridnunez"><AiOutlineFacebook /></Ancor>
 				</List>

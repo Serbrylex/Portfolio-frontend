@@ -11,6 +11,7 @@ export const useInputValue = initialValue => {
   return {
     value,
     onChange,
+    setValue,
     show,
 	  setShow
   }
