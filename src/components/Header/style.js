@@ -53,6 +53,11 @@ export const Link = styled(Linked)`
 	text-decoration: none;	
 `
 
+export const Linka = styled.a`
+	color: white;
+	text-decoration: none;	
+`
+
 export const Preferences = styled.div`
 	display: flex; 
 	align-items: center;

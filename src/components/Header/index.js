@@ -1,6 +1,6 @@
 import { 
 	HeaderContainer, HeaderLinksContainer, PLinks, Link, Preferences,
-	Logo, MyData, MyDataTitle, MyDataDescription, Icons
+	Logo, MyData, MyDataTitle, MyDataDescription, Icons, Linka
 } from './style'
 
 import LogoImg from '../../images/Logo.png'
@@ -23,7 +23,7 @@ const Header = ({ admin }) => {
 			</HeaderLinksContainer>	
 			<Preferences>				
 				<PLinks>						
-					<Link to='/About'>Freelacer?</Link>
+					<Linka href="https://www.fiverr.com/share/DwoNAa">Freelacer?</Linka>
 				</PLinks>
 				<Icons>
 					<Link to='/About'><RiContactsLine color={'white'} /></Link>					

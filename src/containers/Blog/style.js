@@ -9,7 +9,7 @@ export const Container = styled.div`
 	color: white;
 	@media (max-width: 500px) {
 		width: 100%;
-		padding: 0;
+		padding: 0; 
 	}
 `
 
@@ -62,9 +62,9 @@ export const HTitle = styled.h1`
 
 export const QuestionSection = styled.p`
 	width: 75%;
-	height: 100px;
+	height: auto;
 	text-align: left;	
-	margin: 20px 0;
+	margin: 50px 0;	
 `
 
 export const ResumeSection = styled.p`
