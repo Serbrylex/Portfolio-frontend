@@ -39,9 +39,12 @@ export const SectionContainerPathTitle = styled.div`
 	flex-direction: column;
 	align-items: center;	
 	justify-content: center;
-	width: 100%;
+	width: 50%;
 	height: 90%;
 	font-size: 100px;
+	@media (max-width: 500px) {
+		width: 100%;
+	}
 `
 
 export const WeAre= styled.div`
@@ -97,7 +100,7 @@ export const SectionContainerPathImage = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 50vw;
+	width: 50%;
 	height: 90vh;	
 	@media (max-width: 500px) {
 		display: none;	
@@ -105,7 +108,7 @@ export const SectionContainerPathImage = styled.div`
 `
 
 export const Image = styled.img`
-	width: 40vw;
+	width: 95%;
 	height: auto;
 	@media (max-width: 500px) {
 		width: 90vw;

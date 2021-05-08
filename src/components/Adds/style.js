@@ -11,6 +11,7 @@ export const AddsContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 10px 0;
 	@media (max-width: 500px){
 		position: relative;
 		flex-direction: row;
