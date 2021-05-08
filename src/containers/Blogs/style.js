@@ -7,7 +7,7 @@ export const Container = styled.div`
 	height: auto;  
 	padding: 0 5%;
 	background-color: #14181D;
-	color: white;
+	color: white; 
 	@media (max-width: 500px) {
 		width: 100%;
 		padding: 0;		
@@ -19,15 +19,15 @@ export const BlogsContainer = styled.div`
 	padding: 5%;	
 	border-radius: 2px;
 	border: 1px solid black;
-	height: auto;
+	height: 100%;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	background-color: #34414C;
+	background-color: #34414C;	
 
 	@media (max-width: 500px) {
 		grid-template-columns: repeat(2, 1fr);
 		width: 96%;
-		padding: 2%;
+		padding: 2%;		
 	}
 `
 
@@ -65,8 +65,8 @@ export const Image = styled.img`
 	margin: 30px 5%;
 	@media (max-width: 500px) {
 		width: 100%;
-		height: 50%;		
-		margin: 0;
+		height: 40%;		
+		margin: 10px 0;
 	}	
 `
 
@@ -83,7 +83,7 @@ export const Title = styled.h3`
 	@media (max-width: 500px) {
 		font-size: 20px;			
 		width: 96%;
-		height: 10%;
+		height: 15%;
 	}	
 `
 
@@ -91,7 +91,7 @@ export const DatePost = styled.time`
 	height: 5%;	
 	font-size: 14px;
 	color: #606c76;
-	margin-left: 10px;
+	margin: 5px 0 5px 10px;
 `
 
 export const Resume = styled.p`	
@@ -104,7 +104,7 @@ export const Resume = styled.p`
 		font-size: 16px;	
 		margin: auto;
 		width: 96%;
-		height: 20%;
+		height: auto%;
 	}	
 `
 

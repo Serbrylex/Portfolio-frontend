@@ -73,7 +73,7 @@ const Blog = ({ url }) => {
 							<ResumeSection>
 								<Subtitle>Resume</Subtitle>
 								<ParagraphResponse>{allBlog.resume}</ParagraphResponse>
-							</ResumeSection>
+							</ResumeSection> 
 							<TopicsSection>
 								<Subtitle>Topics:</Subtitle>
 								<TopicsUl>
