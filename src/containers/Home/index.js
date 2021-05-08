@@ -68,9 +68,9 @@ const Home = ({ url }) => {
 						<SectionContainerPathTitle>
 							<WeAre>
 								<WeAreTitle>
-									<Link>We are</Link>
+									<Link>I am</Link>
 								</WeAreTitle>
-								<WeAreWho>I am simply an eternal student</WeAreWho>
+								<WeAreWho>I am simply an everlasting student who loves to code.</WeAreWho>
 								<WeAreImage>
 									<Image src={image} alt="" />
 								</WeAreImage>
