@@ -70,7 +70,7 @@ const Home = ({ url }) => {
 								<WeAreTitle>
 									<Link>We are</Link>
 								</WeAreTitle>
-								<WeAreWho>We are just two friends having fun coding your dreams</WeAreWho>
+								<WeAreWho>I am simply an eternal student</WeAreWho>
 								<WeAreImage>
 									<Image src={image} alt="" />
 								</WeAreImage>

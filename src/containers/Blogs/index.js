@@ -110,38 +110,7 @@ const Blogs = ({ url }) => {
 				</WindowAlert>
 				<BlogsContainer show={showDelete.toString()}>
 					<MainTitle>{filters}</MainTitle>
-					{blogs?.map((blog, index) => (
-						<>
-							<Blog key={blog.id}>
-								{admin &&
-									<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
-								}
-								{
-									blog.main_image ?
-									<Image src={`${url}${blog.main_image}`} /> :
-									<Image src={img} />
-								}							
-								<Title>
-									<Link to={`/Blog/${blog.id}`}>{blog.title}</Link>
-								</Title>
-								<DatePost>{blog.date}</DatePost>
-								<Resume>{blog.resume}</Resume>
-							</Blog>
-							<Blog key={blog.id}>
-							{admin &&
-								<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
-							}
-							{
-								blog.main_image ?
-								<Image src={`${url}${blog.main_image}`} /> :
-								<Image src={img} />
-							}							
-							<Title>
-								<Link to={`/Blog/${blog.id}`}>{blog.title}</Link>
-							</Title>
-							<DatePost>{blog.date}</DatePost>
-							<Resume>{blog.resume}</Resume>
-						</Blog>
+					{blogs?.map((blog, index) => (						
 						<Blog key={blog.id}>
 							{admin &&
 								<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
@@ -157,53 +126,6 @@ const Blogs = ({ url }) => {
 							<DatePost>{blog.date}</DatePost>
 							<Resume>{blog.resume}</Resume>
 						</Blog>
-						<Blog key={blog.id}>
-							{admin &&
-								<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
-							}
-							{
-								blog.main_image ?
-								<Image src={`${url}${blog.main_image}`} /> :
-								<Image src={img} />
-							}							
-							<Title>
-								<Link to={`/Blog/${blog.id}`}>{blog.title}</Link>
-							</Title>
-							<DatePost>{blog.date}</DatePost>
-							<Resume>{blog.resume}</Resume>
-						</Blog>
-						<Blog key={blog.id}>
-							{admin &&
-								<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
-							}
-							{
-								blog.main_image ?
-								<Image src={`${url}${blog.main_image}`} /> :
-								<Image src={img} />
-							}							
-							<Title>
-								<Link to={`/Blog/${blog.id}`}>{blog.title}</Link>
-							</Title>
-							<DatePost>{blog.date}</DatePost>
-							<Resume>{blog.resume}</Resume>
-						</Blog>
-						<Blog key={blog.id}>
-							{admin &&
-								<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
-							}
-							{
-								blog.main_image ?
-								<Image src={`${url}${blog.main_image}`} /> :
-								<Image src={img} />
-							}							
-							<Title>
-								<Link to={`/Blog/${blog.id}`}>{blog.title}</Link>
-							</Title>
-							<DatePost>{blog.date}</DatePost>
-							<Resume>{blog.resume}</Resume>
-						</Blog>
-						</>
-
 					))}				
 				</BlogsContainer>
 			</Container>
