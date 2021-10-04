@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 import { Link as Linked } from 'react-router-dom'
 
-export const Container = styled.div`
+export const Container = styled.div` 
 	width: 90%;
 	height: auto;
 	padding: 0 5%;
 	background-color: #14181D;
 	color: white;
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		width: 100%;
-		padding: 0;
+		padding: 0; 
 	}
 `
 export const BodyContainer = styled.div` 
@@ -21,16 +21,16 @@ export const SectionContainerPath = styled.div`
 	display: flex;	
 	background-color: #3B4956;
 	width: 100%;
-	height: 90vh;
+	height: 70vh;
 	color: white;
 	align-items: center;
 	justify-content: center;
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		display: flex;	
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 60vh;
+		height: 500px;
 	}
 `
 
@@ -39,25 +39,30 @@ export const SectionContainerPathTitle = styled.div`
 	flex-direction: column;
 	align-items: center;	
 	justify-content: center;
-	width: 50%;
-	height: 90%;
-	font-size: 100px;
-	@media (max-width: 500px) {
-		width: 100%;
+	width: 45%;
+	height: 100%;
+	font-size: 100px;	
+	@media (max-width: 800px) {
+		width: 90%;
 	}
 `
 
-export const WeAre= styled.div`
+export const WeAre = styled.div`
 	background-color: #273139;
-	width: 45%;
-	height: 30%;
+	width: 65%;
+	height: auto;
 	color: white;
 	padding: 5% 5%;
-	box-shadow: -30px -30px #1A2026;	
-	@media (max-width: 500px) {
+	box-shadow: -30px -30px #1A2026;
+	text-align: center;	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;	
+	border-radius: 2px;
+	@media (max-width: 800px) {
 		display: flex;	
 		width: 70%;
-		height: 70%;
+		height: auto;
 		flex-direction: column;		
 		box-shadow: -15px -15px #1A2026;
 		justify-content: space-evenly;		
@@ -66,51 +71,69 @@ export const WeAre= styled.div`
 `
 
 export const WeAreTitle= styled.h1`
-	font-size: 30px;
-	margin: 20px 0;
-	@media (max-width: 500px) {
-		font-size: 25px;
-		margin: 5px 0;
+	font-size: 27px;	
+	text-align: left;
+	margin: 10px 0;
+	@media (max-width: 800px) {		
+		display: none;		
 	}
 `
 
 export const WeAreWho= styled.p`
 	font-size: 20px;
-	@media (max-width: 500px) {
-		font-size: 18px;		
-		margin: 5px 0;
+	text-align: left;	
+	margin: 30px 0;
+	@media (max-width: 800px) {
+		font-size: 18px;				
+		margin: 15px 0;
 	}	
+`
+
+export const DownloadButton= styled.a`	
+	background-color: transparent;
+	color: white;	
+	border: 1px solid white;
+	padding: 10px 10px;
+	border-radius: 4px;
+	font-size: 18px;
+	text-decoration: none;
+	cursor: pointer;
+	margin: 10px 0;
 `
 
 export const WeAreImage = styled.div`
 	display: none;
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		display: flex;
-		width: 90%;
-		height: 100px;
+		width: 200px;
+		height: 200px;
+		margin: 0 auto;
 	}		
 `
 
-export const Link= styled(Linked)`
+export const Link= styled.h1`
 	color: white;
 	text-decoration: none;
+	font-size: 30px;
 `
 
 export const SectionContainerPathImage = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 50%;
-	height: 90vh;	
-	@media (max-width: 500px) {
+	width: 45%;
+	height: 100%;	
+	@media (max-width: 800px) {
 		display: none;	
 	}
 `
 
 export const Image = styled.img`
-	width: 95%;
-	height: auto;
-	@media (max-width: 500px) {
+	width: 300px;
+	height: 300px;	
+	border-radius: 100%;
+	object-fit: cover;
+	@media (max-width: 800px) {
 		width: 90vw;
 		height: 100%;	
 	}
@@ -120,12 +143,12 @@ export const SectionContainer = styled.div`
 	display: flex;
 	align-items: center;	
 	width: 90%;
-	height: 160vh;
+	height: auto;
 	color: white;
 	flex-direction: column;	  
 	padding: 1% 5%;
     background-color: ${props => props.color === "true" ? "#3B4956" : "#212930"};
-    @media (max-width: 500px) {
+    @media (max-width: 800px) {
 		padding: 1% 4%;	
 		width: 92%;
 		height: auto;
@@ -137,40 +160,24 @@ export const SectionContainerTitle = styled.div`
 	display: flex;
 	align-items: center;	
 	width: 100%;
-	height: 10vh;	
+	height: 10vh;		
 	justify-content: ${props => props.align === 'left' ? "start" : "end"};	
 `
 
 export const SectionSubtitle = styled.h3`
 	margin: 15px;
 	font-size: 35px;
-	@media (max-width: 500px) {
+	color: white;
+	@media (max-width: 800px) {
 		font-size: 25px;
 	}	
 `
 
 export const SectionContainerContent = styled.div`
-	display: grid;
+	display: block;
 	width: 100%;
-	height: 140vh;
-	align-items: center;
-	justify-content: center;
-	grid-template-columns: repeat(3, 1fr);
-	@media (max-width: 500px) {
-		grid-template-columns: repeat(2, 1fr);
-		height: auto;
-	}
-`
-
-export const SectionContainerContentProyects = styled.div`
-	display: grid;
-	width: 100%;
-	height: 140vh;
-	align-items: center;
-	justify-content: center;
-	grid-template-columns: repeat(2, 1fr);
-	@media (max-width: 500px) {
-		grid-template-columns: repeat(1, 1fr);
+	height: auto;
+	@media (max-width: 800px) {
 		height: auto;
 	}
 `
@@ -178,36 +185,37 @@ export const SectionContainerContentProyects = styled.div`
 export const LastSection = styled.div`
 	display: flex;		
 	width: 100%;
-	height: 95vh;
+	height: auto;
 	color: white;
 	background-color: ${props => props.color === "true" ? "#3B4956" : "#212930"};
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		flex-direction: column;
-		height: 100vh;
+		height: auto;
 	}
 `
 
 export const LastSectionContainer = styled.div`
 	width: 35%;
-	height: 90%;		
-	margin: auto;		
+	height: auto;		
+	margin: 30px auto;		
 	border-radius: 4px;
 	background-color: #273139;
 	box-shadow: -15px -15px #1A2026;
 	color: white;
-	@media (max-width: 500px) {
-		width: 92%;
+	@media (max-width: 800px) {
+		width: 90%;
 		box-shadow: -5px -5px #1A2026;
-		height: 45%;		
+		height: auto;		
 	}
 `
 
 export const LastSectionContainerTitle = styled.div`
 	width: 100%;
-	height: 10%;	
-	margin: 20px auto 50px auto;
+	height: 50px;	
+	margin: 20px auto;
 	text-align: center;
-	@media (max-width: 500px) {
+	color: white;
+	@media (max-width: 800px) {
 		width: 100%;		
 		font-size: 20px;
 		margin: 10px auto 20px auto;
@@ -216,22 +224,60 @@ export const LastSectionContainerTitle = styled.div`
 
 export const LastSectionContainerContent = styled.ul`
 	width: 80%;
-	height: 80%;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	margin: auto;		
-	@media (max-width: 500px){
-		grid-gap: 10px 30px;
-		
+	height: auto;
+	display: block;
+	margin: 0 auto;
+	@media (max-width: 800px){
+
 	}
 `
 
 export const LastSectionList = styled.li`
-	width: auto;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+
+	width: 100%;
+	height: auto;
+
 	text-align: left;
 	font-size: 20px;	
-	@media (max-width: 500px) {		
-		font-size: 16px;	
-		width: 100%;	
+	background-color: #3B4956;
+	border-radius: 2px;
+	margin: 10px 0;
+	padding: 10px;
+	@media (max-width: 800px) {
+		font-size: 16px;			
 	}
+`
+
+export const SectionContainerContentDescription = styled.div`
+	display: block;
+	width: 70%;
+	height: auto;
+	margin: 0 auto;
+	@media (max-width: 800px) {		
+		width: 90%;	
+	}
+`
+export const SectionContainerContentDescriptionTitle = styled.h4`	
+	font-size: 25px;
+	color: white;
+`
+export const SectionContainerContentDescriptionInformation = styled.div`
+	display: block;
+`
+export const ParagraphDescription = styled.p`
+	margin: 20px 0;
+	font-size: 17px;	
+  	line-height: 1.3;  	
+`
+
+export const Span = styled.span`
+	font-weight: 1000;
+`
+
+export const IconContainer = styled.i`
+	margin-right: 10px;
+	color: white;
 `

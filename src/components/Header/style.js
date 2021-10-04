@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { Link as Linked } from 'react-router-dom'
 
 export const HeaderContainer = styled.header`
-	display: flex;
+	display: flex; 
 	width: 90%;	
-	height: 6vh;
+	height: 10vh;
 	align-items: center; 
 	justify-content: space-between;
 	background-color: #07080a;	
@@ -14,6 +14,7 @@ export const HeaderContainer = styled.header`
 	@media (max-width: 500px) {
 		padding: 1% 2%;	
 		width: 96%;
+		height: 5vh;
 	}
 `
 
@@ -42,7 +43,7 @@ export const Icons = styled.div`
 	color: white;
 	display: none;
 	@media (max-width: 500px) {		
-		font-size: 20px;
+		font-size: 25px;
 		display: flex;
 		margin: 0 5px;
 	}
@@ -58,21 +59,6 @@ export const Linka = styled.a`
 	text-decoration: none;	
 `
 
-export const Preferences = styled.div`
-	display: flex; 
-	align-items: center;
-	justify-content: end;
-	width: 48%;
-	height: 98%;	
-	margin: 1%;	
-	@media (max-width: 500px) {		
-		width: 50%;
-		margin: 0;		
-		color: white;		
-		justify-content: space-evenly;
-	}	
-`
-
 export const Logo = styled.img`	
 	width: 50px;
 	height: 50px;	
@@ -85,7 +71,7 @@ export const Logo = styled.img`
 `
 
 export const MyData = styled.div`
-	
+
 `
 
 export const MyDataTitle = styled.h3`
@@ -95,8 +81,34 @@ export const MyDataTitle = styled.h3`
 `
 
 export const MyDataDescription = styled.p`
+	font-size: 20px;
+	@media (max-width: 500px) {
+		display: none;		
+	}
+`
+
+export const ContactList = styled.ul`
+	display: flex;
+	align-items: center;
+	width: 30%;
+	height: 100%;
+	justify-content: space-around;
 	@media (max-width: 500px) {
 		display: none;
-		
+	}
+`
+
+export const List = styled.li`
+	height: auto;
+	width: auto;	
+`
+
+export const Ancor = styled.a`
+	font-size: 30px;
+	color: white;	
+	cursor: pointer;
+	@media (max-width: 500px) {
+		font-size: 25px;
+		height: 90%;						
 	}
 `

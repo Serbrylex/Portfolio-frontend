@@ -14,6 +14,13 @@ import Login from '../containers/Login'
 
 const Routes = ({ url }) => {
 
+
+	/*<Route path="/Admin" exact>
+		<Login />
+	</Route>
+	<Route path="/CreateBlog" exact>
+		<CreateBlog />
+	</Route>*/
 	return(
 
 		<Router>								
@@ -21,17 +28,11 @@ const Routes = ({ url }) => {
 				<Route path="/" exact>
 					<Home url={url} />
 				</Route>
-				<Route path="/Admin" exact>
-					<Login />
-				</Route>
 				<Route path="/Blog/:id" exact>
 					<Blog url={url} />
 				</Route>
 				<Route path="/Blogs/:filters" exact>
 					<Blogs url={url} />
-				</Route>
-				<Route path="/CreateBlog" exact>
-					<CreateBlog />
 				</Route>
 				
 				<Route>

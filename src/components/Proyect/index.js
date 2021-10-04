@@ -1,42 +1,45 @@
-import { useState } from 'react'
+import React from 'react'
 
 import {
-	ProyectContainer, ImageDataContainer, Image, DataImage, ProyectInformation, Title, Tools,
-	Links, ToolsTitle, Element, Link, Ancor
+	ProyectContainer, ImageDataContainer, Image, 
+	DateProyect, ProyectInformation, Title, Tools, 
+	ToolsTitle, Element, Ancor, ImageLink, TitleSection
 } from './style' 
+
+import {  
+	AiOutlineGithub 
+} from 'react-icons/ai'
 
 import imageDefault from '../../images/Walk.svg'
 
-const Proyect = ({ proyect, url }) => {
-  
-	const [showResume, setShowResume] = useState('false')
-	const [focus, setFocus] = useState('false')	
+import { useResetDate } from '../../hooks/useResetDate'
+
+const Proyect = ({ proyect }) => {
+
+	const date = useResetDate({ date: proyect.date })
 	
 	return( 
 		<ProyectContainer>
-			<ImageDataContainer onMouseOver={()=>{setShowResume('true')}} onMouseOut={()=>{setShowResume('false')}}>				
-				{ proyect.main_image ?
-					<Image src={`${url}${proyect.main_image}`} /> :
-					<Image  src={imageDefault} /> 
-				}
-				<DataImage show={showResume}>
-					<p>{proyect.resume}</p>
-					<p>{proyect.date}</p>
-				</DataImage>
+			<ImageDataContainer>
+				<ImageLink href={proyect.link}>
+					<Image src={proyect.image} /> 					
+				</ImageLink>
+				<DateProyect>{date}</DateProyect>
 			</ImageDataContainer>
-			<ProyectInformation onMouseOver={()=>setFocus('true')} onMouseOut={()=>setFocus('false')} focus={focus}>
-				<Title>{proyect.title}</Title>				
-				<ToolsTitle >Tools</ToolsTitle>
+			<ProyectInformation>
+				<TitleSection>
+					<Title href={proyect.link}>{proyect.name}</Title>
+					<Ancor href={proyect.github} title="GitHub"><AiOutlineGithub /></Ancor>
+				</TitleSection>
 				<Tools>
-					{proyect.topics?.map((element, index)=>(
+					{proyect.tools.map((element, index)=>(
 						<Element key={index}>{element}</Element>
 					))}
-				</Tools>						
-				<Links>
-					<Ancor href={proyect.github}>GitHub</Ancor>
-					<Link to={`/Blog/${proyect.blog_id}`}>Blog</Link>
-					<Ancor href={proyect.link}>Web</Ancor>
-				</Links>
+				</Tools>		
+				<ToolsTitle>Descripción</ToolsTitle>
+				<p>{proyect.description}</p>				
+				<ToolsTitle>Dificultades</ToolsTitle>
+				<p>{proyect.gols}</p>						
 			</ProyectInformation>
 		</ProyectContainer>
 	)
