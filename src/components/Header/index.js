@@ -1,12 +1,9 @@
 import { 
-	HeaderContainer, HeaderLinksContainer, PLinks, Link,
-	Logo, MyData, MyDataTitle, MyDataDescription, Icons, Linka, ContactList, List, Ancor
+	HeaderContainer, HeaderLinksContainer, Link,
+	Logo, MyData, MyDataTitle, MyDataDescription, ContactList, List, Ancor
 } from './style'
 
 import LogoImg from '../../images/Logo.png'
- 
-import { BsBook, BsBookmarkPlus } from 'react-icons/bs'
-import { RiContactsLine } from 'react-icons/ri'
 
 import { 
 	AiOutlineFacebook, AiFillTwitterCircle, AiOutlineGithub, AiOutlineWhatsApp, AiOutlineMail, AiOutlineLinkedin 
