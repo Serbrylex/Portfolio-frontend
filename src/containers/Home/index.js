@@ -11,7 +11,7 @@ import {
 	Span, IconContainer
 } from './style' 
 
-import image from '../../images/Code.svg' 
+import image from '../../images/yomero.png' 
 
 // Components
 import Header from '../../components/Header' 
