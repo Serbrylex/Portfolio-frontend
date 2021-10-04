@@ -85,7 +85,7 @@ const Home = ({ url }) => {
 									<Link>Sergio Bryan Madrid Nuñez</Link>
 								</WeAreTitle>
 								<WeAreImage>
-									<Image src={image} alt="" />
+									<Image src={image} alt='Yo mero' />
 								</WeAreImage>
 								<WeAreWho>
 									Soy un eterno estudiante que busca algún día poder cambiar el mundo a través de la tecnología.
