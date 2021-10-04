@@ -29,8 +29,7 @@ import { SiDjango, SiJavascript, SiPython, SiMongodb, SiSpacex } from 'react-ico
 import { GrMysql, GrAssistListening } from 'react-icons/gr'
 import { BsPhone } from 'react-icons/bs'
 import { FaFont } from 'react-icons/fa'
-
-import { AiOutlineBook } from 'react-icons/ai'
+import { AiOutlineBook, AiOutlineGithub } from 'react-icons/ai'
 import { GiMaterialsScience } from 'react-icons/gi'
 import { BiRocket, BiBrain } from 'react-icons/bi'
 import { VscServerProcess } from 'react-icons/vsc'
@@ -203,6 +202,12 @@ const Home = ({ url }) => {
 										<SiPython />
 									</IconContainer>
 									Scraping
+								</LastSectionList>
+								<LastSectionList>
+									<IconContainer>
+										<AiOutlineGithub />
+									</IconContainer>
+									GitHub
 								</LastSectionList>
 							</LastSectionContainerContent>
 						</LastSectionContainer>
