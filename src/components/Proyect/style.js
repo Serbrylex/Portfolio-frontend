@@ -8,13 +8,13 @@ export const ProyectContainer = styled.div`
 	height: auto;	
 	color: white;
 	font-size: 20px;		
-	margin: 20px auto;
+	margin: 20px auto; 
 	background-color: #1a2026;
 	padding: 3%;
 	border-radius: 5px;
 	box-shadow: -6px 5px #3B4956;
 	border: 1px solid #3B4956;
-	@media (max-width: 800px) {
+	@media (max-width: 900px) {
 		width: 70%;
 		display: block;
 		background-color: #212930;		
@@ -27,7 +27,7 @@ export const ImageDataContainer = styled.div`
 	display: block;
 	width: 200px;
 	height: 250px;
-	@media (max-width: 800px) {
+	@media (max-width: 900px) {
 		background-color: #212930;							
 		width: 100%;
 		text-align: center;
@@ -38,7 +38,7 @@ export const Image = styled.img`
 	width: 200px;
 	height: 200px;
 	object-fit: cover;
-	@media (max-width: 800px) {		
+	@media (max-width: 900px) {		
 		border-radius: 5px;
 		margin: 0 auto;
 	}
@@ -56,7 +56,7 @@ export const ProyectInformation = styled.div`
 	align-items: start;
 	justify-content: space-evenly;	
 	font-size: 17px;
-	@media (max-width: 800px) {
+	@media (max-width: 900px) {
 		width: 100%;
 		height: 100%;
 		padding: 0 0 0 2%;	
@@ -68,7 +68,7 @@ export const Title = styled.a`
 	font-size: 1.5em;	
 	color: white;
 	text-decoration: none;
-	@media (max-width: 800px) {
+	@media (max-width: 900px) {
 		font-size: 1.2em;	
 	}
 `
@@ -77,7 +77,7 @@ export const ToolsTitle = styled.h5`
 	font-size: 1em;
 	color: #bec5cb;	
 	margin: 10px 0;
-	@media (max-width: 800px) {
+	@media (max-width: 900px) {
 		font-size: 1em;	
 	}
 `
@@ -89,18 +89,21 @@ export const Tools = styled.div`
 	align-items: center;
 	justify-content: start;
 	width: auto;		
-	@media (max-width: 800px) {
+	@media (max-width: 900px) {
+		display: grid;
+		grid-template-columns: repeat(3,1fr);
 		font-size: 1em;
 		padding: 0;
 		width: 100%;
 		height: auto;
+		grid-gap: 5px;
 	}
 `
 
 export const Element = styled.li`
 	font-size: 1em;
 	margin: 0 10px;
-	@media (max-width: 800px) {
+	@media (max-width: 900px) {
 		margin: 0 5px;
 	}
 `
@@ -114,7 +117,7 @@ export const TitleSection = styled.div`
 	font-size: 1.5em;
 	text-align: right;	
 	margin-bottom: 10px;
-	@media (max-width: 800px) {
+	@media (max-width: 900px) {
 		font-size: 1em;		
 	}
 `
