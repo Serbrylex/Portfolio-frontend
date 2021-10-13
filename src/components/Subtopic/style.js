@@ -10,7 +10,7 @@ export const SubtitleSection = styled.div`
 	margin: 20px 0; 
 `
 
-export const ParagraphSectionOne = styled.div`
+export const ParagraphSection = styled.div`
 	width: 100%;
 	height: auto;
 `
@@ -31,17 +31,25 @@ export const HTitle = styled.h1`
 	}
 `
 
-export const TextArea = styled.textarea`
-	width: 98%;
-	height: 50px;
-	padding: 5px 1%;
+export const AddSubtopic = styled.div`
+	border-top: 1px solid black;	
+	width: 100%;
+	height: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 50px 0;
 `
 
-export const ParagraphResponse = styled.p`
-	width: 100%;
-	height: auto;
-	font-size: 20px;
-	@media (max-width: 500px) {
-		font-size: 16px;
-	}
+export const PlusSubtopic = styled.button`
+	background-color: #1A2026;
+	border-radius: 4px;	
+	padding: 10px 20px;
+	width: auto;
+	margin: 0 20px;
+	font-size: 17px;
+	color: white;
+	border: none;
+	cursor: pointer;	
+	border: 1px solid white;
 `

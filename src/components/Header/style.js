@@ -4,8 +4,8 @@ import { Link as Linked } from 'react-router-dom'
 
 export const HeaderContainer = styled.header`
 	display: flex; 
-	width: 90%;	
-	height: 10vh;
+	width: 90%;	 
+	height: 40px;
 	align-items: center; 
 	justify-content: space-between;
 	background-color: #07080a;	
@@ -13,8 +13,7 @@ export const HeaderContainer = styled.header`
 	padding: 1% 5%;	
 	@media (max-width: 500px) {
 		padding: 1% 2%;	
-		width: 96%;
-		height: 5vh;
+		width: 96%;		
 	}
 `
 
@@ -32,7 +31,7 @@ export const HeaderLinksContainer = styled.div`
 `
 
 export const PLinks = styled.p`
-	margin: 0 20px;
+	margin: 0 5px;
 	cursor: pointer;
 	@media (max-width: 500px) {
 		display: none;
@@ -40,28 +39,33 @@ export const PLinks = styled.p`
 `
 
 export const Icons = styled.div`	
-	color: white;
-	display: none;
+	color: white;	
+	font-size: 20px;
+	display: flex;
+	margin: 0 5px;
 	@media (max-width: 500px) {		
-		font-size: 25px;
-		display: flex;
-		margin: 0 5px;
 	}
 `
 
 export const Link = styled(Linked)`
 	color: white;
 	text-decoration: none;	
+	display: flex;
+	width: auto;
+	margin: 0 5px;
 `
 
 export const Linka = styled.a`
 	color: white;
 	text-decoration: none;	
+	display: flex;
+	width: auto;
+	margin: 0 5px;
 `
 
 export const Logo = styled.img`	
-	width: 50px;
-	height: 50px;	
+	width: 45px;
+	height: 45px;	
 	margin-right: 10px;
 	@media (max-width: 500px) {
 		width: 30px;
@@ -75,13 +79,14 @@ export const MyData = styled.div`
 `
 
 export const MyDataTitle = styled.h3`
+	font-size: 17px;
 	@media (max-width: 500px) {
 		
 	}
 `
 
 export const MyDataDescription = styled.p`
-	font-size: 20px;
+	font-size: 17px;
 	@media (max-width: 500px) {
 		display: none;		
 	}
@@ -90,11 +95,11 @@ export const MyDataDescription = styled.p`
 export const ContactList = styled.ul`
 	display: flex;
 	align-items: center;
-	width: 30%;
+	width: auto;
 	height: 100%;
 	justify-content: space-around;
 	@media (max-width: 500px) {
-		display: none;
+		width: 30%;
 	}
 `
 

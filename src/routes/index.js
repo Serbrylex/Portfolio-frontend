@@ -10,17 +10,11 @@ import Blogs from '../containers/Blogs'
 import CreateBlog from '../containers/CreateBlog'
 import FourOFour from '../containers/FourOFour'
 import Login from '../containers/Login'
-//import { useScrollToTop } from '../hooks/useScrollToTop'
+import Freelancer from '../containers/Freelancer'
 
 const Routes = ({ url }) => {
 
 
-	/*<Route path="/Admin" exact>
-		<Login />
-	</Route>
-	<Route path="/CreateBlog" exact>
-		<CreateBlog />
-	</Route>*/
 	return(
 
 		<Router>								
@@ -33,6 +27,17 @@ const Routes = ({ url }) => {
 				</Route>
 				<Route path="/Blogs/:filters" exact>
 					<Blogs url={url} />
+				</Route>
+
+				<Route path="/Freelancer" exact>
+					<Freelancer />
+				</Route>
+
+				<Route path="/Admin" exact>
+					<Login />
+				</Route>
+				<Route path="/CreateBlog" exact>
+					<CreateBlog />
 				</Route>
 				
 				<Route>

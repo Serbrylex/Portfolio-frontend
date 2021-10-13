@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 
 import Header from '../../components/Header'
@@ -17,7 +17,7 @@ import {
 
 import imageDefault from '../../images/Walk.svg'
 
-import { 
+import {  
 	AiOutlineGithub, AiOutlineLink
 } from 'react-icons/ai'
 
@@ -29,22 +29,47 @@ const Blog = ({ url }) => {
 	
 	const { id } = useParams()
 	const [allBlog, setAllBlog] = useState([])	
-	const { token } = useContext(TokenContext)
-	const [admin, setAdmin] = useState(false)
+	/*
+		{
+			date
+			github
+			id
+			image
+			link
+			questions
+			resume
+			title
+			user
+			views			
+			subtems: [
+				{
+					id
+					blog
+					title
+					paragraphs: [
+						{
+							id
+							subtem
+							paragraph
+							picture
+						}
+					]
+				}
+			]
+		}
+	*/
+	const { isAuth } = useContext(TokenContext)
 
 	const blogDetail = async () => {
-		const data = await apiCall({urlDirection: `blog-detail/${id}/`})		
-		data['topics'] = data['topics'].split(',')		
+		const response = await apiCall({urlDirection: `blog/${id}/`})		
+		const data = await response.json()
+		console.log(data)
 		setAllBlog(data)
 	}
 
 
 	useEffect(()=>{
 		blogDetail()
-
-		if (token.length !== 0){
-			setAdmin(true)
-		}	
 	}, [])
 		
 
@@ -54,7 +79,7 @@ const Blog = ({ url }) => {
                 <title>@Serbrylex | {allBlog.title ? allBlog.title : ''}</title>
 				<meta name='description' content={`Este es el blog sobre: ${allBlog.title}, ${setAllBlog.topics}`} />
 			</Helmet>
-			<Header admin={admin}/>
+			<Header/>
 			<Container>
 				<SecondContainer>
 					<Main>
@@ -82,45 +107,25 @@ const Blog = ({ url }) => {
 									))}									
 								</TopicsUl>
 							</TopicsSection>
-							{allBlog.subtem?.map((eachSubtem, index)=>(
+							{allBlog.subtems?.map((eachSubtem, index)=>(
 								<div key={index}>
 									{eachSubtem.title &&										
 										<SubtitleSection>								
 											<HTitle>{eachSubtem.title}</HTitle>
 										</SubtitleSection>
 									}									
-									<ParagraphSectionOne>								
-										<ParagraphResponse>{eachSubtem.first_paragraph}</ParagraphResponse>			
-									</ParagraphSectionOne>									
-									{eachSubtem.first_image !== null &&
-										<ImageSection edit={false} image={`${url}${eachSubtem.first_image}`} />			
-									}
-									<ParagraphSectionOne>								
-										<ParagraphResponse>{eachSubtem.second_paragraph}</ParagraphResponse>								
-									</ParagraphSectionOne>
-									{eachSubtem.second_image !== null &&
-										<ImageSection edit={false} image={`${url}${eachSubtem.second_image}`} />
-									}
-									<ParagraphSectionOne>								
-										<ParagraphResponse>{eachSubtem.third_paragraph}</ParagraphResponse>								
-									</ParagraphSectionOne>
-									{eachSubtem.third_image !== null &&
-										<ImageSection edit={false} image={`${url}${eachSubtem.third_image}`} />
-									}
-									<ParagraphSectionOne>
-										<ParagraphResponse>{eachSubtem.fourth_paragraph}</ParagraphResponse>							
-									</ParagraphSectionOne>
-									{eachSubtem.fourth_image !== null &&
-										<ImageSection edit={false} image={`${url}${eachSubtem.fourth_image}`}/>
-									}
-									<ParagraphSectionOne>
-										<ParagraphResponse>{eachSubtem.fifth_paragraph}</ParagraphResponse>								
-									</ParagraphSectionOne>
-									{eachSubtem.fifth_image !== null &&
-										<ImageSection edit={false} image={`${url}${eachSubtem.fifth_image}`}/>
-									}
+									{eachSubtem.paragraphs?.map((eachParagraph, index)=>(
+										<Fragment key={index}>
+											<ParagraphSectionOne>								
+												<ParagraphResponse>{eachParagraph.paragraph}</ParagraphResponse>			
+											</ParagraphSectionOne>		
+											{eachParagraph.picture &&
+												<ImageSection edit={false} image={url+eachParagraph.picture} />
+											}
+										</ Fragment>
+									))}
 								</div>
-							))}	
+							))}
 							<LinksContainer>
 								<TheLinks href={allBlog.link}><AiOutlineLink />Link Page</TheLinks>
 								<TheLinks href={allBlog.github}><AiOutlineGithub />GitHub</TheLinks>								

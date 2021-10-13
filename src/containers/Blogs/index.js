@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 // Components
 import Header from '../../components/Header' 
 import Footer from '../../components/Footer' 
+import Loading from '../../components/Loading'
 
 import {
 	Container, BlogsContainer, MainTitle, Blog, Image, Title, DatePost, Resume, Link, Delete, 
@@ -15,19 +16,18 @@ import apiCall from '../../api'
 
 import { AiFillCloseCircle } from 'react-icons/ai'
 import loading from '../../images/loading.gif'
-import TokenContext from '../../context/tokens'
+import TokenContext from '../../context/tokens' 
 
 const img = 'https://i.ytimg.com/vi/9sftDDfrdMI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCtXZRUWyl4s3uOOTcgYq8XdpRobw'
 
 const Blogs = ({ url }) => {
 
 	const { filters } = useParams()
-	const [blogs, setBlogs] = useState([])
+	const [blogs, setBlogs] = useState([{},{},{}])
 	const [isLoading, setIsLoading] = useState(false)
 	const [showDelete, setShowDelete] = useState(false)
-	const [element, setElement] = useState({})
-	const [admin, setAdmin] = useState(false)
-	const { token } = useContext(TokenContext)
+	const [element, setElement] = useState({})	
+	const { isAuth } = useContext(TokenContext)
 
 	const handleFirstDelete = (id, index, title) => {
 		setShowDelete(true)
@@ -39,14 +39,14 @@ const Blogs = ({ url }) => {
 	}
 
 	const handleDeleteBlog = () => {		
-		const newToken = `Token ${token.access_token}`
+		const newToken = `Token ${isAuth.access_token}`
 		apiCall({
-			urlDirection: `blog-delete/${element.id}/`, 
+			urlDirection: `blog/delete/${element.id}/`, 
 			headers: {
 				'Authorization': newToken,
 				'Content-Type': 'application/json',				
 			}, 
-			method: 'POST' 
+			method: 'DELETE' 
 		})
 
 		let newBlog = blogs
@@ -59,7 +59,11 @@ const Blogs = ({ url }) => {
 
 	const ApiAsync = async () => {
 		setIsLoading(true)
-		const data = await apiCall({urlDirection: `blog-list/${filters}/`})
+		const response = await apiCall({urlDirection: `blog-list/${filters}/`})		
+
+		const data = await response.json()
+		console.log('Get Data')
+		console.log(data)
 
 		for (var i = 0; i < data.length; i++) {
 			data[i].resume = data[i].resume.slice(0, 100) + '...'
@@ -69,27 +73,9 @@ const Blogs = ({ url }) => {
 		setIsLoading(false)
 	}
 	useEffect(()=>{	
-		ApiAsync().catch(null)
-
-		if (token.length !== 0){
-			setAdmin(true)
-		}	
+		ApiAsync().catch(null)		
 	},[])
 
-	if (isLoading) {
-		return (
-			<>
-				<Header admin={admin}/>
-				<Container>
-					<BlogsContainer>
-						<MainTitle>{filters}</MainTitle>	
-						<ImageLoading>Cargando...</ImageLoading>
-					</BlogsContainer>
-				</Container>
-				<Footer />
-			</>							
-		)
-	}
 
 	return(
 		<>
@@ -97,7 +83,7 @@ const Blogs = ({ url }) => {
                 <title>@Serbrylex | Blogs</title>
 				<meta name='description' content='Aquí veras todos los blogs escritos por @Serbrylex' />
 			</Helmet>
-			<Header admin={admin}/>
+			<Header/>
 			<Container>
 				<WindowAlert show={showDelete.toString()}>
 					<WindowAlertItems>
@@ -112,7 +98,7 @@ const Blogs = ({ url }) => {
 					<MainTitle>{filters}</MainTitle>
 					{blogs?.map((blog, index) => (						
 						<Blog key={blog.id}>
-							{admin &&
+							{isAuth.isAuth &&
 								<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
 							}
 							{
@@ -129,6 +115,7 @@ const Blogs = ({ url }) => {
 					))}				
 				</BlogsContainer>
 			</Container>
+			{isLoading && <Loading />}
 			<Footer />
 		</>
 	)

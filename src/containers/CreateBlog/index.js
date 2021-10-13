@@ -1,94 +1,120 @@
-import { useState, useContext } from 'react'
-import { useHistory  } from 'react-router-dom'
+import { useState, useContext, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Subtopic from '../../components/Subtopic'
 import ImageSection from '../../components/ImageSection'
 import Adds from '../../components/Adds'
+import Loading from '../../components/Loading'
 
 import TokenContext from '../../context/tokens'
 
 import { useInputValue } from '../../hooks/useInputValue'  
 import { useImage } from '../../hooks/useImage'
  
-import {
+import { 
 	Container, SecondContainer, Main, Content, TitleSection, InputTitle, HTitle, 
 	QuestionSection, ResumeSection, TopicsSection, TextArea, ParagraphResponse, Subtitle,
 	InputList, TopicList, TopicsUl, SendPost, SendPostContainer, LinksContainer, InputLinks, TheLinks,
 	AddSubtopic, PlusSubtopic
 } from './style' 
- 
+  
 import { 
 	AiOutlineGithub, AiOutlineLink
 } from 'react-icons/ai'
 
-import apiCall from '../../api'
+import apiCall, { blogData } from '../../api' 
 
 
 const CreateBlog = () => {
+	
+	const { isAuth } = useContext(TokenContext)
+	const history = useHistory()
 
-	let history = useHistory()
-	const { token } = useContext(TokenContext)
-
-	if (!token.access_token){
+	if (!isAuth.isAuth){
 		history.push("/Admin")
-	}
+	}	
 
-	// Subtopic
-	const [idBlog, setIdBlog] = useState(0)
-	const [send, setSend] = useState(false)
-	const [subtopics, setSubtopics] = useState(1)
+	const [idPost, setIdPost] = useState(undefined)		
+	const [subtopicsSend, setSubtopicsSend] = useState([false])
+	const [loading, setLoading] = useState(false)
 
 	const title = useInputValue('Title')
-	const imagen = useImage('')
-	const question = useInputValue('¿What the fuck is JavaScript?')
-	const resume = useInputValue('muchas cosas han sigo escritas antes en esta web, pero ninguna como la que te voy a presentar en este instante, are you ready?')
-	const topicOne = useInputValue('React.js')
-	const topicTwo = useInputValue('Django')
-	const topicThree = useInputValue('Scrapy (yes, the python framework)')
-	const topicFour = useInputValue('MySql')
-	const topicFive = useInputValue('How to plant an aguacate?')
+	const question = useInputValue('This will be the main question ( ?')
+	const imagen = useImage('')	
+	const resume = useInputValue('muchas cosas han sigo escritas antes en esta web, pero ninguna como la que te voy a presentar en este instante, are you ready?')	
 	const linkPage = useInputValue('www.page.com')
 	const linkGitHub = useInputValue('www.github.com/proyect')
 
-	const asyncFetch = async ({ urlDirection, method, headers, body }) => {
-		const responseData = await apiCall({urlDirection, method, headers, body})
-		return(responseData)
-	}
+	const topics = useInputValue('topic1,topic2,topic3,topic4,topic5')
 
 	const handleEndPost = async () => {		
 		
-		let objectOne = new FormData()	    		
-		const newToken = `Token ${token.access_token}`
+		let objectOne = new FormData()	    				
 	
-		objectOne.append('user', 1)
-		objectOne.append('title', title.value)
+		objectOne.append('user', isAuth.user.id)
+		objectOne.append('title', title.value)		
 		objectOne.append('questions', question.value)
 		if (imagen.fileImage.name?.length){
 			objectOne.append('main_image', imagen.fileImage, imagen.fileImage.name)
 		}
-		objectOne.append('resume', resume.value)		
-		objectOne.append('topics', `${topicOne.value},${topicTwo.value},${topicThree.value},${topicFour.value},${topicFive.value}`)
+		objectOne.append('resume', resume.value)
+		objectOne.append('topics', topics.value)
 		objectOne.append('views', 0)
-
 		objectOne.append('github', linkGitHub.value)
 		objectOne.append('link', linkPage.value)
+		
 
-		//objectOne.append('token', newToken)
-
-		let idPost = await asyncFetch({
-			urlDirection: 'blog-create/', 
+		let response = await apiCall({
+			urlDirection: 'blog/', 
 			method: 'POST', 
 			headers: {
-				'Authorization': newToken,
+				'Authorization': `Token ${isAuth.access_token}`,
 			},
 			body: objectOne
 		})
-		setIdBlog(idPost.id)
-		setSend(true)
+		
+		let data = await response.json()
+		
+		setIdPost(data.id)		
+		
+	}
 
-		history.push("/Blogs/All")		
+	useEffect(()=>{
+		if (idPost!==undefined) {
+			for (var i = 0; i < subtopicsSend.length; i++) {
+				if (!subtopicsSend[i]) {
+					let algo = [...subtopicsSend]
+					algo[i] = !algo[i]
+					setSubtopicsSend([...algo])
+				}
+			}	
+
+			setLoading(true)
+			setTimeout(()=>{				
+				setLoading(false)
+				history.push('/Blogs/All')
+			}, 10000)			
+			
+		}
+	},[idPost, subtopicsSend])	
+
+	const renderSubtopics = () => {
+
+		let arrayOfSubtopics = []
+
+		for (var i = 0; i < subtopicsSend.length; i++) {
+			arrayOfSubtopics.push(
+				<Subtopic 		
+					key={i}					
+					idPost={idPost}					
+					send={subtopicsSend[i]}					
+				/>
+			)
+		}
+
+		return arrayOfSubtopics
 	}
 
 	return (
@@ -98,147 +124,87 @@ const CreateBlog = () => {
 				<SecondContainer>
 					<Main>
 						<Content>
-							<TitleSection>
-								{title.show ? 
-									<InputTitle 
-										type="text" 									
-										onBlur={() => title.setShow(false)}									
-										{...title}
-									/> : 
-									<HTitle onClick={() => title.setShow(true)}>{title.value}</HTitle>
-								}
-							</TitleSection>
-							<QuestionSection>
-								<Subtitle>Initial Questions</Subtitle>
-								{question.show ? 
-									<TextArea
-										type="text" 									
-										maxlength='600'
-										onBlur={() => question.setShow(false)}									
-										{...question}
-									/> : 
-									<ParagraphResponse onClick={() => question.setShow(true)}>{question.value}</ParagraphResponse>
-								}
-							</QuestionSection>
-							<ImageSection {...imagen} />							
-							<ResumeSection>
-								<Subtitle>Resume</Subtitle>
-								{resume.show ? 
-									<TextArea
-										type="text" 									
-										onBlur={() => resume.setShow(false)}									
-										{...resume}
-									/> : 
-									<ParagraphResponse onClick={() => resume.setShow(true)}>{resume.value}</ParagraphResponse>
-								}
-							</ResumeSection>
-							<TopicsSection>
-								<Subtitle>Topics:</Subtitle>
-								<TopicsUl>
-									{topicOne.show ? 
-										<InputList
+						{loading ? 
+							<Loading />
+							:	
+							<>					
+								<TitleSection>
+									{title.show ? 
+										<InputTitle 
 											type="text" 									
-											onBlur={() => topicOne.setShow(false)}									
-											{...topicOne}
+											onBlur={() => title.setShow(false)}									
+											{...title}
 										/> : 
-										<TopicList onClick={() => topicOne.setShow(true)}>{topicOne.value}</TopicList>
+										<HTitle onClick={() => title.setShow(true)}>{title.value}</HTitle>
 									}
-									{topicTwo.show ? 
-										<InputList 
+								</TitleSection>							
+								<QuestionSection>
+									<Subtitle>Initial Questions</Subtitle>
+									{question.show ? 
+										<TextArea
 											type="text" 									
-											onBlur={() => topicTwo.setShow(false)}									
-											{...topicTwo}
+											maxlength='600'
+											onBlur={() => question.setShow(false)}									
+											{...question}
 										/> : 
-										<TopicList onClick={() => topicTwo.setShow(true)}>{topicTwo.value}</TopicList>
+										<ParagraphResponse onClick={() => question.setShow(true)}>{question.value}</ParagraphResponse>
 									}
-									{topicThree.show ? 
-										<InputList 
+								</QuestionSection>
+								<ImageSection {...imagen} />							
+								<ResumeSection>
+									<Subtitle>Resume</Subtitle>
+									{resume.show ? 
+										<TextArea
 											type="text" 									
-											onBlur={() => topicThree.setShow(false)}									
-											{...topicThree}
+											onBlur={() => resume.setShow(false)}									
+											{...resume}
 										/> : 
-										<TopicList onClick={() => topicThree.setShow(true)}>{topicThree.value}</TopicList>
+										<ParagraphResponse onClick={() => resume.setShow(true)}>{resume.value}</ParagraphResponse>
 									}
-									{topicFour.show ? 
-										<InputList 
+								</ResumeSection>
+								<TopicsSection>
+									<Subtitle>Topics:</Subtitle>
+									<TopicsUl>
+										{topics.show ? 
+											<InputList
+												type="text" 									
+												onBlur={() => topics.setShow(false)}									
+												{...topics}
+											/> : 
+											<TopicList onClick={()=>topics.setShow(true)}>{topics.value}</TopicList>
+										}									
+									</TopicsUl>
+								</TopicsSection>
+
+								{renderSubtopics()}												
+
+								<AddSubtopic>
+									<PlusSubtopic onClick={()=>setSubtopicsSend([...subtopicsSend, false])}>Add Subtopic</PlusSubtopic>								
+								</AddSubtopic>
+
+								<LinksContainer>
+									{linkPage.show ? 
+										<InputLinks 
+											type="text"
+											onBlur={() => linkPage.setShow(false)}									
+											{...linkPage}
+										/> : 
+										<TheLinks onClick={() => linkPage.setShow(true)}><AiOutlineLink />Web Site</TheLinks>
+									}
+									{linkGitHub.show ? 
+										<InputLinks 
 											type="text" 									
-											onBlur={() => topicFour.setShow(false)}									
-											{...topicFour}
-										/> : 
-										<TopicList onClick={() => topicFour.setShow(true)}>{topicFour.value}</TopicList>
+											onBlur={() => linkGitHub.setShow(false)}									
+											{...linkGitHub}
+										/> :  
+										<TheLinks onClick={() => linkGitHub.setShow(true)}><AiOutlineGithub />GitHub</TheLinks>
 									}
-									{topicFive.show ? 
-										<InputList 
-											type="text" 									
-											onBlur={() => topicFive.setShow(false)}									
-											{...topicFive}
-										/> : 
-										<TopicList onClick={() => topicFive.setShow(true)}>{topicFive.value}</TopicList>
-									}
-								</TopicsUl>
-							</TopicsSection>
-							<Subtopic 
-								idBlog={idBlog}
-								send={send}
-								token={token.access_token}	
-								orderId={1}						
-							/>
-							{subtopics > 1 &&
-								<Subtopic 
-									idBlog={idBlog}
-									send={send}
-									token={token.access_token}							
-									orderId={2}
-								/>
-							}
-							{subtopics > 2 &&
-								<Subtopic 
-									idBlog={idBlog}
-									send={send}
-									token={token.access_token}							
-									orderId={3}
-								/>
-							}
-							{subtopics > 3 &&
-								<Subtopic 
-									idBlog={idBlog}
-									send={send}
-									token={token.access_token}							
-									orderId={4}
-								/>
-							}
-							{subtopics > 4 &&
-								<Subtopic 
-									idBlog={idBlog}
-									send={send}
-									token={token.access_token}							
-									orderId={5}
-								/>
-							}
-							<AddSubtopic>
-								<PlusSubtopic onClick={()=>setSubtopics(subtopics+1)}>+ Subtopic</PlusSubtopic>
-							</AddSubtopic>
-							<LinksContainer>
-								{linkPage.show ? 
-									<InputLinks 
-										type="text"
-										onBlur={() => linkPage.setShow(false)}									
-										{...linkPage}
-									/> : 
-									<TheLinks onClick={() => linkPage.setShow(true)}><AiOutlineLink />Web Site</TheLinks>
-								}
-								{linkGitHub.show ? 
-									<InputLinks 
-										type="text" 									
-										onBlur={() => linkGitHub.setShow(false)}									
-										{...linkGitHub}
-									/> :  
-									<TheLinks onClick={() => linkGitHub.setShow(true)}><AiOutlineGithub />GitHub</TheLinks>
-								}
-							</LinksContainer>
-							<SendPostContainer>
-								<SendPost onClick={handleEndPost}>Save</SendPost>
-							</SendPostContainer>
+								</LinksContainer>
+								<SendPostContainer>
+									<SendPost onClick={handleEndPost}>Save</SendPost>
+								</SendPostContainer>
+							</>
+						}
 						</Content>
 						<Adds />
 					</Main>
@@ -249,4 +215,5 @@ const CreateBlog = () => {
 	)
 }
 
-export default CreateBlog 
+export default CreateBlog							
+						

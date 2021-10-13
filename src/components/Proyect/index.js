@@ -15,7 +15,7 @@ import imageDefault from '../../images/Walk.svg'
 import { useResetDate } from '../../hooks/useResetDate'
 
 const Proyect = ({ proyect }) => {
-
+ 
 	const date = useResetDate({ date: proyect.date })
 	
 	return( 

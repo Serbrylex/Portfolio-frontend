@@ -16,15 +16,11 @@ const Login = () => {
 	const password = useInputValue('')
 	const history = useHistory()
 
-	const { getToken, token } = useContext(TokenContext)
+	const { activeAuth } = useContext(TokenContext)
 
-	const handleLogin = () => {
-		getToken({
-			urlDirection: 'login/', 
-			method: 'POST', 
-			headers: {
-				'Content-Type': 'application/json',				
-			},
+	const handleLogin = async () => {
+		await activeAuth({
+			urlDirection: 'login/',  
 			body: JSON.stringify({
 				username: user.value,
 				password: password.value

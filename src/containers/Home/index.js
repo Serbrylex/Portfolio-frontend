@@ -20,7 +20,7 @@ import BlogContainer from '../../components/BlogContainer'
 import Proyect from '../../components/Proyect'
 import SeeMore from '../../components/SeeMore'
  
-import apiCall from '../../api' 
+import apiCall, { proyects } from '../../api' 
 
 import TokenContext from '../../context/tokens'
 
@@ -105,7 +105,7 @@ const Home = ({ url }) => {
 							<SectionSubtitle>Proyects</SectionSubtitle>
 						</SectionContainerTitle>
 						<SectionContainerContent>
-							{apiCall.proyects.map((proyect, index)=>(
+							{proyects.map((proyect, index)=>(
 								<Proyect key={index} proyect={proyect}/>
 							))}
 						</SectionContainerContent>						

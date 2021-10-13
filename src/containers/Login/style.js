@@ -31,6 +31,7 @@ export const Input = styled.input`
 	margin: 10px 0;
 	border-radius: 2px;
 	border: 1px solid black;
+	color: black;
 `
 
 export const Button = styled.button`
@@ -43,6 +44,7 @@ export const Button = styled.button`
 	border-radius: 2px;
 	margin: 10px auto;
 	color: white;
+	cursor: pointer;
 `
 
 export const Title = styled.h3`

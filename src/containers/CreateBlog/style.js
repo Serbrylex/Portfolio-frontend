@@ -8,7 +8,7 @@ export const Container = styled.div`
 	background-color: #3B4956;
 	color: white;
 	@media (max-width: 500px) {
-		width: 100%;
+		width: 100%; 
 		padding: 0;
 	}
 `
@@ -201,10 +201,12 @@ export const AddSubtopic = styled.div`
 export const PlusSubtopic = styled.button`
 	background-color: #1A2026;
 	border-radius: 4px;	
-	padding: 5px 15px;
+	padding: 10px 20px;
 	width: auto;
+	margin: 0 20px;
 	font-size: 17px;
 	color: white;
 	border: none;
-	cursor: pointer;
+	cursor: pointer;	
+	border: 1px solid white;
 `
