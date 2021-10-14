@@ -21,18 +21,14 @@ const Header = () => {
 			<HeaderLinksContainer>
 				<Link to='/'>
 					<Logo src={LogoImg} alt="" />		
+					<MyData>
+						<MyDataTitle>Bryan Madrid</MyDataTitle>
+						<MyDataDescription>Web Developer</MyDataDescription>
+					</MyData>
 				</Link>
-				<MyData>
-					<MyDataTitle>Bryan Madrid</MyDataTitle>
-					<MyDataDescription>Web Developer</MyDataDescription>
-				</MyData>
 			</HeaderLinksContainer>	
 						
-			<ContactList>
-				<Link to='/Freelancer' title="Freelancer">
-					<PLinks> Freelacer </PLinks>				
-					<Icons><RiContactsLine color={'white'} /></Icons>
-				</Link>
+			<ContactList>				
 
 				<Link to='/Blogs/All' title="Blogs">
 					<PLinks> Blogs </PLinks>

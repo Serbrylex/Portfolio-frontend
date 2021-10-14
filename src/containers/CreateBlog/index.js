@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
@@ -59,8 +60,7 @@ const CreateBlog = () => {
 		if (imagen.fileImage.name?.length){
 			objectOne.append('main_image', imagen.fileImage, imagen.fileImage.name)
 		}
-		objectOne.append('resume', resume.value)
-		objectOne.append('topics', topics.value)
+		objectOne.append('resume', resume.value)		
 		objectOne.append('views', 0)
 		objectOne.append('github', linkGitHub.value)
 		objectOne.append('link', linkPage.value)
@@ -77,7 +77,20 @@ const CreateBlog = () => {
 		
 		let data = await response.json()
 		
-		setIdPost(data.id)		
+		setIdPost(data.id)	
+
+		await apiCall({
+			urlDirection: 'blog/categories/', 
+			method: 'POST', 
+			headers: {
+				'Authorization': `Token ${isAuth.access_token}`,
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				blog_id: data.id,
+				categories: topics.value
+			})
+		})	
 		
 	}
 
@@ -119,98 +132,98 @@ const CreateBlog = () => {
 
 	return (
 		<>	
+			<Helmet>
+                <title>@Serbrylex | Create Blog</title>
+				<meta name='description' content='Create blog admin panel' />
+			</Helmet>
 			<Header admin={true}/>
 			<Container>
 				<SecondContainer>
 					<Main>
-						<Content>
-						{loading ? 
-							<Loading />
-							:	
-							<>					
-								<TitleSection>
-									{title.show ? 
-										<InputTitle 
+						<Content>												
+							<TitleSection>
+								{title.show ? 
+									<InputTitle 
+										type="text" 									
+										onBlur={() => title.setShow(false)}									
+										{...title}
+									/> : 
+									<HTitle onClick={() => title.setShow(true)}>{title.value}</HTitle>
+								}
+							</TitleSection>							
+							<QuestionSection>
+								<Subtitle>Initial Questions</Subtitle>
+								{question.show ? 
+									<TextArea
+										type="text" 									
+										maxlength='600'
+										onBlur={() => question.setShow(false)}									
+										{...question}
+									/> : 
+									<ParagraphResponse onClick={() => question.setShow(true)}>{question.value}</ParagraphResponse>
+								}
+							</QuestionSection>
+							<ImageSection {...imagen} />							
+							<ResumeSection>
+								<Subtitle>Resume</Subtitle>
+								{resume.show ? 
+									<TextArea
+										type="text" 									
+										onBlur={() => resume.setShow(false)}									
+										{...resume}
+									/> : 
+									<ParagraphResponse onClick={() => resume.setShow(true)}>{resume.value}</ParagraphResponse>
+								}
+							</ResumeSection>
+							<TopicsSection>
+								<Subtitle>Topics:</Subtitle>
+								<TopicsUl>
+									{topics.show ? 
+										<InputList
 											type="text" 									
-											onBlur={() => title.setShow(false)}									
-											{...title}
+											onBlur={() => topics.setShow(false)}									
+											{...topics}
 										/> : 
-										<HTitle onClick={() => title.setShow(true)}>{title.value}</HTitle>
-									}
-								</TitleSection>							
-								<QuestionSection>
-									<Subtitle>Initial Questions</Subtitle>
-									{question.show ? 
-										<TextArea
-											type="text" 									
-											maxlength='600'
-											onBlur={() => question.setShow(false)}									
-											{...question}
-										/> : 
-										<ParagraphResponse onClick={() => question.setShow(true)}>{question.value}</ParagraphResponse>
-									}
-								</QuestionSection>
-								<ImageSection {...imagen} />							
-								<ResumeSection>
-									<Subtitle>Resume</Subtitle>
-									{resume.show ? 
-										<TextArea
-											type="text" 									
-											onBlur={() => resume.setShow(false)}									
-											{...resume}
-										/> : 
-										<ParagraphResponse onClick={() => resume.setShow(true)}>{resume.value}</ParagraphResponse>
-									}
-								</ResumeSection>
-								<TopicsSection>
-									<Subtitle>Topics:</Subtitle>
-									<TopicsUl>
-										{topics.show ? 
-											<InputList
-												type="text" 									
-												onBlur={() => topics.setShow(false)}									
-												{...topics}
-											/> : 
-											<TopicList onClick={()=>topics.setShow(true)}>{topics.value}</TopicList>
-										}									
-									</TopicsUl>
-								</TopicsSection>
+										<TopicList onClick={()=>topics.setShow(true)}>{topics.value}</TopicList>
+									}									
+								</TopicsUl>
+							</TopicsSection>
 
-								{renderSubtopics()}												
+							{renderSubtopics()}												
 
-								<AddSubtopic>
-									<PlusSubtopic onClick={()=>setSubtopicsSend([...subtopicsSend, false])}>Add Subtopic</PlusSubtopic>								
-								</AddSubtopic>
+							<AddSubtopic>
+								<PlusSubtopic onClick={()=>setSubtopicsSend([...subtopicsSend, false])}>Add Subtopic</PlusSubtopic>								
+							</AddSubtopic>
 
-								<LinksContainer>
-									{linkPage.show ? 
-										<InputLinks 
-											type="text"
-											onBlur={() => linkPage.setShow(false)}									
-											{...linkPage}
-										/> : 
-										<TheLinks onClick={() => linkPage.setShow(true)}><AiOutlineLink />Web Site</TheLinks>
-									}
-									{linkGitHub.show ? 
-										<InputLinks 
-											type="text" 									
-											onBlur={() => linkGitHub.setShow(false)}									
-											{...linkGitHub}
-										/> :  
-										<TheLinks onClick={() => linkGitHub.setShow(true)}><AiOutlineGithub />GitHub</TheLinks>
-									}
-								</LinksContainer>
-								<SendPostContainer>
-									<SendPost onClick={handleEndPost}>Save</SendPost>
-								</SendPostContainer>
-							</>
-						}
+							<LinksContainer>
+								{linkPage.show ? 
+									<InputLinks 
+										type="text"
+										onBlur={() => linkPage.setShow(false)}									
+										{...linkPage}
+									/> : 
+									<TheLinks onClick={() => linkPage.setShow(true)}><AiOutlineLink />Web Site</TheLinks>
+								}
+								{linkGitHub.show ? 
+									<InputLinks 
+										type="text" 									
+										onBlur={() => linkGitHub.setShow(false)}									
+										{...linkGitHub}
+									/> :  
+									<TheLinks onClick={() => linkGitHub.setShow(true)}><AiOutlineGithub />GitHub</TheLinks>
+								}
+							</LinksContainer>
+							<SendPostContainer>
+								<SendPost onClick={handleEndPost}>Save</SendPost>
+							</SendPostContainer>							
 						</Content>
 						<Adds />
 					</Main>
 				</SecondContainer>
 			</Container>
 			<Footer />
+
+			{loading && <Loading /> }
 		</>
 	)
 }

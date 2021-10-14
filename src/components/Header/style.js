@@ -51,6 +51,7 @@ export const Link = styled(Linked)`
 	color: white;
 	text-decoration: none;	
 	display: flex;
+	align-items: center;
 	width: auto;
 	margin: 0 5px;
 `

@@ -63,7 +63,7 @@ const Blog = ({ url }) => {
 	const blogDetail = async () => {
 		const response = await apiCall({urlDirection: `blog/${id}/`})		
 		const data = await response.json()
-		console.log(data)
+	
 		setAllBlog(data)
 	}
 
@@ -77,7 +77,7 @@ const Blog = ({ url }) => {
 		<>	
 			<Helmet>
                 <title>@Serbrylex | {allBlog.title ? allBlog.title : ''}</title>
-				<meta name='description' content={`Este es el blog sobre: ${allBlog.title}, ${setAllBlog.topics}`} />
+				<meta name='description' content={`Este es el blog sobre: ${allBlog.title}, ${setAllBlog.categories}`} />
 			</Helmet>
 			<Header/>
 			<Container>
@@ -102,8 +102,8 @@ const Blog = ({ url }) => {
 							<TopicsSection>
 								<Subtitle>Topics:</Subtitle>
 								<TopicsUl>
-									{allBlog.topics?.map((topic, index)=>(
-										<TopicList key={index}>{topic}</TopicList>
+									{allBlog.categories?.map((topic, index)=>(
+										<TopicList key={index}>{topic.category}</TopicList>
 									))}									
 								</TopicsUl>
 							</TopicsSection>

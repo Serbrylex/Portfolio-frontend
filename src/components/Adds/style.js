@@ -13,6 +13,7 @@ export const AddsContainer = styled.div`
 	align-items: center;
 	padding: 10px 0;
 	@media (max-width: 500px){
+		border-top: 1px solid black;	
 		position: relative;
 		flex-direction: row;
 		width: 100%;

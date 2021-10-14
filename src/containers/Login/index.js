@@ -1,5 +1,6 @@
 import { useHistory  } from 'react-router-dom'
 import { useContext } from 'react'
+import { Helmet } from 'react-helmet'
 
 import {
 	Contaier, LoginContainer, Input, Button, Title
@@ -31,7 +32,11 @@ const Login = () => {
 	}
 
 	return(
-		<Contaier>			
+		<Contaier>		
+			<Helmet>
+                <title>Serbrylex | Admin Login</title>
+				<meta name='description' content={`Login of Admin`} />
+			</Helmet>	
 			<LoginContainer>				
 				<Title>Login</Title>			
 				<Input type="text" placeholder="Username" {...user} />

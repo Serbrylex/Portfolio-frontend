@@ -25,16 +25,15 @@ import apiCall, { proyects } from '../../api'
 import TokenContext from '../../context/tokens'
 
 import { FaReact } from 'react-icons/fa'
-import { SiDjango, SiJavascript, SiPython, SiMongodb, SiSpacex } from 'react-icons/si'
-import { GrMysql, GrAssistListening } from 'react-icons/gr'
+import { SiDjango, SiJavascript, SiPython, SiMongodb, SiSpacex, SiCss3, SiDuolingo } from 'react-icons/si'
+import { GrMysql } from 'react-icons/gr'
 import { BsPhone } from 'react-icons/bs'
 import { FaFont } from 'react-icons/fa'
-import { AiOutlineBook, AiOutlineGithub } from 'react-icons/ai'
+import { AiOutlineBook, AiOutlineGithub, AiOutlineHtml5 } from 'react-icons/ai'
 import { GiMaterialsScience } from 'react-icons/gi'
 import { BiRocket, BiBrain } from 'react-icons/bi'
 import { VscServerProcess } from 'react-icons/vsc'
 import { FiHeadphones } from 'react-icons/fi'
-
 
 const Home = ({ url }) => {
 
@@ -51,20 +50,6 @@ const Home = ({ url }) => {
 		// De momento proyects lo gua dejar ahí
 		setAllProyects(data)
 	}
-
-	/*useEffect(()=>{		
-		if (token.length !== 0){
-			if (token.access_token){
-				setAdmin(true)
-			} else {
-				console.log('¿Qué has encontrao, wacho?')
-			}
-		}	
-	},[token])*/
-
-	/*useEffect( () => {
-		ApiAsync().catch(null)	 
-	},[])*/
 
 
 	// Hace falta configurar los idiomas y el tema, así como agregar los eventos aslfjas
@@ -207,7 +192,19 @@ const Home = ({ url }) => {
 									<IconContainer>
 										<AiOutlineGithub />
 									</IconContainer>
-									GitHub
+									Git and GitHub
+								</LastSectionList>
+								<LastSectionList>
+									<IconContainer>
+										<AiOutlineHtml5 />
+									</IconContainer>
+									HTML5
+								</LastSectionList>
+								<LastSectionList>
+									<IconContainer>
+										<SiCss3 />
+									</IconContainer>
+									CSS
 								</LastSectionList>
 							</LastSectionContainerContent>
 						</LastSectionContainer>
@@ -254,7 +251,7 @@ const Home = ({ url }) => {
 									</LastSectionList>
 									<LastSectionList>
 									<IconContainer>
-											<GrAssistListening />
+											<SiDuolingo/>
 									</IconContainer>
 										Aprender nuevos idiomas
 									</LastSectionList>

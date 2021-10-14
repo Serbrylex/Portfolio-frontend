@@ -10,7 +10,6 @@ import Blogs from '../containers/Blogs'
 import CreateBlog from '../containers/CreateBlog'
 import FourOFour from '../containers/FourOFour'
 import Login from '../containers/Login'
-import Freelancer from '../containers/Freelancer'
 
 const Routes = ({ url }) => {
 
@@ -27,10 +26,6 @@ const Routes = ({ url }) => {
 				</Route>
 				<Route path="/Blogs/:filters" exact>
 					<Blogs url={url} />
-				</Route>
-
-				<Route path="/Freelancer" exact>
-					<Freelancer />
 				</Route>
 
 				<Route path="/Admin" exact>

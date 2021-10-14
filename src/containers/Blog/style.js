@@ -6,7 +6,7 @@ export const Container = styled.div`
 	height: auto;
 	padding: 0 5%;
 	background-color: #3B4956; 
-	color: white;
+	color: white; 
 	@media (max-width: 500px) {
 		width: 100%;
 		padding: 0; 
@@ -99,15 +99,21 @@ export const ParagraphResponse = styled.p`
 
 export const TopicsUl = styled.ul`	
 	width: 95%;
-	height: 110px;
-	margin-left: 5%;		
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	height: auto;	
+	display: flex;	
+	justify-content: center;	
+	@media (max-width: 500px) {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+	}
 `
 
 export const TopicList = styled.li`
-	
+	box-shadow: -5px -5px #1A2026;
+	border: 1px solid black;
+	padding: 2px 5px;
+	margin: 5px;
+	border-radius: 5px;
 `
 
 export const SubtitleSection = styled.div` 

@@ -9,10 +9,13 @@ import Loading from '../../components/Loading'
 
 import {
 	Container, BlogsContainer, MainTitle, Blog, Image, Title, DatePost, Resume, Link, Delete, 
-	ImageLoading, WindowAlert, AlerText, Acept, Declite, WindowAlertItems, Buttons
+	ImageLoading, WindowAlert, AlerText, Acept, Declite, WindowAlertItems, Buttons,
+	BlogsContainerHeader, SearchBar
 } from './style'
 
 import apiCall from '../../api' 
+
+import { useInputValue } from '../../hooks/useInputValue'
 
 import { AiFillCloseCircle } from 'react-icons/ai'
 import loading from '../../images/loading.gif'
@@ -21,13 +24,14 @@ import TokenContext from '../../context/tokens'
 const img = 'https://i.ytimg.com/vi/9sftDDfrdMI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCtXZRUWyl4s3uOOTcgYq8XdpRobw'
 
 const Blogs = ({ url }) => {
-
+ 
 	const { filters } = useParams()
 	const [blogs, setBlogs] = useState([{},{},{}])
 	const [isLoading, setIsLoading] = useState(false)
 	const [showDelete, setShowDelete] = useState(false)
 	const [element, setElement] = useState({})	
 	const { isAuth } = useContext(TokenContext)
+	const search = useInputValue('')
 
 	const handleFirstDelete = (id, index, title) => {
 		setShowDelete(true)
@@ -57,24 +61,37 @@ const Blogs = ({ url }) => {
 		setShowDelete(false)
 	}
 
-	const ApiAsync = async () => {
-		setIsLoading(true)
-		const response = await apiCall({urlDirection: `blog-list/${filters}/`})		
+	const ApiAsync = async filter => {		
+		const response = await apiCall({urlDirection: `blog-list/${filter}/`})		
 
-		const data = await response.json()
-		console.log('Get Data')
-		console.log(data)
+		if (response.status !== 200) {
+			setBlogs([{},{},{}])		
+		} else {
+			const data = await response.json()
+			console.log('Get Data')
+			console.log(data)
 
-		for (var i = 0; i < data.length; i++) {
-			data[i].resume = data[i].resume.slice(0, 100) + '...'
+			for (var i = 0; i < data.length; i++) {
+				data[i].resume = data[i].resume.slice(0, 100) + '...'
+			}
+
+			
+			setBlogs(data)			
 		}
-
-		setBlogs(data)			
 		setIsLoading(false)
 	}
 	useEffect(()=>{	
-		ApiAsync().catch(null)		
+		setIsLoading(true)
+		ApiAsync(filters).catch(null)		
 	},[])
+
+	useEffect(()=>{
+		if (search.value.length > 3) {
+			ApiAsync(search.value)
+		} else if (search.value.length === 0) {
+			ApiAsync('all')
+		}
+	},[search.value])
 
 
 	return(
@@ -95,7 +112,10 @@ const Blogs = ({ url }) => {
 					</WindowAlertItems>
 				</WindowAlert>
 				<BlogsContainer show={showDelete.toString()}>
-					<MainTitle>{filters}</MainTitle>
+					<BlogsContainerHeader>						
+						<MainTitle>{filters}</MainTitle>
+						<SearchBar {...search} placeholder='Search by filters or post name' />
+					</BlogsContainerHeader>
 					{blogs?.map((blog, index) => (						
 						<Blog key={blog.id}>
 							{isAuth.isAuth &&

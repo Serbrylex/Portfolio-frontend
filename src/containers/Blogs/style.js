@@ -25,18 +25,35 @@ export const BlogsContainer = styled.div`
 	background-color: #34414C;	
 
 	@media (max-width: 500px) {
+		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		width: 96%;
+		height: auto;
 		padding: 2%;		
 	}
 `
 
-export const MainTitle = styled.h1`
+export const BlogsContainerHeader = styled.div`
+	grid-column: 1/4;	
 	margin-bottom: 10px;
-	grid-column: 1/4;
+	text-align: center;	
 	@media (max-width: 500px) {
 		grid-column: 1/3;
 	}
+`
+export const SearchBar = styled.input`
+	background-color: white;
+	height: 20px;
+	width: 80%;
+	padding: 5px 10px;
+	border-radius: 20px;
+	color: black;
+	@media (max-width: 500px) {
+		width: 80%;
+	}
+`
+export const MainTitle = styled.h1`	
+	margin: 10px;
 `
 
 export const Blog = styled.div`

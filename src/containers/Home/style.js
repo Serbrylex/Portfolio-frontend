@@ -241,7 +241,7 @@ export const LastSectionList = styled.li`
 	height: auto;
 
 	text-align: left;
-	font-size: 20px;	
+	font-size: 17px;	
 	background-color: #3B4956;
 	border-radius: 2px;
 	margin: 10px 0;
