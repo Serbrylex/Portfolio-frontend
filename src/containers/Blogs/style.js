@@ -69,7 +69,7 @@ export const Blog = styled.div`
 	position: relative;
 	@media (max-width: 500px) {
 		width: 92%;
-		height: 55vh;
+		height: 350px;
 		margin: 10px 2%;
 		display: flex;
 		padding: 10px 2%;
@@ -80,9 +80,10 @@ export const Image = styled.img`
 	width: 90%;
 	height: 180px;
 	margin: 30px 5%;
+	object-fit: cover;
 	@media (max-width: 500px) {
 		width: 100%;
-		height: 40%;		
+		height: 160px;
 		margin: 10px 0;
 	}	
 `
@@ -93,7 +94,7 @@ export const Link = styled(Linked)`
 `
 
 export const Title = styled.h3`
-	font-size: 30px;	
+	font-size: 20px;	
 	margin: auto;
 	width: 90%;
 	height: 40px;
@@ -109,11 +110,14 @@ export const DatePost = styled.time`
 	font-size: 14px;
 	color: #606c76;
 	margin: 5px 0 5px 10px;
+	@media (max-width: 500px) {
+		margin: 10px 0 10px 10px;
+	}
 `
 
 export const Resume = styled.p`	
 	height: 136px;		
-	font-size: 20px;
+	font-size: 17px;
 	color: #f2f2f2;
 	width: 90%;
 	margin: 5px auto;
@@ -127,7 +131,7 @@ export const Resume = styled.p`
 
 export const Delete = styled.div`	
 	cursor: pointer;
-	color: #14181D;
+	color: #FE5F55;
 	width: 30px;
 	height: 30px;
 	font-size: 30px;	

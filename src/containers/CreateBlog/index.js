@@ -20,7 +20,7 @@ import {
 	InputList, TopicList, TopicsUl, SendPost, SendPostContainer, LinksContainer, InputLinks, TheLinks,
 	AddSubtopic, PlusSubtopic
 } from './style' 
-  
+   
 import { 
 	AiOutlineGithub, AiOutlineLink
 } from 'react-icons/ai'
@@ -58,7 +58,7 @@ const CreateBlog = () => {
 		objectOne.append('title', title.value)		
 		objectOne.append('questions', question.value)
 		if (imagen.fileImage.name?.length){
-			objectOne.append('main_image', imagen.fileImage, imagen.fileImage.name)
+			objectOne.append('image', imagen.fileImage, imagen.fileImage.name)
 		}
 		objectOne.append('resume', resume.value)		
 		objectOne.append('views', 0)

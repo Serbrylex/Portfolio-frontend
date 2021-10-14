@@ -117,13 +117,13 @@ const Blogs = ({ url }) => {
 						<SearchBar {...search} placeholder='Search by filters or post name' />
 					</BlogsContainerHeader>
 					{blogs?.map((blog, index) => (						
-						<Blog key={blog.id}>
+						<Blog key={index}>
 							{isAuth.isAuth &&
 								<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
 							}
 							{
-								blog.main_image ?
-								<Image src={`${url}${blog.main_image}`} /> :
+								blog.image ?
+								<Image src={`${url}${blog.image}`} /> :
 								<Image src={img} />
 							}							
 							<Title>

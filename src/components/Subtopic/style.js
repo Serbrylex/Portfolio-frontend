@@ -31,23 +31,22 @@ export const HTitle = styled.h1`
 	}
 `
 
-export const AddSubtopic = styled.div`
+export const AddParagraph = styled.div`
 	border-top: 1px solid black;	
-	width: 100%;
+	width: 80%;
 	height: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 50px 0;
+	margin: 50px auto;
 `
 
-export const PlusSubtopic = styled.button`
+export const PlusParagraph = styled.button`
 	background-color: #1A2026;
 	border-radius: 4px;	
 	padding: 10px 20px;
 	width: auto;
-	margin: 0 20px;
-	font-size: 17px;
+	margin: 0 20px;	
 	color: white;
 	border: none;
 	cursor: pointer;	

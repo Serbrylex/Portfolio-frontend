@@ -6,7 +6,7 @@ import Paragraph from '../../components/Paragraph'
 
 import {
 	SubtitleSection, ParagraphSectionOne, InputTitle, HTitle, 
-	TextArea, ParagraphResponse, AddSubtopic, PlusSubtopic
+	TextArea, ParagraphResponse, AddParagraph, PlusParagraph
 } from './style'
  
 import { useInputValue } from '../../hooks/useInputValue'  
@@ -98,9 +98,9 @@ const Subtopic = ({ idPost, send }) => {
 
 			{renderParagraphs()}
 
-			<AddSubtopic>				
-				<PlusSubtopic onClick={()=>setParagraphsSend([...paragraphsSend, false])}>Add Paragraph</PlusSubtopic>
-			</AddSubtopic>
+			<AddParagraph>				
+				<PlusParagraph onClick={()=>setParagraphsSend([...paragraphsSend, false])}>Add Paragraph</PlusParagraph>
+			</AddParagraph>
 		</>		
 	)
 
