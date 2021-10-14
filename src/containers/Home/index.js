@@ -120,8 +120,7 @@ const Home = ({ url }) => {
 									sobre el <Span>manejo de las emociones, administración efectiva del tiempo, inglés e incluso sobre finanzas</Span> y gracias a Platzi, cursos aparte en Udemy, videos en youtube y distintos libros hoy soy competente en el desarrollo web.</ParagraphDescription>
 									<ParagraphDescription>Sigo aprendiendo todos los días y aunque hoy sé más sobre frontend en un futuro cercano me gustaría poder ser un completo fullstack.
 									Tengo como objetivo pagar mi universidad con el dinero que me de trabajar como desarrollador de software, voy a entrar a la <Span>Universidad del Caribe</Span> en la licenciatura: <Span>Ingeniería en Datos e Inteligencia Organizacional</Span>,
-									pues tiene economía, algo de física, matemáticas y mucha programación
-									y en el tiempo que estudíe ahí espero poder obtener una beca para estudiar de intercambio en Estados Unidos. Cuando terminé la universidad pienso migrar para poder contribuir
+									pues tiene economía, algo de física, matemáticas y mucha programación. En el tiempo que estudíe ahí espero poder obtener una beca para estudiar de intercambio en Estados Unidos. Cuando terminé la universidad pienso migrar para poder contribuir
 									al <Span>sueño espacial</Span>.</ParagraphDescription>
 								</SectionContainerContentDescriptionInformation>
 							</SectionContainerContentDescription>

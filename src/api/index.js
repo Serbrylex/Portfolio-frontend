@@ -5,8 +5,8 @@ import tooldou from '../images/Tooldou.png'
 
 const apiCall = async ({ urlDirection = '', method = "get", body, headers }) => {	
 
-	//const url = 'https://portafolioserbrylex.herokuapp.com/' + urlDirection
-	const url = 'http://127.0.0.1:8000/' + urlDirection
+	const url = 'https://portafolioserbrylex.herokuapp.com/' + urlDirection
+	//const url = 'http://127.0.0.1:8000/' + urlDirection
 
 	try{
 
@@ -30,17 +30,17 @@ export const proyects = [
 		'image': tooldou,
 		'date': new Date('2021', '07', '13'),
 		'description': 'Pretende solucionar un problema actual respecto a la asignatura de alimentos y bebidas, al mismo tiempo que ofrece una herramienta para estudiantes y negocios.',
-		'gols': 'Está aplicación ayudara a que sea más llevadero lo relacionado a alimentos y bebidas.',
+		'gols': 'Buscar un modelo de negocios y buscar la aceptación de las escuelas para implementar el software.',
 		'tools': ['Django', 'React.js', 'AWS Amplify', 'Heroku'],
 		'github': 'https://github.com/Serbrylex/',
-		'link': 'https://us-east-2.console.aws.amazon.com/amplify/home?region=us-east-2&code=e62aa8262a25ec12c33e#/dpk3kg6kahbq9'
+		'link': 'https://master.dpk3kg6kahbq9.amplifyapp.com/'
 	},
 	{
 		'name': 'Original Instagram',
 		'image': instagram,
 		'date': new Date('2021', '06', '30'),
 		'description': 'Es un clon de instagram.',
-		'gols': 'Está aplicación fue diertido desarrollarla porque para las bases seguí dos cursos y ambos dejaban bastante a pulir, en ambos cursos se construia un monolito, por lo que tube que aprender ciertas cosas por mi cuenta, implemente el backend como una API a la que se comunica el frontend.',
+		'gols': 'Está aplicación fue divertido desarrollarla porque para las bases seguí dos cursos y ambos dejaban bastante a pulir, en ambos cursos se construia un monolito, por lo que tube que aprender ciertas cosas por mi cuenta, implemente el backend como una API a la que se comunica el frontend.',
 		'tools': ['Django', 'React.js', 'AWS Amplify', 'Heroku'],
 		'github': 'https://github.com/Serbrylex/instagram_for_my_portfolio',
 		'link': 'https://master.d2wckr9gxsnzjm.amplifyapp.com/',
@@ -53,7 +53,7 @@ export const proyects = [
 		'gols': 'El principal desafío de está aplicación fue que no seguí ningun curso por primera vez, tenía que seguir el mapa de lo que ya sabía.',
 		'tools': ['React.js', 'AWS Amplify'],
 		'github': 'https://github.com/Serbrylex/Portfolio-frontend',
-		'link': 'https://us-east-2.console.aws.amazon.com/amplify/home?region=us-east-2&code=e62aa8262a25ec12c33e#/dpk3kg6kahbq9'
+		'link': 'https://master.dpk3kg6kahbq9.amplifyapp.com/'
 	},		
 	{
 		'name': 'Comparte Ride',
