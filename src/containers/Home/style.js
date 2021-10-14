@@ -134,7 +134,7 @@ export const Image = styled.img`
 	border-radius: 100%;
 	object-fit: cover;
 	@media (max-width: 800px) {
-		width: 90vw;
+		width: 100%;
 		height: 100%;	
 	}
 `

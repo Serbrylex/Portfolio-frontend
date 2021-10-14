@@ -1,6 +1,7 @@
 import comparteride from '../images/comparteride.png'
 import instagram from  '../images/instagram.png'
 import portfolio from '../images/MyPortafolio.png'
+import tooldou from '../images/Tooldou.png'
 
 const apiCall = async ({ urlDirection = '', method = "get", body, headers }) => {	
 
@@ -25,14 +26,14 @@ const apiCall = async ({ urlDirection = '', method = "get", body, headers }) => 
 
 export const proyects = [
 	{
-		'name': 'Comparte Ride',
-		'image': comparteride,
-		'date': new Date('2021', '08', '30'),
-		'description': 'Comparte Ride es una aplicación que permite conectar individuos con necesidades en común. (Aún está en progreso)',
-		'gols': 'El principal desafío de está aplicación es que tube que sumergirme en python hasta sus bases para poder seguir el desarrollo del backend y lograr desarrollar una api que es consumida en el frontend, lo más interesante es que implementa tokens en el envio de peticiones, por lo que tube que aprender sobre JWT.',
-		'tools': ['Django', 'React.js', 'Celery', 'Redis', 'Docker', 'AWS'],
-		'github': 'https://github.com/Serbrylex/cride_frontend',
-		'link': 'https://master.d39un5rth4eij9.amplifyapp.com/'
+		'name': 'Tooldou',
+		'image': tooldou,
+		'date': new Date('2021', '07', '13'),
+		'description': 'Pretende solucionar un problema actual respecto a la asignatura de alimentos y bebidas, al mismo tiempo que ofrece una herramienta para estudiantes y negocios.',
+		'gols': 'Está aplicación ayudara a que sea más llevadero lo relacionado a alimentos y bebidas.',
+		'tools': ['Django', 'React.js', 'AWS Amplify', 'Heroku'],
+		'github': 'https://github.com/Serbrylex/',
+		'link': 'https://us-east-2.console.aws.amazon.com/amplify/home?region=us-east-2&code=e62aa8262a25ec12c33e#/dpk3kg6kahbq9'
 	},
 	{
 		'name': 'Original Instagram',
@@ -54,6 +55,16 @@ export const proyects = [
 		'github': 'https://github.com/Serbrylex/Portfolio-frontend',
 		'link': 'https://us-east-2.console.aws.amazon.com/amplify/home?region=us-east-2&code=e62aa8262a25ec12c33e#/dpk3kg6kahbq9'
 	},		
+	{
+		'name': 'Comparte Ride',
+		'image': comparteride,
+		'date': new Date('2021', '08', '30'),
+		'description': 'Comparte Ride es una aplicación que permite conectar individuos con necesidades en común. (Aún está en progreso)',
+		'gols': 'El principal desafío de está aplicación es que tube que sumergirme en python hasta sus bases para poder seguir el desarrollo del backend y lograr desarrollar una api que es consumida en el frontend, lo más interesante es que implementa tokens en el envio de peticiones, por lo que tube que aprender sobre JWT.',
+		'tools': ['Django', 'React.js', 'Celery', 'Redis', 'Docker', 'AWS'],
+		'github': 'https://github.com/Serbrylex/cride_frontend',
+		'link': 'https://master.d39un5rth4eij9.amplifyapp.com/'
+	},
 ]	
 
 
