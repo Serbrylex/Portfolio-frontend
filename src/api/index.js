@@ -26,6 +26,26 @@ const apiCall = async ({ urlDirection = '', method = "get", body, headers }) => 
 
 export const proyects = [
 	{
+		'name': 'Original Instagram',
+		'image': instagram,
+		'date': new Date('2021', '06', '30'),
+		'description': 'Es un clon de instagram.',
+		'gols': 'Está aplicación fue divertido desarrollarla porque para las bases seguí dos cursos (platzigram y petgram, ambos provenientes en platzi) y ambos dejaban bastante a pulir, en ambos cursos se construia un monolito, por lo que tube que aprender ciertas cosas por mi cuenta, implemente el backend como una API a la que se comunica el frontend.',
+		'tools': ['Django', 'React.js', 'AWS Amplify', 'Heroku'],
+		'github': 'https://github.com/Serbrylex/instagram_for_my_portfolio',
+		'link': 'https://master.d2wckr9gxsnzjm.amplifyapp.com/',
+	},
+	{
+		'name': 'Mi sitio web',
+		'image': portfolio,
+		'date': new Date('2021', '09', '3'),
+		'description': 'Es mi sitio web, tiene una descripción de mis proyectos, enlaces a ellos, y blog donde pienso escribir semanalmente y cada vez que aprenda algo interesante, será en inglés para mejorar mi selección de palabras.',
+		'gols': 'El principal desafío de está aplicación fue que no seguí ningun curso por primera vez, tenía que seguir el mapa de lo que ya sabía.',
+		'tools': ['React.js', 'AWS Amplify'],
+		'github': 'https://github.com/Serbrylex/Portfolio-frontend',
+		'link': 'https://master.dpk3kg6kahbq9.amplifyapp.com/'
+	},		
+	{
 		'name': 'Tooldou',
 		'image': tooldou,
 		'date': new Date('2021', '07', '13'),
@@ -35,26 +55,6 @@ export const proyects = [
 		'github': 'https://github.com/Serbrylex/',
 		'link': 'https://master.dpk3kg6kahbq9.amplifyapp.com/'
 	},
-	{
-		'name': 'Original Instagram',
-		'image': instagram,
-		'date': new Date('2021', '06', '30'),
-		'description': 'Es un clon de instagram.',
-		'gols': 'Está aplicación fue divertido desarrollarla porque para las bases seguí dos cursos y ambos dejaban bastante a pulir, en ambos cursos se construia un monolito, por lo que tube que aprender ciertas cosas por mi cuenta, implemente el backend como una API a la que se comunica el frontend.',
-		'tools': ['Django', 'React.js', 'AWS Amplify', 'Heroku'],
-		'github': 'https://github.com/Serbrylex/instagram_for_my_portfolio',
-		'link': 'https://master.d2wckr9gxsnzjm.amplifyapp.com/',
-	},
-	{
-		'name': 'Mi sitio web',
-		'image': portfolio,
-		'date': new Date('2021', '09', '3'),
-		'description': 'Es mi sitio web, tiene una descripción de mis proyectos, enlaces a ellos, y proximamente estare trabajando en un pequeño blog donde pienso escribir semanalmente y cada vez que aprenda algo interesante.',
-		'gols': 'El principal desafío de está aplicación fue que no seguí ningun curso por primera vez, tenía que seguir el mapa de lo que ya sabía.',
-		'tools': ['React.js', 'AWS Amplify'],
-		'github': 'https://github.com/Serbrylex/Portfolio-frontend',
-		'link': 'https://master.dpk3kg6kahbq9.amplifyapp.com/'
-	},		
 	{
 		'name': 'Comparte Ride',
 		'image': comparteride,

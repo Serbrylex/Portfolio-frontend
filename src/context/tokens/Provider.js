@@ -6,7 +6,7 @@ import apiCall from '../../api'
 const TokenProvider = ({ children }) => {
 	
 	const [isAuth, setIsAuth] = useState(() => {		
-		const cookie = window.sessionStorage.getItem('token')		
+		const cookie = window.sessionStorage.getItem('token_portfolio')		
 		if (cookie === undefined || cookie === null){
 			return false
 		} else {
@@ -38,7 +38,7 @@ const TokenProvider = ({ children }) => {
 					isAuth: response.ok
 				}				
 				setIsAuth(newAuth)					
-				window.sessionStorage.setItem('token', JSON.stringify(newAuth))
+				window.sessionStorage.setItem('token_portfolio', JSON.stringify(newAuth))
 
 				return newAuth
 
@@ -56,7 +56,7 @@ const TokenProvider = ({ children }) => {
 						'Content-Type': 'application/json'
 					} 					
 				})				
-				window.sessionStorage.removeItem('token')
+				window.sessionStorage.removeItem('token_portfolio')
 				setIsAuth(false)				
 			}catch(error){
 				console.log(error)		
