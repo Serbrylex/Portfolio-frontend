@@ -63,7 +63,7 @@ const Blog = ({ url }) => {
 	const blogDetail = async () => {
 		const response = await apiCall({urlDirection: `blog/${id}/`})		
 		const data = await response.json()
-	
+		console.log(data)
 		setAllBlog(data)
 	}
 
@@ -91,8 +91,8 @@ const Blog = ({ url }) => {
 								<Subtitle>Initial Questions</Subtitle>								
 								<ParagraphResponse>{allBlog.questions}</ParagraphResponse>								
 							</QuestionSection>
-							{ allBlog.main_image ?
-								<ImageSection edit={false} image={`${url}${allBlog.main_image}`} /> :
+							{ allBlog.image ?
+								<ImageSection edit={false} image={`${url}${allBlog.image}`} /> :
 								<ImageSection edit={false} image={imageDefault} /> 
 							}
 							<ResumeSection>
