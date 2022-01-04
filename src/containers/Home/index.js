@@ -1,273 +1,346 @@
 // React dependencies
-import { useState, useEffect, useContext } from 'react'
-import { Helmet } from "react-helmet";
+import { useState, useEffect } from 'react'
    
-// Styles and images
+// Assets
 import {  
 	Container, BodyContainer, SectionContainerPath, SectionContainerPathTitle, SectionContainerPathImage, 
 	Image, SectionContainer, SectionContainerTitle, SectionSubtitle, SectionContainerContent, LastSectionContainer, LastSectionContainerTitle, DownloadButton,
 	LastSectionContainerContent, LastSection, LastSectionList, WeAre, WeAreTitle, WeAreWho, Link, WeAreImage,
 	SectionContainerContentDescription, SectionContainerContentDescriptionTitle, SectionContainerContentDescriptionInformation, ParagraphDescription,
-	Span, IconContainer
+	Span, IconContainer,
+	Blogs
 } from './style' 
 
-import image from '../../images/yomero.png' 
+import image from '../../assets/images/yomero.png' 
 
-// Components
-import Header from '../../components/Header' 
-import Footer from '../../components/Footer' 
-import BlogContainer from '../../components/BlogContainer'
-import Proyect from '../../components/Proyect'
-import SeeMore from '../../components/SeeMore'
- 
-import apiCall, { proyects } from '../../api' 
-
-import TokenContext from '../../context/tokens'
-
-import { FaReact } from 'react-icons/fa'
-import { SiDjango, SiJavascript, SiPython, SiMongodb, SiSpacex, SiCss3, SiDuolingo } from 'react-icons/si'
-import { GrMysql } from 'react-icons/gr'
+import { FaReact, FaFont, FaFirefox } from 'react-icons/fa'
+import { SiEthereum, SiDjango, SiJavascript, SiPython, SiMongodb, SiSpacex, SiCss3, SiDuolingo } from 'react-icons/si'
+import { GrMysql, GrNode } from 'react-icons/gr'
 import { BsPhone } from 'react-icons/bs'
-import { FaFont } from 'react-icons/fa'
 import { AiOutlineBook, AiOutlineGithub, AiOutlineHtml5 } from 'react-icons/ai'
-import { GiMaterialsScience } from 'react-icons/gi'
-import { BiRocket, BiBrain } from 'react-icons/bi'
+import { GiMaterialsScience, GiRobotAntennas, GiDatabase } from 'react-icons/gi'
+import { BiRocket, BiBrain, BiTestTube } from 'react-icons/bi'
 import { VscServerProcess } from 'react-icons/vsc'
 import { FiHeadphones } from 'react-icons/fi'
 
+// Components
+import Layout from '../../components/Layout'
+import Proyect from '../../components/Proyect'
+import Loading from '../../components/Loading'
+import BlogResume from '../../components/BlogResume' 
+
+// API
+import apiCall, { proyects } from '../../api' 
+
+// Hooks
+import { useTranslation } from '../../hooks/useTranslation'
+
 const Home = ({ url }) => {
 
-	const [allBlogs, setAllBlogs] = useState([])
-	const [allProyects, setAllProyects] = useState([])
-	const [admin, setAdmin] = useState(false)
-	//const { token } = useContext(TokenContext)
+	const [allBlogs, setAllBlogs] = useState([{}, {}, {}])	
+	const {words, loading} = useTranslation({ container: "home" })
 
 	const ApiAsync = async () => {
-		let data = await apiCall({urlDirection: `blog-list/all/`})
-
-		data = data.splice(0, 6)
-		setAllBlogs(data)
-		// De momento proyects lo gua dejar ahí
-		setAllProyects(data)
+		let response = await apiCall({urlDirection: `blog-list/all/`})		
+		if (response.status === 200) {
+			let data = await response.json()
+			console.log(data)
+			if (data.length > 6) {
+				data = data.splice(0, 6)
+			}
+			if (data.length !== 0) {
+				setAllBlogs(data)		
+			}
+		}
 	}
 
+	useEffect(()=>{
+		ApiAsync()
+	},[])
 
-	// Hace falta configurar los idiomas y el tema, así como agregar los eventos aslfjas
-	// se va a guardar en un contexto
-	return( 
-		<>	
-			<Helmet>
-                <title>@Serbrylex</title>
-				<meta name='description' content='Si quires trabajar con @Serbrylex, este es el lugar' />
-			</Helmet>
-			<Header admin={admin}/>
-			<Container>
-				<BodyContainer>
-					<SectionContainerPath>
-						<SectionContainerPathTitle>
-							<WeAre>
-								<WeAreTitle>
-									<Link>Sergio Bryan Madrid Nuñez</Link>
-								</WeAreTitle>
-								<WeAreImage>
-									<Image src={image} alt='Yo mero' />
-								</WeAreImage>
-								<WeAreWho>
-									Soy un eterno estudiante que busca algún día poder cambiar el mundo a través de la tecnología.
-								</WeAreWho>
-								<DownloadButton href={`${url}/media/extras/CV.pdf`} download="CV">
-									Descargar CV
-								</DownloadButton>								
-							</WeAre>
-						</SectionContainerPathTitle>
-						<SectionContainerPathImage>
-							<Image src={image} alt="" />
-						</SectionContainerPathImage>
-					</SectionContainerPath>
+	if (loading) {
+		return <Loading />
+	} else {
 
-					<SectionContainer color="false">
-						<SectionContainerTitle align='left'>
-							<SectionSubtitle>Proyects</SectionSubtitle>
-						</SectionContainerTitle>
-						<SectionContainerContent>
-							{proyects.map((proyect, index)=>(
-								<Proyect key={index} proyect={proyect}/>
-							))}
-						</SectionContainerContent>						
-					</SectionContainer>				
+		// Hace falta configurar los idiomas y el tema, así como agregar los eventos aslfjas
+		// se va a guardar en un contexto
+		return( 
+			<Layout title='Home' subtitle={words.subtitle}>						
+				<Container>
+					<BodyContainer>
+						<SectionContainerPath>
+							<SectionContainerPathTitle>
+								<WeAre>
+									<WeAreTitle>
+										<Link>Sergio Bryan Madrid Nuñez</Link>
+									</WeAreTitle>
+									<WeAreImage>
+										<Image src={image} alt='@Serbrylex' />
+									</WeAreImage>
+									<WeAreWho>
+										{words.whoiam}
+									</WeAreWho>
+									<DownloadButton href={`${url}/media/extras/CV.pdf`} download="CV">
+										{words.download_cv}
+									</DownloadButton>								
+								</WeAre>
+							</SectionContainerPathTitle>
+							<SectionContainerPathImage>
+								<Image src={image} alt="@Serbrylex" />
+							</SectionContainerPathImage>
+						</SectionContainerPath>
 
-					<SectionContainer color="true">
-						<SectionContainerTitle align='right'>
-							<SectionSubtitle>Sobre mi</SectionSubtitle>
-						</SectionContainerTitle>
-						<SectionContainerContent>
-							<SectionContainerContentDescription>
-								<SectionContainerContentDescriptionTitle>¿Quién soy?</SectionContainerContentDescriptionTitle>
-								<SectionContainerContentDescriptionInformation>
-									<ParagraphDescription>Interesante pregunta, soy un joven de 20 años que usa la tecnología para darle forma al mundo.</ParagraphDescription>
-									<ParagraphDescription>Una persona fascinada por el infinito potencial humano que busca llevarse a sí mismo al limite con tal de alcanzar sus metas.</ParagraphDescription>
-								</SectionContainerContentDescriptionInformation>
-							</SectionContainerContentDescription>							
-							<SectionContainerContentDescription>
-								<SectionContainerContentDescriptionTitle>Trayectoria</SectionContainerContentDescriptionTitle>
-								<SectionContainerContentDescriptionInformation>
-									<ParagraphDescription>Mi primer contacto con la programación fue durante la preparatoría, 
-									estudía programación en el CBTis #111 en dónde aprendí pseudocodigo, las bases de C++, Java y algo de desarrollo de apps moviles con AndroidStudio y junto a un amigo vi algo de Kotlin,
-									por mi cuenta aprendí las bases del desarrollo web pues sólo lo vimos muy por encima.</ParagraphDescription>
-									<ParagraphDescription>Cuando terminé la preparatoría
-									tuve que trabajar y ahorrando poco a poco pagué la subscripción anual de <Span>platzi</Span> (la agarre en black friday) y ahí
-									fue donde mejore exponencialmente. Aprendí correctamente <Span>HTML, CSS, JavaScript, React js, Python y Django</Span>; También tomé cursos
-									sobre el <Span>manejo de las emociones, administración efectiva del tiempo, inglés e incluso sobre finanzas</Span> y gracias a Platzi, cursos aparte en Udemy, videos en youtube y distintos libros hoy soy competente en el desarrollo web.</ParagraphDescription>
-									<ParagraphDescription>Sigo aprendiendo todos los días y aunque hoy sé más sobre frontend en un futuro cercano me gustaría poder ser un completo fullstack.
-									Tengo como objetivo pagar mi universidad con el dinero que me de trabajar como desarrollador de software, voy a entrar a la <Span>Universidad del Caribe</Span> en la licenciatura: <Span>Ingeniería en Datos e Inteligencia Organizacional</Span>,
-									pues tiene economía, algo de física, matemáticas y mucha programación. En el tiempo que estudíe ahí espero poder obtener una beca para estudiar de intercambio en Estados Unidos. Cuando terminé la universidad pienso migrar para poder contribuir
-									al <Span>sueño espacial</Span>.</ParagraphDescription>
-								</SectionContainerContentDescriptionInformation>
-							</SectionContainerContentDescription>
-						</SectionContainerContent>
-					</SectionContainer>	
+						<SectionContainer color="false">
+							<SectionContainerTitle align='left'>
+								<SectionSubtitle>{words.proyects}</SectionSubtitle>
+							</SectionContainerTitle>
+							<SectionContainerContent>
+								{proyects().map((proyect, index)=>(
+									<Proyect key={index} proyect={proyect}/>
+								))}
+							</SectionContainerContent>						
+						</SectionContainer>				
 
-					<LastSection color="false">
-						<LastSectionContainer>
-							<LastSectionContainerTitle>
-								<SectionSubtitle>Herramientas</SectionSubtitle>
-							</LastSectionContainerTitle>
-							<LastSectionContainerContent>						
-								<LastSectionList>
-									<IconContainer>
-										<FaReact />
-									</IconContainer>
-									React
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<SiDjango />
-									</IconContainer>
-									Django
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<SiJavascript />
-									</IconContainer>
-									JavaScript
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<SiPython />
-									</IconContainer>
-									Python
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<FaFont />
-									</IconContainer>
-									English
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<GrMysql />
-									</IconContainer>
-									MySQL
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<SiMongodb/>
-									</IconContainer>
-									Mongo DB
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<BsPhone/>
-									</IconContainer>
-									Responsive Web
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<SiPython />
-									</IconContainer>
-									Scraping
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<AiOutlineGithub />
-									</IconContainer>
-									Git and GitHub
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<AiOutlineHtml5 />
-									</IconContainer>
-									HTML5
-								</LastSectionList>
-								<LastSectionList>
-									<IconContainer>
-										<SiCss3 />
-									</IconContainer>
-									CSS
-								</LastSectionList>
-							</LastSectionContainerContent>
-						</LastSectionContainer>
-						<LastSectionContainer>
-							<LastSectionContainerTitle>
-								<SectionSubtitle>Intereses</SectionSubtitle>
-							</LastSectionContainerTitle>
-							<LastSectionContainerContent>						
-								<LastSectionList>
-									<IconContainer>
-										<AiOutlineBook />
-									</IconContainer>
-										Leer
+						<SectionContainer color="true">
+							<SectionContainerTitle align='right'>
+								<SectionSubtitle>{words.blogs}</SectionSubtitle>
+							</SectionContainerTitle>
+							<SectionContainerContent>
+								<Blogs>																
+									{allBlogs?.map((blog, index)=>(
+										<BlogResume blog={blog} url={url}/>
+									))}
+								</Blogs>
+							</SectionContainerContent>						
+						</SectionContainer>
+
+						<SectionContainer color="false">
+							<SectionContainerTitle align='left'>
+								<SectionSubtitle>{words.about_me}</SectionSubtitle>
+							</SectionContainerTitle>
+							<SectionContainerContent>
+								<SectionContainerContentDescription>
+									<SectionContainerContentDescriptionTitle>{words.who}</SectionContainerContentDescriptionTitle>
+									<SectionContainerContentDescriptionInformation>
+										{words.iam.map((text, index)=>(
+											<ParagraphDescription key={index}>{text}</ParagraphDescription>									
+										))}
+									</SectionContainerContentDescriptionInformation>
+								</SectionContainerContentDescription>							
+								<SectionContainerContentDescription>
+									<SectionContainerContentDescriptionTitle>{words.trayectory}</SectionContainerContentDescriptionTitle>
+									<SectionContainerContentDescriptionInformation>
+										{words.trayecotry_description.map((text, index)=>(
+											<ParagraphDescription key={index}>{text}</ParagraphDescription>																				
+										))}
+									</SectionContainerContentDescriptionInformation>
+								</SectionContainerContentDescription>
+							</SectionContainerContent>
+						</SectionContainer>	
+
+						<LastSection color="true">
+							<LastSectionContainer>
+								<LastSectionContainerTitle>
+									<SectionSubtitle>{words.tools}</SectionSubtitle>
+								</LastSectionContainerTitle>
+						 		<LastSectionContainerContent>						
+									<LastSectionList>
+										<IconContainer>
+											<FaReact />
+										</IconContainer>
+										React
 									</LastSectionList>
 									<LastSectionList>
-									<IconContainer>
-										<GiMaterialsScience />
-									</IconContainer>
-										Ciencia
+										<IconContainer>
+											<SiDjango />
+										</IconContainer>
+										Django
 									</LastSectionList>
 									<LastSectionList>
-									<IconContainer>
-										<SiSpacex />
-									</IconContainer>
-										Emprendimiento
+										<IconContainer>
+											<SiJavascript />
+										</IconContainer>
+										JavaScript
 									</LastSectionList>
 									<LastSectionList>
-									<IconContainer>
-										<BiRocket />
-									</IconContainer>
-										El espacio
+										<IconContainer>
+											<SiPython />
+										</IconContainer>
+										Python
 									</LastSectionList>
 									<LastSectionList>
-									<IconContainer>
-											<VscServerProcess />
-									</IconContainer>
-										Desarrollo web
+										<IconContainer>
+											<FaFont />
+										</IconContainer>
+										English C1
 									</LastSectionList>
 									<LastSectionList>
-									<IconContainer>
-											<BiBrain />
-									</IconContainer>
-										Estoicismo
+										<IconContainer>
+											<GrMysql />
+										</IconContainer>
+										MySQL
 									</LastSectionList>
 									<LastSectionList>
-									<IconContainer>
-											<SiDuolingo/>
-									</IconContainer>
-										Aprender nuevos idiomas
+										<IconContainer>
+											<SiMongodb/>
+										</IconContainer>
+										Mongo DB
 									</LastSectionList>
 									<LastSectionList>
-									<IconContainer>
-											<FiHeadphones />
-									</IconContainer>
-										Amo la música
+										<IconContainer>
+											<BsPhone/>
+										</IconContainer>
+										Responsive Web
 									</LastSectionList>
-							</LastSectionContainerContent>
-						</LastSectionContainer>
-					</LastSection>
-				</BodyContainer>
-			</Container>
-			<Footer />			
-		</>
-	)
+									<LastSectionList>
+										<IconContainer>
+											<SiPython />
+										</IconContainer>
+										Scraping
+									</LastSectionList>
+									<LastSectionList>
+										<IconContainer>
+											<AiOutlineGithub />
+										</IconContainer>
+										Git and GitHub
+									</LastSectionList>
+									<LastSectionList>
+										<IconContainer>
+											<AiOutlineHtml5 />
+										</IconContainer>
+										HTML5
+									</LastSectionList>
+									<LastSectionList>
+										<IconContainer>
+											<SiCss3 />
+										</IconContainer>
+										CSS
+									</LastSectionList>
+
+									<LastSectionList>
+										<IconContainer>
+											<BiTestTube />
+										</IconContainer>
+										Jest
+									</LastSectionList>
+									<LastSectionList>
+										<IconContainer>
+											<FaFirefox />
+										</IconContainer>
+										Selenium
+									</LastSectionList>
+									<LastSectionList>
+										<IconContainer>
+											<GrNode />
+										</IconContainer>
+										Node js
+									</LastSectionList>
+									<LastSectionList>
+										<IconContainer>
+											<AiOutlineBook />
+										</IconContainer>
+										Logical thinking
+									</LastSectionList>
+								</LastSectionContainerContent>
+							</LastSectionContainer>
+							<LastSectionContainer>
+								<LastSectionContainerTitle>
+									<SectionSubtitle>{words.interestings}</SectionSubtitle>
+								</LastSectionContainerTitle>
+								<LastSectionContainerContent>						
+									<LastSectionList>
+										<IconContainer>
+											<AiOutlineBook />
+										</IconContainer>
+											Read
+										</LastSectionList>
+										<LastSectionList>
+										<IconContainer>
+											<GiMaterialsScience />
+										</IconContainer>
+											Science
+										</LastSectionList>
+										<LastSectionList>
+										<IconContainer>
+											<SiSpacex />
+										</IconContainer>
+											Entrepreneur
+										</LastSectionList>
+										<LastSectionList>
+										<IconContainer>
+											<BiRocket />
+										</IconContainer>
+											Space
+										</LastSectionList>
+										<LastSectionList>
+										<IconContainer>
+												<VscServerProcess />
+										</IconContainer>
+											Web Development
+										</LastSectionList>
+										<LastSectionList>
+										<IconContainer>
+												<BiBrain />
+										</IconContainer>
+											Stoicism
+										</LastSectionList>
+										<LastSectionList>
+										<IconContainer>
+												<SiDuolingo/>
+										</IconContainer>
+											Languages
+										</LastSectionList>
+										<LastSectionList>
+											<IconContainer>
+												<FiHeadphones />
+											</IconContainer>
+											I love music
+										</LastSectionList>
+
+										<LastSectionList>
+											<IconContainer>
+												<AiOutlineBook />
+											</IconContainer>
+											Maths
+										</LastSectionList>
+										<LastSectionList>
+											<IconContainer>
+												<GiRobotAntennas />
+											</IconContainer>
+											IA
+										</LastSectionList>
+										<LastSectionList>
+											<IconContainer>
+												<SiEthereum />
+											</IconContainer>
+											Cryptocurrency
+										</LastSectionList>
+										<LastSectionList>
+											<IconContainer>
+												<SiPython />
+											</IconContainer>
+											Machine Learnig
+										</LastSectionList>
+										<LastSectionList>
+											<IconContainer>
+												<GiDatabase />
+											</IconContainer>
+											Big Data											
+										</LastSectionList>
+										<LastSectionList>
+											<IconContainer>
+												<BiRocket />
+											</IconContainer>											
+											Engineering
+										</LastSectionList>
+								</LastSectionContainerContent>
+							</LastSectionContainer>
+						</LastSection>
+					</BodyContainer>
+				</Container>							
+			</Layout>
+		)
+	}
 }
 
 export default Home

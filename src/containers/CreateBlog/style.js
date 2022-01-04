@@ -65,6 +65,8 @@ export const InputTitle = styled.input`
 	height: 25px;
 	padding: 10px;
 	font-size: 20px;
+	color: white;
+	background-color: transparent;
 `
 
 export const HTitle = styled.h1`
@@ -108,6 +110,8 @@ export const TextArea = styled.textarea`
 	width: 98%;
 	height: 150px;
 	padding: 5px 1%;
+	color: white;
+	background-color: transparent;
 `
 
 export const ParagraphResponse = styled.p`
@@ -129,7 +133,8 @@ export const TopicsUl = styled.ul`
 `
 
 export const InputList = styled.input`
-		
+	color: white;
+	background-color: transparent;
 `
 
 export const TopicList = styled.li`
@@ -168,8 +173,9 @@ export const LinksContainer = styled.div`
 export const InputLinks = styled.input`
 	width: 30%;
 	height: 26px;
-	padding: 2px;
-	border: 1px solid red;	
+	padding: 2px;	
+	color: white;
+	background-color: transparent;
 `
 
 export const TheLinks = styled.p`

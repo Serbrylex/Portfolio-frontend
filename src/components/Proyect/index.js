@@ -10,13 +10,14 @@ import {
 	AiOutlineGithub 
 } from 'react-icons/ai'
 
-import imageDefault from '../../images/Walk.svg'
-
 import { useResetDate } from '../../hooks/useResetDate'
+
+import { useTranslation } from '../../hooks/useTranslation'
 
 const Proyect = ({ proyect }) => {
  
 	const date = useResetDate({ date: proyect.date })
+	const { words, loading } = useTranslation({ component: "proyect" })
 	
 	return( 
 		<ProyectContainer>
@@ -36,9 +37,9 @@ const Proyect = ({ proyect }) => {
 						<Element key={index}>{element}</Element>
 					))}
 				</Tools>		
-				<ToolsTitle>Descripción</ToolsTitle>
+				<ToolsTitle>{words.description}</ToolsTitle>
 				<p>{proyect.description}</p>				
-				<ToolsTitle>Dificultades</ToolsTitle>
+				<ToolsTitle>{words.dificulties}</ToolsTitle>
 				<p>{proyect.gols}</p>						
 			</ProyectInformation>
 		</ProyectContainer>

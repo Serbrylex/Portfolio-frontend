@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 
 import { useInputValue } from '../../hooks/useInputValue'  
 import { useImage } from '../../hooks/useImage'	
@@ -24,7 +24,7 @@ const Paragraph = ({ idSubtopic, send }) => {
 			objectOne.append('picture', imagen.fileImage, imagen.fileImage.name)
 		}
 
-		let response = await apiCall({
+		await apiCall({
 			urlDirection: 'blog/subtem/paragraph/', 
 			method: 'POST', 
 			headers: {

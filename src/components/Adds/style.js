@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const AddsContainer = styled.div`
 	width: 25%;	
-	height: 100vh;
+	height: 100%;
 	background-color: #212930;
 	border-left: 1px solid black;	
 	position: sticky; 
@@ -25,7 +25,7 @@ export const Add = styled.div`
 	background-color: #1A2026;
 	margin: 10px 0;
 	width: 90%;
-	height: 40vh;
+	height: 45vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

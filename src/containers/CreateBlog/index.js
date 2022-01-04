@@ -1,19 +1,18 @@
+// React
 import { useState, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
+// Components
+import Layout from '../../components/Layout'
 import Subtopic from '../../components/Subtopic'
 import ImageSection from '../../components/ImageSection'
 import Adds from '../../components/Adds'
 import Loading from '../../components/Loading'
 
+// Context 
 import TokenContext from '../../context/tokens'
 
-import { useInputValue } from '../../hooks/useInputValue'  
-import { useImage } from '../../hooks/useImage'
- 
+// Assets 
 import { 
 	Container, SecondContainer, Main, Content, TitleSection, InputTitle, HTitle, 
 	QuestionSection, ResumeSection, TopicsSection, TextArea, ParagraphResponse, Subtitle,
@@ -25,13 +24,19 @@ import {
 	AiOutlineGithub, AiOutlineLink
 } from 'react-icons/ai'
 
+// API
 import apiCall, { blogData } from '../../api' 
+
+// Hooks
+import { useTranslation } from '../../hooks/useTranslation'
+import { useInputValue } from '../../hooks/useInputValue'  
+import { useImage } from '../../hooks/useImage'
 
 
 const CreateBlog = () => {
 	
 	const { isAuth } = useContext(TokenContext)
-	const history = useHistory()
+	const history = useHistory()	
 
 	if (!isAuth.isAuth){
 		history.push("/Admin")
@@ -41,7 +46,7 @@ const CreateBlog = () => {
 	const [subtopicsSend, setSubtopicsSend] = useState([false])
 	const [loading, setLoading] = useState(false)
 
-	const title = useInputValue('Title')
+	const title = useInputValue("Title")
 	const question = useInputValue('This will be the main question ( ?')
 	const imagen = useImage('')	
 	const resume = useInputValue('muchas cosas han sigo escritas antes en esta web, pero ninguna como la que te voy a presentar en este instante, are you ready?')	
@@ -65,7 +70,6 @@ const CreateBlog = () => {
 		objectOne.append('github', linkGitHub.value)
 		objectOne.append('link', linkPage.value)
 		
-
 		let response = await apiCall({
 			urlDirection: 'blog/', 
 			method: 'POST', 
@@ -91,7 +95,8 @@ const CreateBlog = () => {
 				categories: topics.value
 			})
 		})	
-		
+
+		history.push("/")		
 	}
 
 	useEffect(()=>{
@@ -131,12 +136,7 @@ const CreateBlog = () => {
 	}
 
 	return (
-		<>	
-			<Helmet>
-                <title>@Serbrylex | Create Blog</title>
-				<meta name='description' content='Create blog admin panel' />
-			</Helmet>
-			<Header admin={true}/>
+		<Layout title={`Create Blog`} subtitle={`Crea tu blog`}>		
 			<Container>
 				<SecondContainer>
 					<Main>
@@ -220,11 +220,10 @@ const CreateBlog = () => {
 						<Adds />
 					</Main>
 				</SecondContainer>
-			</Container>
-			<Footer />
+			</Container>			
 
 			{loading && <Loading /> }
-		</>
+		</Layout>
 	)
 }
 

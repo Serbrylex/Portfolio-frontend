@@ -1,7 +1,6 @@
 import { useHistory  } from 'react-router-dom'
 import { useContext } from 'react'
 import { Helmet } from 'react-helmet'
-
 import {
 	Contaier, LoginContainer, Input, Button, Title
 } from './style'
@@ -9,15 +8,14 @@ import {
 import { useInputValue } from '../../hooks/useInputValue'
 
 import TokenContext from '../../context/tokens'
-import apiCall from '../../api'
 
 const Login = () => {
 
-	const user = useInputValue('')
+	const user = useInputValue('') 
 	const password = useInputValue('')
-	const history = useHistory()
 
 	const { activeAuth } = useContext(TokenContext)
+	const history = useHistory()
 
 	const handleLogin = async () => {
 		await activeAuth({
@@ -34,7 +32,7 @@ const Login = () => {
 	return(
 		<Contaier>		
 			<Helmet>
-                <title>Serbrylex | Admin Login</title>
+                <title>Admin Login</title>
 				<meta name='description' content={`Login of Admin`} />
 			</Helmet>	
 			<LoginContainer>				

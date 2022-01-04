@@ -8,6 +8,7 @@ import {
 
 import { SiPlatzi } from 'react-icons/si'
 
+
 const Footer = () => { 
 
 	return(

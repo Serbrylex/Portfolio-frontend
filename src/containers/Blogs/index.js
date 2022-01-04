@@ -1,25 +1,30 @@
+// React
 import { useParams } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
-import { Helmet } from 'react-helmet'
 
 // Components
-import Header from '../../components/Header' 
-import Footer from '../../components/Footer' 
 import Loading from '../../components/Loading'
+import Layout from '../../components/Layout'
 
+// Assets
 import {
 	Container, BlogsContainer, MainTitle, Blog, Image, Title, DatePost, Resume, Link, Delete, 
 	ImageLoading, WindowAlert, AlerText, Acept, Declite, WindowAlertItems, Buttons,
-	BlogsContainerHeader, SearchBar
+	BlogsContainerHeader, SearchBar, BlogsContainerMap
 } from './style'
 
+import { AiFillCloseCircle } from 'react-icons/ai'
+import loading from '../../assets/images/loading.gif'
+
+// API
 import apiCall from '../../api' 
 
-import { useInputValue } from '../../hooks/useInputValue'
-
-import { AiFillCloseCircle } from 'react-icons/ai'
-import loading from '../../images/loading.gif'
+// Context
 import TokenContext from '../../context/tokens' 
+
+// Hooks
+import { useInputValue } from '../../hooks/useInputValue'
+import { useTranslation } from '../../hooks/useTranslation'
 
 const img = 'https://i.ytimg.com/vi/9sftDDfrdMI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCtXZRUWyl4s3uOOTcgYq8XdpRobw'
 
@@ -32,8 +37,11 @@ const Blogs = ({ url }) => {
 	const [element, setElement] = useState({})	
 	const { isAuth } = useContext(TokenContext)
 	const search = useInputValue('')
+	const {words, loading} = useTranslation({ container: 'blogs' })
 
 	const handleFirstDelete = (id, index, title) => {
+		// Handle the window to alert than the blog will be delete
+		// and if the admin confirms, the id is used to delete de blog
 		setShowDelete(true)
 		setElement({
 			id,
@@ -56,7 +64,11 @@ const Blogs = ({ url }) => {
 		let newBlog = blogs
 		
 		newBlog.splice(element.index, 1)
-		setBlogs([...newBlog])
+		if (newBlog.length() !== 0) {
+			setBlogs([...newBlog])
+		} else {
+			setBlogs([{}, {}, {}])
+		}
 		setElement({})
 		setShowDelete(false)
 	}
@@ -95,49 +107,45 @@ const Blogs = ({ url }) => {
 
 
 	return(
-		<>
-			<Helmet>
-                <title>@Serbrylex | Blogs</title>
-				<meta name='description' content='Aquí veras todos los blogs escritos por @Serbrylex' />
-			</Helmet>
-			<Header/>
+		<Layout title={`${filters}`} subtitle={`${words.subtitle}: ${filters}`}>		
 			<Container>
 				<WindowAlert show={showDelete.toString()}>
 					<WindowAlertItems>
-						<AlerText>Are you sure that you want to delete: {element.title}?</AlerText>
+						<AlerText>{words.delete_message}: {element.title}?</AlerText>
 						<Buttons>
-							<Acept onClick={handleDeleteBlog}>Yeah</Acept>
-							<Declite onClick={() => setShowDelete(false)}>Nop</Declite>
+							<Acept onClick={handleDeleteBlog}>{words.si}</Acept>
+							<Declite onClick={() => setShowDelete(false)}>{words.no}</Declite>
 						</Buttons>
 					</WindowAlertItems>
 				</WindowAlert>
 				<BlogsContainer show={showDelete.toString()}>
 					<BlogsContainerHeader>						
 						<MainTitle>{filters}</MainTitle>
-						<SearchBar {...search} placeholder='Search by filters or post name' />
+						<SearchBar {...search} placeholder={words.search} />
 					</BlogsContainerHeader>
-					{blogs?.map((blog, index) => (						
-						<Blog key={index}>
-							{isAuth.isAuth &&
-								<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
-							}
-							{
-								blog.image ?
-								<Image src={`${url}${blog.image}`} /> :
-								<Image src={img} />
-							}							
-							<Title>
-								<Link to={`/Blog/${blog.id}`}>{blog.title}</Link>
-							</Title>
-							<DatePost>{blog.date}</DatePost>
-							<Resume>{blog.resume}</Resume>
-						</Blog>
-					))}				
+					<BlogsContainerMap>
+						{blogs?.map((blog, index) => (						
+							<Blog key={index}>
+								{isAuth.isAuth &&
+									<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
+								}
+								{
+									blog.image ?
+									<Image src={`${url}${blog.image}`} /> :
+									<Image src={img} />
+								}							
+								<Title>
+									<Link to={`/Blog/${blog.id}`}>{blog.title}</Link>
+								</Title>
+								<DatePost>{blog.date}</DatePost>
+								<Resume>{blog.resume}</Resume>
+							</Blog>
+						))}				
+					</BlogsContainerMap>
 				</BlogsContainer>
 			</Container>
-			{isLoading && <Loading />}
-			<Footer />
-		</>
+			{isLoading && <Loading />}			
+		</Layout>
 	)
 }
 

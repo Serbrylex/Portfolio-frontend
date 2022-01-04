@@ -4,8 +4,7 @@ import {
 
 import { useEffect } from 'react'
 
-import imageDefault from '../../images/Walk.svg'
-
+import imageDefault from '../../assets/images/Walk.svg'
 
 const BlogContainer = ({ blog, url }) => { 
 	

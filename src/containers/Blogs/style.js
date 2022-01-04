@@ -4,7 +4,7 @@ import { Link as Linked } from 'react-router-dom'
 
 export const Container = styled.div`
 	width: 90%;
-	height: auto;  
+	height: auto; 
 	padding: 0 5%;
 	background-color: #14181D;
 	color: white; 
@@ -19,17 +19,12 @@ export const BlogsContainer = styled.div`
 	padding: 5%;	
 	border-radius: 2px;
 	border: 1px solid black;
-	height: 100%;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	height: auto;	
 	background-color: #34414C;	
 
-	@media (max-width: 500px) {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		width: 96%;
-		height: auto;
-		padding: 2%;		
+	@media (max-width: 500px) {		
+		width: 96%;		
+		padding: 2%;				
 	}
 `
 
@@ -39,6 +34,7 @@ export const BlogsContainerHeader = styled.div`
 	text-align: center;	
 	@media (max-width: 500px) {
 		grid-column: 1/3;
+		height: 100px;
 	}
 `
 export const SearchBar = styled.input`
@@ -56,13 +52,28 @@ export const MainTitle = styled.h1`
 	margin: 10px;
 `
 
+export const BlogsContainerMap = styled.div`
+	width: 100%;			
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	background-color: #34414C;	
+
+	@media (max-width: 500px) {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		width: 96%;		
+		padding: 2%;				
+	}
+`
+
 export const Blog = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 90%;
 	height: 420px;
 	background-color: #3B4956;
-	box-shadow: -5px 5px rgba(0,0,0,0.08);
+	box-shadow: -5px 5px #14181D;
 	border-radius: 4px;
 	margin: 20px auto;
 	color: #3E4348;	

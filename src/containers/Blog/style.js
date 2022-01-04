@@ -4,18 +4,13 @@ import styled from 'styled-components'
 export const Container = styled.div`
 	width: 90%;
 	height: auto;
-	padding: 0 5%;
-	background-color: #3B4956; 
+	padding: 0 5%;	
 	color: white; 
+
 	@media (max-width: 500px) {
 		width: 100%;
 		padding: 0; 
 	}
-`
-
-export const SecondContainer = styled.div`
-	width: 100%;
-	height: auto;	
 `
 
 export const Main = styled.div`
@@ -33,8 +28,8 @@ export const Content = styled.div`
 	height: auto;	
 	padding: 2%;
 	@media (max-width: 500px) {
-		width: 96%;
-		padding: 2%;
+		width: 96vw;
+		padding: 2vw;
 	}
 `
 

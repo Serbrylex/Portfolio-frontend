@@ -2,19 +2,22 @@ import { useContext } from 'react'
 
 import { 
 	HeaderContainer, HeaderLinksContainer, Link,
-	Logo, MyData, MyDataTitle, MyDataDescription, ContactList, List, Ancor,
-	PLinks, Linka, Icons
+	Logo, MyData, MyDataTitle, MyDataDescription, ContactList,
+	PLinks, Icons
 } from './style'
 
-import LogoImg from '../../images/Logo.png'
-import TokenContext from '../../context/tokens'
+import LogoImg from '../../assets/images/Logo.png'
 
-import { RiContactsLine } from 'react-icons/ri'
 import { BsBook, BsBookmarkPlus } from 'react-icons/bs'
  
+import TokenContext from '../../context/tokens'
+
+import { useTranslation } from '../../hooks/useTranslation'
+
 const Header = () => {
  
 	const { isAuth } = useContext(TokenContext)
+	const { words } = useTranslation({ component: "header" })
 
 	return (
 		<HeaderContainer>			
@@ -31,14 +34,14 @@ const Header = () => {
 			<ContactList>				
 
 				<Link to='/Blogs/All' title="Blogs">
-					<PLinks> Blogs </PLinks>
+					<PLinks>Blogs</PLinks>
 					<Icons><BsBook color={'white'} /></Icons>				
 				</Link>
 
 				{isAuth.isAuth && 
 					<>
 						<Link to='/CreateBlog' title="Add Blog">
-							<PLinks> Add Blog </PLinks>
+							<PLinks>{words.add_blog}</PLinks>
 							<Icons><BsBookmarkPlus color={'white'} /></Icons>
 						</Link>	
 					</>

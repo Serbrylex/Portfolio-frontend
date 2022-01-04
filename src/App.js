@@ -1,5 +1,5 @@
 import React from 'react'
-import { GlobalStyles } from './styles/GlobalStyles'
+import { GlobalStyles } from './assets/styles/GlobalStyles'
 import Routes from './routes'
 import TokenProvider from './context/tokens/Provider'
 

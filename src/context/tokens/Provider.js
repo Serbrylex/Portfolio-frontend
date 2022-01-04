@@ -8,12 +8,11 @@ const TokenProvider = ({ children }) => {
 	const [isAuth, setIsAuth] = useState(() => {		
 		const cookie = window.sessionStorage.getItem('token_portfolio')		
 		if (cookie === undefined || cookie === null){
-			return false
+			return {isAuth: false}
 		} else {
 			return JSON.parse(cookie)
 		}
-	})
-	
+	})	
 
 	const value = {
 		isAuth,

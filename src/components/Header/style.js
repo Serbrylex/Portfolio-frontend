@@ -5,15 +5,16 @@ import { Link as Linked } from 'react-router-dom'
 export const HeaderContainer = styled.header`
 	display: flex; 
 	width: 90%;	 
-	height: 40px;
+	height: 8vh;
 	align-items: center; 
 	justify-content: space-between;
 	background-color: #07080a;	
 	color: white;		
-	padding: 1% 5%;	
+	padding: 1vh 5%;	
 	@media (max-width: 500px) {
-		padding: 1% 2%;	
-		width: 96%;		
+		padding: 5px 1vw;	
+		width: 98vw;		
+		height: 5vh;
 	}
 `
 
@@ -100,7 +101,7 @@ export const ContactList = styled.ul`
 	height: 100%;
 	justify-content: space-around;
 	@media (max-width: 500px) {
-		width: 30%;
+		width: auto%;
 	}
 `
 

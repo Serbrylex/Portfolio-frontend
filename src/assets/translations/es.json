@@ -1,0 +1,50 @@
+{
+	"containers": {
+		"blog": {
+			"questions": "Preguntas principales",
+			"resume": "Introducción",
+			"topics": "Filtros",
+			"link": "Sitio web"
+		},
+		"blogs": {
+			"subtitle": "Estás buscando publicaciones sobre",
+			"delete_message": "¿Quiéres borrar esta publicación",
+			"si": "Sí",
+			"no": "No",
+			"search": "Buscar por filtros o titulo de la publicación"			
+		},
+		"home": {
+			"subtitle": "Este es el sitio web / portafolio de @Serbrylex",
+			"whoiam": "Soy un eterno estudiante que busca algún día poder cambiar el mundo a través de la tecnología.",
+			"download_cv": "Descargar CV",
+			"proyects": "Proyectos",
+			"about_me": "Sobre mi",
+			"who": "¿Quién soy?",
+			"iam": [
+				"Interesante pregunta, soy un joven de 20 años que usa la tecnología para darle forma al mundo.",
+				"Una persona fascinada por el infinito potencial humano que busca llevarse a sí mismo al limite con tal de alcanzar sus metas."
+			],
+			"trayectory": "Trayectoría",
+			"trayecotry_description": [
+				"Mi primer contacto con la programación fue durante la preparatoría, estudie programación en el CBTis #111 en dónde aprendí pseudocodigo, las bases de C++, Java y algo de desarrollo de apps moviles con AndroidStudio y junto a un amigo vi algo de Kotlin, por mi cuenta aprendí las bases del desarrollo web pues sólo lo vimos muy por encima.",
+				"Cuando terminé la preparatoría tuve que trabajar y ahorrando poco a poco pagué la subscripción anual de platzi (la agarre en black friday) y ahí fue donde mejore exponencialmente. Aprendí correctamente HTML, CSS, JavaScript, React js, Python y Django; También tomé cursos sobre el manejo de las emociones, administración efectiva del tiempo, inglés e incluso sobre finanzas y gracias a Platzi, cursos aparte en Udemy, videos en youtube y distintos libros hoy soy competente en el desarrollo web.",
+				"Sigo aprendiendo todos los días y aunque hoy sé más sobre frontend en un futuro cercano me gustaría poder ser un completo fullstack. Tengo como objetivo pagar mi universidad con el dinero que me de trabajar como desarrollador de software, voy a entrar a la Universidad del Caribe en la licenciatura: Ingeniería en Datos e Inteligencia Organizacional, pues tiene economía, algo de física, matemáticas y mucha programación. En el tiempo que estudíe ahí espero poder obtener una beca para estudiar de intercambio en Estados Unidos. Cuando terminé la universidad pienso migrar para poder contribuir al sueño espacial."
+			],
+			"tools": "Herramientas",
+			"interestings": "Intereses",
+			"blogs": "Blogs"
+		}
+	},
+	"components": {
+		"header": {
+			"add_blog": "Subir blog"
+		},
+		"image_section": {
+			"upload_image": "Subir Imagen"
+		},		
+		"proyect": {
+			"description": "Descripción",
+			"dificulties": "Dificultades"
+		}	
+	}
+}

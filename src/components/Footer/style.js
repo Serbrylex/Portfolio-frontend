@@ -4,13 +4,14 @@ export const FooterContainer = styled.div`
 	display: flex;	
 	align-items: center;
 	justify-content: space-between;
+	height: 8vh; 
 	width: 90%;
-	height: 6vh; 
 	background-color: #07080a;
-	padding: 1% 5%;
+	padding: 1vh 5%;	
+
 	@media (max-width: 500px) {
-		width: 100%;				
-		height: 7vh; 
+		width: 100vw;
+		height: 5vh; 
 		padding: 0;
 	}
 `

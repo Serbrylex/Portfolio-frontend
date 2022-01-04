@@ -4,9 +4,12 @@ import {
 	ImageContainer, Image, Button, Input
 } from './style'
 
+import { useTranslation } from '../../hooks/useTranslation'
+
 const ImageSection = ({ edit = true, image, setImage, setFileImage}) => {
 	
 	const hiddenFileInput = useRef(null);	
+	const { words } = useTranslation({ component: "image_section" })
 
 	const handleClick = e => {
 		hiddenFileInput.current.click();
@@ -29,7 +32,7 @@ const ImageSection = ({ edit = true, image, setImage, setFileImage}) => {
 		             	onChange={handleChange}
 		             	style={{display:'none'}}
 					/>		
-					<Button onClick={handleClick}>Subir Imagen +</Button>			
+					<Button onClick={handleClick}>{words.upload_image} +</Button>			
 				</>
 			}			
 		</ImageContainer>

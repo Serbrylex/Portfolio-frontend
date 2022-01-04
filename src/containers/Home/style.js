@@ -15,7 +15,7 @@ export const Container = styled.div`
 export const BodyContainer = styled.div` 
 	width: 100%;
 	height: auto;
-`
+` 
 
 export const SectionContainerPath = styled.div`
 	display: flex;	
@@ -198,10 +198,11 @@ export const LastSectionContainer = styled.div`
 	width: 35%;
 	height: auto;		
 	margin: 30px auto;		
+	padding: 10px 0;
 	border-radius: 4px;
 	background-color: #273139;
 	box-shadow: -15px -15px #1A2026;
-	color: white;
+	color: white;	
 	@media (max-width: 800px) {
 		width: 90%;
 		box-shadow: -5px -5px #1A2026;
@@ -223,10 +224,11 @@ export const LastSectionContainerTitle = styled.div`
 `
 
 export const LastSectionContainerContent = styled.ul`
-	width: 80%;
+	width: 95%;
 	height: auto;
-	display: block;
-	margin: 0 auto;
+	display: grid;
+	margin: 0 auto;	
+	grid-template-columns: repeat(2, 1fr);
 	@media (max-width: 800px){
 
 	}
@@ -237,14 +239,14 @@ export const LastSectionList = styled.li`
 	align-items: center;
 	justify-content: start;
 
-	width: 100%;
+	width: 85%;
 	height: auto;
 
 	text-align: left;
 	font-size: 17px;	
 	background-color: #3B4956;
 	border-radius: 2px;
-	margin: 10px 0;
+	margin: 5px auto;
 	padding: 10px;
 	@media (max-width: 800px) {
 		font-size: 16px;			
@@ -280,4 +282,12 @@ export const Span = styled.span`
 export const IconContainer = styled.i`
 	margin-right: 10px;
 	color: white;
+`
+
+export const Blogs = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	@media (max-width: 800px) {		
+		grid-template-columns: repeat(2, 1fr);
+	}
 `

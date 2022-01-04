@@ -1,12 +1,9 @@
 import { useState, useEffect, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
 
-import ImageSection from '../../components/ImageSection'
 import Paragraph from '../../components/Paragraph'
 
 import {
-	SubtitleSection, ParagraphSectionOne, InputTitle, HTitle, 
-	TextArea, ParagraphResponse, AddParagraph, PlusParagraph
+	SubtitleSection, InputTitle, HTitle, AddParagraph, PlusParagraph
 } from './style'
  
 import { useInputValue } from '../../hooks/useInputValue'  
@@ -15,14 +12,12 @@ import TokenContext from '../../context/tokens'
 import apiCall from '../../api'
 
 
-const Subtopic = ({ idPost, send }) => {	
+const Subtopic = ({ idPost = null, send = false }) => {	
 		
 	const { isAuth } = useContext(TokenContext)
 	const title = useInputValue('Subtitle')	
 	const [idSubtopic, setIdSubtopic] = useState(undefined)		
-	const [paragraphsSend, setParagraphsSend] = useState([false])
-	const history = useHistory()
-
+	const [paragraphsSend, setParagraphsSend] = useState([false])	
 
 	const sendData = async () => {
 		let response = await apiCall({
