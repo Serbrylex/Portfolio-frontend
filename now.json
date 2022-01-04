@@ -1,8 +1,8 @@
 {
-  "version": 2,
-  "name": "petgramtopro",
+  "version": 1,
+  "name": "Serbrylex.portfolio",
   "builds": [
-    { "use": "@now/static-build", "src": "package.json"}
+    { "use": "@vercel/static-build", "src": "package.json"}
   ],
   "routes": [
     {
