@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "name": "Serbrylex.portfolio",
   "builds": [
     { "use": "@vercel/static-build", "src": "package.json"}
