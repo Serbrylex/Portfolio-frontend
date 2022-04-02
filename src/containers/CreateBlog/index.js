@@ -1,16 +1,17 @@
 // React
-import { useState, useContext, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
 // Components
 import Layout from '../../components/Layout'
 import Subtopic from '../../components/Subtopic'
 import ImageSection from '../../components/ImageSection'
-import Adds from '../../components/Adds'
 import Loading from '../../components/Loading'
-
-// Context 
-import TokenContext from '../../context/tokens'
 
 // Assets 
 import { 
@@ -35,19 +36,17 @@ import { useImage } from '../../hooks/useImage'
 
 const CreateBlog = () => {
 	
-	const { isAuth } = useContext(TokenContext)
+	const user = useSelector(store => store.user)
+	const url = useSelector(store => store.preferences.url)
 	const history = useHistory()	
 
-	if (!isAuth.isAuth){
-		history.push("/Admin")
-	}	
-
-	const [idPost, setIdPost] = useState(undefined)		
-	const [subtopicsSend, setSubtopicsSend] = useState([false])
+	if (!user.isAuth){
+		history.push("/admin")
+	}
+		
 	const [loading, setLoading] = useState(false)
 
-	const title = useInputValue("Title")
-	const question = useInputValue('This will be the main question ( ?')
+	const title = useInputValue("Title")	
 	const imagen = useImage('')	
 	const resume = useInputValue('muchas cosas han sigo escritas antes en esta web, pero ninguna como la que te voy a presentar en este instante, are you ready?')	
 	const linkPage = useInputValue('www.page.com')
@@ -58,36 +57,31 @@ const CreateBlog = () => {
 	const handleEndPost = async () => {		
 		
 		let objectOne = new FormData()	    				
-	
-		objectOne.append('user', isAuth.user.id)
-		objectOne.append('title', title.value)		
-		objectOne.append('questions', question.value)
+			
+		objectOne.append('title', title.value)				
 		if (imagen.fileImage.name?.length){
 			objectOne.append('image', imagen.fileImage, imagen.fileImage.name)
 		}
-		objectOne.append('resume', resume.value)		
-		objectOne.append('views', 0)
+		objectOne.append('content', resume.value)				
 		objectOne.append('github', linkGitHub.value)
 		objectOne.append('link', linkPage.value)
 		
 		let response = await apiCall({
-			urlDirection: 'blog/', 
+			url: `${url}/blog/`, 
 			method: 'POST', 
 			headers: {
-				'Authorization': `Token ${isAuth.access_token}`,
+				'Authorization': `Token ${user.access_token}`,
 			},
 			body: objectOne
 		})
 		
-		let data = await response.json()
-		
-		setIdPost(data.id)	
+		let data = await response.json()		
 
 		await apiCall({
-			urlDirection: 'blog/categories/', 
+			url: `${url}/blog/categories/`, 
 			method: 'POST', 
 			headers: {
-				'Authorization': `Token ${isAuth.access_token}`,
+				'Authorization': `Token ${user.access_token}`,
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
@@ -97,42 +91,6 @@ const CreateBlog = () => {
 		})	
 
 		history.push("/")		
-	}
-
-	useEffect(()=>{
-		if (idPost!==undefined) {
-			for (var i = 0; i < subtopicsSend.length; i++) {
-				if (!subtopicsSend[i]) {
-					let algo = [...subtopicsSend]
-					algo[i] = !algo[i]
-					setSubtopicsSend([...algo])
-				}
-			}	
-
-			setLoading(true)
-			setTimeout(()=>{				
-				setLoading(false)
-				history.push('/Blogs/All')
-			}, 10000)			
-			
-		}
-	},[idPost, subtopicsSend])	
-
-	const renderSubtopics = () => {
-
-		let arrayOfSubtopics = []
-
-		for (var i = 0; i < subtopicsSend.length; i++) {
-			arrayOfSubtopics.push(
-				<Subtopic 		
-					key={i}					
-					idPost={idPost}					
-					send={subtopicsSend[i]}					
-				/>
-			)
-		}
-
-		return arrayOfSubtopics
 	}
 
 	return (
@@ -150,31 +108,8 @@ const CreateBlog = () => {
 									/> : 
 									<HTitle onClick={() => title.setShow(true)}>{title.value}</HTitle>
 								}
-							</TitleSection>							
-							<QuestionSection>
-								<Subtitle>Initial Questions</Subtitle>
-								{question.show ? 
-									<TextArea
-										type="text" 									
-										maxlength='600'
-										onBlur={() => question.setShow(false)}									
-										{...question}
-									/> : 
-									<ParagraphResponse onClick={() => question.setShow(true)}>{question.value}</ParagraphResponse>
-								}
-							</QuestionSection>
-							<ImageSection {...imagen} />							
-							<ResumeSection>
-								<Subtitle>Resume</Subtitle>
-								{resume.show ? 
-									<TextArea
-										type="text" 									
-										onBlur={() => resume.setShow(false)}									
-										{...resume}
-									/> : 
-									<ParagraphResponse onClick={() => resume.setShow(true)}>{resume.value}</ParagraphResponse>
-								}
-							</ResumeSection>
+							</TitleSection>														
+
 							<TopicsSection>
 								<Subtitle>Topics:</Subtitle>
 								<TopicsUl>
@@ -187,13 +122,26 @@ const CreateBlog = () => {
 										<TopicList onClick={()=>topics.setShow(true)}>{topics.value}</TopicList>
 									}									
 								</TopicsUl>
-							</TopicsSection>
+							</TopicsSection>							
 
-							{renderSubtopics()}												
+							<ImageSection {...imagen} />			
 
-							<AddSubtopic>
-								<PlusSubtopic onClick={()=>setSubtopicsSend([...subtopicsSend, false])}>Add Subtopic</PlusSubtopic>								
-							</AddSubtopic>
+							<ResumeSection>
+								<Subtitle>Resume</Subtitle>
+								{resume.show ? 
+									<TextArea
+										type="text" 									
+										onBlur={() => resume.setShow(false)}									
+										{...resume}
+									/> : 									
+									<div onClick={()=>resume.setShow(true)} >
+										<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+											{resume.value}
+										</ReactMarkdown>
+									</div>
+								}
+							</ResumeSection>							
+							
 
 							<LinksContainer>
 								{linkPage.show ? 
@@ -216,8 +164,7 @@ const CreateBlog = () => {
 							<SendPostContainer>
 								<SendPost onClick={handleEndPost}>Save</SendPost>
 							</SendPostContainer>							
-						</Content>
-						<Adds />
+						</Content>						
 					</Main>
 				</SecondContainer>
 			</Container>			

@@ -1,31 +1,46 @@
 import { useHistory  } from 'react-router-dom'
-import { useContext } from 'react'
 import { Helmet } from 'react-helmet'
+import { useSelector, useDispatch } from 'react-redux'
+
 import {
 	Contaier, LoginContainer, Input, Button, Title
 } from './style'
 
 import { useInputValue } from '../../hooks/useInputValue'
 
-import TokenContext from '../../context/tokens'
+import { setLogin } from '../../actions'
+
+// Api
+import apiCall from '../../api' 
+
 
 const Login = () => {
 
 	const user = useInputValue('') 
 	const password = useInputValue('')
+	const url = useSelector(store => store.preferences.url)
+	const dispatch = useDispatch()
 
-	const { activeAuth } = useContext(TokenContext)
 	const history = useHistory()
 
 	const handleLogin = async () => {
-		await activeAuth({
-			urlDirection: 'login/',  
+		const response = await apiCall({
+			url: `${url}/login/`,  
+			method: 'post',
+			headers:  {
+				'Content-Type': 'application/json',
+			},
 			body: JSON.stringify({
 				username: user.value,
 				password: password.value
 			})
-		}).catch(null)		
- 
+		}).catch(null)		 		
+
+ 		if (response.status === 200) {
+ 			const data = await response.json() 		
+ 			dispatch(setLogin({...data, isAuth: true}))
+ 		}
+
 		history.push("/")
 	}
 

@@ -161,7 +161,8 @@ export const SectionContainerTitle = styled.div`
 	align-items: center;	
 	width: 100%;
 	height: 10vh;		
-	justify-content: ${props => props.align === 'left' ? "start" : "end"};	
+	justify-content: center;
+	margin: 40px 0 20px 0;
 `
 
 export const SectionSubtitle = styled.h3`
@@ -183,19 +184,20 @@ export const SectionContainerContent = styled.div`
 `
 
 export const LastSection = styled.div`
-	display: flex;		
+	display: grid;		
 	width: 100%;
 	height: auto;
 	color: white;
 	background-color: ${props => props.color === "true" ? "#3B4956" : "#212930"};
-	@media (max-width: 800px) {
-		flex-direction: column;
+	grid-template-columns: repeat(2, 1fr);	
+	@media (max-width: 1000px) {
+		grid-template-columns: 1fr;	
 		height: auto;
 	}
 `
 
 export const LastSectionContainer = styled.div`
-	width: 35%;
+	width: 400px;
 	height: auto;		
 	margin: 30px auto;		
 	padding: 10px 0;
@@ -203,8 +205,7 @@ export const LastSectionContainer = styled.div`
 	background-color: #273139;
 	box-shadow: -15px -15px #1A2026;
 	color: white;	
-	@media (max-width: 800px) {
-		width: 90%;
+	@media (max-width: 2000px) {		
 		box-shadow: -5px -5px #1A2026;
 		height: auto;		
 	}
@@ -287,7 +288,8 @@ export const IconContainer = styled.i`
 export const Blogs = styled.div`
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 20px;
 	@media (max-width: 800px) {		
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: 1fr;
 	}
 `

@@ -1,26 +1,29 @@
 // React
 import { useParams } from 'react-router-dom'
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
 // Components
 import Loading from '../../components/Loading'
 import Layout from '../../components/Layout'
+import Topics from '../../components/Topics'
+import BlogsGrid from '../../components/BlogsGrid'
 
 // Assets
 import {
-	Container, BlogsContainer, MainTitle, Blog, Image, Title, DatePost, Resume, Link, Delete, 
+	Container, BlogsContainer, MainTitle, Blog, Image, Title, DatePost, Resume, Link, 
 	ImageLoading, WindowAlert, AlerText, Acept, Declite, WindowAlertItems, Buttons,
 	BlogsContainerHeader, SearchBar, BlogsContainerMap
 } from './style'
 
-import { AiFillCloseCircle } from 'react-icons/ai'
 import loading from '../../assets/images/loading.gif'
 
 // API
-import apiCall from '../../api' 
-
-// Context
-import TokenContext from '../../context/tokens' 
+import apiCall from '../../api'
 
 // Hooks
 import { useInputValue } from '../../hooks/useInputValue'
@@ -28,16 +31,42 @@ import { useTranslation } from '../../hooks/useTranslation'
 
 const img = 'https://i.ytimg.com/vi/9sftDDfrdMI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCtXZRUWyl4s3uOOTcgYq8XdpRobw'
 
-const Blogs = ({ url }) => {
+/*blogs?.map((blog, index) => (						
+	<Blog key={index}>
+		{isAuth.isAuth &&
+			<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
+		}
+		{
+			blog.image ?
+			<Image src={`${url}${blog.image}`} /> :
+			<Image src={img} />
+		}							
+		<Title>
+			<Link to={`/Blog/${blog.id}`}>{blog.title}</Link>
+		</Title>
+		<DatePost>{blog.date}</DatePost>
+		<Resume>
+			<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+				{blog.content.slice(0, 200) + '...'}
+			</ReactMarkdown>
+		</Resume>
+	</Blog>
+))*/
+
+const Blogs = () => {
  
 	const { filters } = useParams()
-	const [blogs, setBlogs] = useState([{},{},{}])
-	const [isLoading, setIsLoading] = useState(false)
+	const [blogs, setBlogs] = useState([])
+	const [isLoading, setIsLoading] = useState(true)
 	const [showDelete, setShowDelete] = useState(false)
 	const [element, setElement] = useState({})	
-	const { isAuth } = useContext(TokenContext)
+
+	const user = useSelector(store => store.user)
+	const url = useSelector(store => store.preferences.url)
+
 	const search = useInputValue('')
 	const {words, loading} = useTranslation({ container: 'blogs' })
+	const [topics, setTopics] = useState([])	
 
 	const handleFirstDelete = (id, index, title) => {
 		// Handle the window to alert than the blog will be delete
@@ -51,9 +80,9 @@ const Blogs = ({ url }) => {
 	}
 
 	const handleDeleteBlog = () => {		
-		const newToken = `Token ${isAuth.access_token}`
+		const newToken = `Token ${user.access_token}`
 		apiCall({
-			urlDirection: `blog/delete/${element.id}/`, 
+			url: `${url}/blog/delete/${element.id}/`, 
 			headers: {
 				'Authorization': newToken,
 				'Content-Type': 'application/json',				
@@ -64,41 +93,45 @@ const Blogs = ({ url }) => {
 		let newBlog = blogs
 		
 		newBlog.splice(element.index, 1)
-		if (newBlog.length() !== 0) {
+		if (newBlog.length !== 0) {
 			setBlogs([...newBlog])
 		} else {
-			setBlogs([{}, {}, {}])
+			setBlogs([])
 		}
 		setElement({})
 		setShowDelete(false)
 	}
 
 	const ApiAsync = async filter => {		
-		const response = await apiCall({urlDirection: `blog-list/${filter}/`})		
+		const response = await apiCall({url: `${url}/blog-list/${filter}/`})
 
 		if (response.status !== 200) {
-			setBlogs([{},{},{}])		
+			setBlogs([])
 		} else {
-			const data = await response.json()
-			console.log('Get Data')
-			console.log(data)
-
-			for (var i = 0; i < data.length; i++) {
-				data[i].resume = data[i].resume.slice(0, 100) + '...'
-			}
-
-			
+			const data = await response.json()						
 			setBlogs(data)			
 		}
 		setIsLoading(false)
 	}
-	useEffect(()=>{	
-		setIsLoading(true)
-		ApiAsync(filters).catch(null)		
+
+	const getTopics = async () => {
+		const response = await apiCall({url: `${url}/categories/`})
+
+		if (response.status === 200) {			
+			const data = await response.json()						
+			setTopics(data)			
+		}
+		setIsLoading(false)	
+	}
+
+	useEffect(()=>{			
+		ApiAsync(filters).catch(null)	
+		getTopics()	
 	},[])
 
 	useEffect(()=>{
 		if (search.value.length > 3) {
+			setIsLoading(true)
 			ApiAsync(search.value)
 		} else if (search.value.length === 0) {
 			ApiAsync('all')
@@ -123,28 +156,14 @@ const Blogs = ({ url }) => {
 						<MainTitle>{filters}</MainTitle>
 						<SearchBar {...search} placeholder={words.search} />
 					</BlogsContainerHeader>
+					<Topics topics={topics}/>
 					<BlogsContainerMap>
-						{blogs?.map((blog, index) => (						
-							<Blog key={index}>
-								{isAuth.isAuth &&
-									<Delete onClick={()=> handleFirstDelete(blog.id, index, blog.title)}><AiFillCloseCircle /></Delete>
-								}
-								{
-									blog.image ?
-									<Image src={`${url}${blog.image}`} /> :
-									<Image src={img} />
-								}							
-								<Title>
-									<Link to={`/Blog/${blog.id}`}>{blog.title}</Link>
-								</Title>
-								<DatePost>{blog.date}</DatePost>
-								<Resume>{blog.resume}</Resume>
-							</Blog>
-						))}				
+						{isLoading || blogs.length === 0? 
+							<Loading />
+						: <BlogsGrid blogs={blogs} handleFirstDelete={handleFirstDelete} />}
 					</BlogsContainerMap>
 				</BlogsContainer>
-			</Container>
-			{isLoading && <Loading />}			
+			</Container>					
 		</Layout>
 	)
 }

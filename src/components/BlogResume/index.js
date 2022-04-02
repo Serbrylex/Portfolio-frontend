@@ -1,28 +1,31 @@
+import React from 'react'
+import { useSelector } from 'react-redux'
+
 import {
 	Blog, Image, Title, Link, DatePost, Resume
 } from './style'
 
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
-const BlogResume = ({ blog, url }) => {
 
-	console.log(blog)
+const BlogResume = ({ blog = false }) => {	
 
-	const data = {
-		image: 'https://i.ytimg.com/vi/9sftDDfrdMI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLCtXZRUWyl4s3uOOTcgYq8XdpRobw',
-		title: '',
-		date: '',
-		resume: '...',
-		...blog,
-	}
+	const url = useSelector(store => store.preferences.url)
 
 	return (
 		<Blog>			
-			<Image src={`${url}${data.image}`} />
+			<Image src={`${url}${blog.image}`} />
 			<Title>
-				<Link to={`/Blog/${data.id}`}>{data.title}</Link>
+				<Link to={`/blog/${blog.id}`}>{blog.title}</Link>
 			</Title>
-			<DatePost>{data.date}</DatePost>
-			<Resume>{data.resume.slice(0, 200) + '...'}</Resume>
+			<DatePost>{blog.date}</DatePost>
+			<Resume>
+				<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+					{blog.content.slice(0, 150) + '...'}
+				</ReactMarkdown>
+			</Resume>
 		</Blog>
 	)
 }

@@ -1,4 +1,5 @@
-import { useContext } from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 import { 
 	HeaderContainer, HeaderLinksContainer, Link,
@@ -16,7 +17,7 @@ import { useTranslation } from '../../hooks/useTranslation'
 
 const Header = () => {
  
-	const { isAuth } = useContext(TokenContext)
+	const isAuth = useSelector(store => store.user.isAuth)
 	const { words } = useTranslation({ component: "header" })
 
 	return (
@@ -31,16 +32,17 @@ const Header = () => {
 				</Link>
 			</HeaderLinksContainer>	
 						
-			<ContactList>				
+			<ContactList>
 
-				<Link to='/Blogs/All' title="Blogs">
+
+				<Link to='/blogs/all' title="Blogs">
 					<PLinks>Blogs</PLinks>
 					<Icons><BsBook color={'white'} /></Icons>				
 				</Link>
 
-				{isAuth.isAuth && 
+				{isAuth && 
 					<>
-						<Link to='/CreateBlog' title="Add Blog">
+						<Link to='/create_blog' title="Add Blog">
 							<PLinks>{words.add_blog}</PLinks>
 							<Icons><BsBookmarkPlus color={'white'} /></Icons>
 						</Link>	

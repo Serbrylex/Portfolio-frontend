@@ -14,8 +14,9 @@ export const Container = styled.div`
 `
 
 export const SecondContainer = styled.div` 
-	width: 100%;
-	height: auto;	
+	width: 1000px;
+	height: auto;
+	margin: 0 auto;	
 `
 
 export const Main = styled.div`

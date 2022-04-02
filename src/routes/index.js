@@ -11,7 +11,7 @@ import CreateBlog from '../containers/CreateBlog'
 import FourOFour from '../containers/FourOFour'
 import Login from '../containers/Login'
 
-const Routes = ({ url }) => {
+const Routes = () => {
 
 
 	return(
@@ -19,19 +19,22 @@ const Routes = ({ url }) => {
 		<Router>								
 			<Switch>
 				<Route path="/" exact>
-					<Home url={url} />
+					<Home />
 				</Route>
-				<Route path="/Blog/:id" exact>
-					<Blog url={url} />
+				<Route path="/test" exact>
+					<Blog />
 				</Route>
-				<Route path="/Blogs/:filters" exact>
-					<Blogs url={url} />
+				<Route path="/blog/:id" exact>
+					<Blog />
+				</Route>
+				<Route path="/blogs/:filters" exact>
+					<Blogs />
 				</Route>
 
-				<Route path="/Admin" exact>
+				<Route path="/admin" exact>
 					<Login />
 				</Route>
-				<Route path="/CreateBlog" exact>
+				<Route path="/create_blog" exact>
 					<CreateBlog />
 				</Route>
 				

@@ -3,7 +3,8 @@ import React from 'react'
 import {
 	ProyectContainer, ImageDataContainer, Image, 
 	DateProyect, ProyectInformation, Title, Tools, 
-	ToolsTitle, Element, Ancor, ImageLink, TitleSection
+	ToolsTitle, Element, Ancor, ImageLink, TitleSection,
+	Info
 } from './style' 
 
 import {  
@@ -38,9 +39,9 @@ const Proyect = ({ proyect }) => {
 					))}
 				</Tools>		
 				<ToolsTitle>{words.description}</ToolsTitle>
-				<p>{proyect.description}</p>				
+				<Info>{proyect.description}</Info>
 				<ToolsTitle>{words.dificulties}</ToolsTitle>
-				<p>{proyect.gols}</p>						
+				<Info>{proyect.gols}</Info>
 			</ProyectInformation>
 		</ProyectContainer>
 	)

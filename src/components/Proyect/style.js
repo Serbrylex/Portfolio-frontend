@@ -15,11 +15,11 @@ export const ProyectContainer = styled.div`
 	box-shadow: -6px 5px #3B4956;
 	border: 1px solid #3B4956;
 	@media (max-width: 900px) {
-		width: 70%;
+		width: 80%;
 		display: block;
 		background-color: #212930;		
 		border-radius: 5px;
-		padding: 20px;
+		padding: 10px;
 	}
 ` 
 
@@ -49,7 +49,7 @@ export const DateProyect = styled.span`
 
 export const ProyectInformation = styled.div`
 	width: 80%;
-	height: 45vh;
+	height: auto;
 	padding: 0 0 0 30px;	
 	display: flex;
 	flex-direction: column;
@@ -59,7 +59,7 @@ export const ProyectInformation = styled.div`
 	@media (max-width: 900px) {
 		width: 100%;
 		height: 100%;
-		padding: 0 0 0 2%;	
+		padding: 0;	
 		font-size: 16px;
 	}
 `
@@ -79,16 +79,17 @@ export const ToolsTitle = styled.h5`
 	margin: 10px 0;
 	@media (max-width: 900px) {
 		font-size: 1em;	
+		margin: 10px 0;
 	}
 `
 
-export const Tools = styled.div`
-	padding-left: 1.2em;
+export const Tools = styled.div`	
 	color: #bec5cb;
 	display: flex;
 	align-items: center;
-	justify-content: start;
+	justify-content: space-evenly;
 	width: auto;		
+	margin: 0 auto;
 	@media (max-width: 900px) {
 		display: grid;
 		grid-template-columns: repeat(3,1fr);
@@ -101,11 +102,18 @@ export const Tools = styled.div`
 `
 
 export const Element = styled.li`
-	font-size: 1em;
-	margin: 0 10px;
-	@media (max-width: 900px) {
-		margin: 0 5px;
-	}
+	font-size: 1em;	
+	width: auto;
+	height: 20px;
+	box-shadow: -5px -5px #1A2026;
+	border: 1px solid black;
+	padding: 2px 5px;
+	margin: 5px;
+	border-radius: 5px;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;	
 `
 
 export const TitleSection = styled.div`
@@ -135,4 +143,8 @@ export const ImageLink = styled.a`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+`
+
+export const Info = styled.p`
+	margin: 5px 0;
 `

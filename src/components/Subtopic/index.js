@@ -1,4 +1,5 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
+import {useSelector} from 'react-redux'
 
 import Paragraph from '../../components/Paragraph'
 
@@ -14,17 +15,19 @@ import apiCall from '../../api'
 
 const Subtopic = ({ idPost = null, send = false }) => {	
 		
-	const { isAuth } = useContext(TokenContext)
+	const user = useSelector(store => store.user)
+	const url = useSelector(store => store.preferences.url)
+
 	const title = useInputValue('Subtitle')	
 	const [idSubtopic, setIdSubtopic] = useState(undefined)		
 	const [paragraphsSend, setParagraphsSend] = useState([false])	
 
 	const sendData = async () => {
 		let response = await apiCall({
-			urlDirection: 'blog/subtem/', 
+			url: `${url}/blog/subtem/`, 
 			method: 'POST', 
 			headers: {
-				'Authorization': `Token ${isAuth.access_token}`,
+				'Authorization': `Token ${user.access_token}`,
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({

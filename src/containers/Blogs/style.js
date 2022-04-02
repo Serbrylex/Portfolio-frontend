@@ -16,7 +16,7 @@ export const Container = styled.div`
 
 export const BlogsContainer = styled.div`
 	width: 90%;
-	padding: 5%;	
+	padding: 20px 5%;	
 	border-radius: 2px;
 	border: 1px solid black;
 	height: auto;	
@@ -30,7 +30,7 @@ export const BlogsContainer = styled.div`
 
 export const BlogsContainerHeader = styled.div`
 	grid-column: 1/4;	
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	text-align: center;	
 	@media (max-width: 500px) {
 		grid-column: 1/3;
@@ -49,19 +49,21 @@ export const SearchBar = styled.input`
 	}
 `
 export const MainTitle = styled.h1`	
-	margin: 10px;
+	margin: 20px auto;
+	box-shadow: -5px -5px #1A2026;
+	border: 1px solid black;
+	padding: 2px 20px;	
+	border-radius: 5px;
+	text-decoration: none;
+	min-width: 200px;
 `
 
 export const BlogsContainerMap = styled.div`
 	width: 100%;			
-	height: 100%;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	min-height: 100vh;	
 	background-color: #34414C;	
 
 	@media (max-width: 500px) {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
 		width: 96%;		
 		padding: 2%;				
 	}
@@ -140,21 +142,6 @@ export const Resume = styled.p`
 	}	
 `
 
-export const Delete = styled.div`	
-	cursor: pointer;
-	color: #FE5F55;
-	width: 30px;
-	height: 30px;
-	font-size: 30px;	
-	position: absolute;
-	top: -15px;
-	right: -15px;
-	z-index: 2;
-	@media (max-width: 500px) {
-		top: -10px;
-		right: -10px;
-	}	
-`
 export const WindowAlert = styled.div`
 
 	${props => props.show === 'true' ? 'display: flex' : 'display: none'};

@@ -4,7 +4,7 @@ import { Link as Linked } from 'react-router-dom'
 export const Blog = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 90%;
+	width: 100%;
 	height: 420px;
 	background-color: #212930;
 	box-shadow: -5px 5px #14181D;

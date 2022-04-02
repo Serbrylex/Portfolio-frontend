@@ -1,11 +1,12 @@
 import styled from 'styled-components'
-
+import { Link as Linked } from 'react-router-dom'
 
 export const Container = styled.div`
-	width: 90%;
+	width: 1000px;
 	height: auto;
 	padding: 0 5%;	
 	color: white; 
+	margin: 0 auto;
 
 	@media (max-width: 500px) {
 		width: 100%;
@@ -24,22 +25,24 @@ export const Main = styled.div`
 `
 
 export const Content = styled.div`
-	width: 71%;
+	width: 100%;
 	height: auto;	
-	padding: 2%;
+	padding: 0 5%;
 	@media (max-width: 500px) {
-		width: 96vw;
-		padding: 2vw;
+		width: 94vw;
+		padding: 3vw;
 	}
 `
 
 export const TitleSection = styled.div`
 	width: 100%;
-	height: 50px;
+	height: auto;
 	display: flex;
 	align-items: center;
 	justify-content: start;
-	margin: 50px 0;
+	margin: 50px 0 20px 0;
+	padding: 10px 0;
+	border-bottom: 1px solid white;
 	@media (max-width: 500px) {
 		width: 100%;
 		margin: 20px 0;
@@ -49,7 +52,7 @@ export const TitleSection = styled.div`
 export const HTitle = styled.h1`
 	width: 100%;
 	height: 100%;
-	font-size: 35px;
+	font-size: 50px;
 	@media (max-width: 500px) {
 		font-size: 25px;
 	}
@@ -65,12 +68,6 @@ export const QuestionSection = styled.p`
 export const ResumeSection = styled.p`
 	width: 100%;
 	height: auto;
-	margin: 20px 0;
-`
-
-export const TopicsSection = styled.div`
-	width: 100%;
-	height: 140px;		
 	margin: 20px 0;
 `
 
@@ -90,25 +87,6 @@ export const ParagraphResponse = styled.p`
 	@media (max-width: 500px) {
 		font-size: 18px;
 	}
-`
-
-export const TopicsUl = styled.ul`	
-	width: 95%;
-	height: auto;	
-	display: flex;	
-	justify-content: center;	
-	@media (max-width: 500px) {
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-	}
-`
-
-export const TopicList = styled.li`
-	box-shadow: -5px -5px #1A2026;
-	border: 1px solid black;
-	padding: 2px 5px;
-	margin: 5px;
-	border-radius: 5px;
 `
 
 export const SubtitleSection = styled.div` 
@@ -136,6 +114,7 @@ export const LinksContainer = styled.div`
 	width: 100%;
 	height: 50px;
 	display: flex;
+	margin: 10px 0;
 	align-items: center;
 	justify-content: space-evenly;	
 `

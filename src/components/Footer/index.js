@@ -1,3 +1,5 @@
+import React from 'react'
+
 import {
 	FooterContainer, ContactTitleLarge, ContactTitleShort, ContactList, List, Ancor
 } from './style' 

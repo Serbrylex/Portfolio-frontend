@@ -1,5 +1,6 @@
 // React dependencies
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
    
 // Assets
 import {  
@@ -35,13 +36,16 @@ import apiCall, { proyects } from '../../api'
 // Hooks
 import { useTranslation } from '../../hooks/useTranslation'
 
-const Home = ({ url }) => {
+const Home = () => {
 
-	const [allBlogs, setAllBlogs] = useState([{}, {}, {}])	
-	const {words, loading} = useTranslation({ container: "home" })
+	const url = useSelector(store => store.preferences.url)
+
+	const [allBlogs, setAllBlogs] = useState([])	
+	const { words } = useTranslation({ container: "home" })
+	const [loading, setLoading] = useState(true)
 
 	const ApiAsync = async () => {
-		let response = await apiCall({urlDirection: `blog-list/all/`})		
+		let response = await apiCall({url: `${url}/blog-list/all/`})		
 		if (response.status === 200) {
 			let data = await response.json()
 			console.log(data)
@@ -50,8 +54,9 @@ const Home = ({ url }) => {
 			}
 			if (data.length !== 0) {
 				setAllBlogs(data)		
-			}
+			}			
 		}
+		setLoading(false)
 	}
 
 	useEffect(()=>{
@@ -101,18 +106,20 @@ const Home = ({ url }) => {
 							</SectionContainerContent>						
 						</SectionContainer>				
 
-						<SectionContainer color="true">
-							<SectionContainerTitle align='right'>
-								<SectionSubtitle>{words.blogs}</SectionSubtitle>
-							</SectionContainerTitle>
-							<SectionContainerContent>
-								<Blogs>																
-									{allBlogs?.map((blog, index)=>(
-										<BlogResume blog={blog} url={url}/>
-									))}
-								</Blogs>
-							</SectionContainerContent>						
-						</SectionContainer>
+						{allBlogs.length > 0 &&
+							<SectionContainer color="true">
+								<SectionContainerTitle align='right'>
+									<SectionSubtitle>{words.blogs}</SectionSubtitle>
+								</SectionContainerTitle>
+								<SectionContainerContent>
+									<Blogs>																
+										{allBlogs?.map((blog, index)=>(
+											<BlogResume blog={blog} url={url} key={index}/>
+										))}
+									</Blogs>
+								</SectionContainerContent>						
+							</SectionContainer>
+						}
 
 						<SectionContainer color="false">
 							<SectionContainerTitle align='left'>

@@ -1,11 +1,17 @@
 // React
 import { useParams } from 'react-router-dom'
-import { useState, useEffect, useContext, Fragment } from 'react'
+import { useState, useEffect, Fragment } from 'react'
+import { useSelector } from 'react-redux'
+
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
 // Components
 import ImageSection from '../../components/ImageSection'
 import Adds from '../../components/Adds'
 import Layout from '../../components/Layout'
+import Topics from '../../components/Topics'
  
 // Api
 import apiCall from '../../api' 
@@ -13,9 +19,11 @@ import apiCall from '../../api'
 // Assets
 import {
 	Container, Main, Content, TitleSection, HTitle, 
-	QuestionSection, ResumeSection, TopicsSection, ParagraphResponse, Subtitle,
-	TopicList, TopicsUl, SubtitleSection, ParagraphSectionOne, LinksContainer, TheLinks
+	QuestionSection, ResumeSection, ParagraphResponse, Subtitle, 
+	SubtitleSection, ParagraphSectionOne, LinksContainer, TheLinks
 } from './style'
+
+import './style.css'
 
 import imageDefault from '../../assets/images/Walk.svg'
 
@@ -23,22 +31,21 @@ import {
 	AiOutlineGithub, AiOutlineLink
 } from 'react-icons/ai'
 
-// Context
-import TokenContext from '../../context/tokens'
-
 // Hooks
 import { useTranslation } from '../../hooks/useTranslation'
 
-const Blog = ({ url }) => {
+const Blog = () => {
 
 	
 	const { id } = useParams()
-	const [allBlog, setAllBlog] = useState([])			
+	const [allBlog, setAllBlog] = useState({content: ''})			
 	const { words } = useTranslation({ container: 'blog' })
+	const url = useSelector(store => store.preferences.url)
 
 	const blogDetail = async () => {
-		const response = await apiCall({urlDirection: `blog/${id}/`})		
+		const response = await apiCall({url: `${url}/blog/${id}/`})		
 		const data = await response.json()		
+		console.log(data)
 		setAllBlog(data)
 	}
 
@@ -46,8 +53,8 @@ const Blog = ({ url }) => {
 	useEffect(()=>{
 		blogDetail()
 	}, [])
-		
 
+	
 	return (
 		<Layout title={`${allBlog.title ? allBlog.title : ''}`} subtitle={`Este es el blog sobre: ${allBlog.title}, ${setAllBlog.categories}`}>
 			<Container>				
@@ -56,27 +63,18 @@ const Blog = ({ url }) => {
 						<TitleSection>							
 							<HTitle>{allBlog.title}</HTitle>							
 						</TitleSection>
-						<QuestionSection>
-							<Subtitle>{words.questions}</Subtitle>								
-							<ParagraphResponse>{allBlog.questions}</ParagraphResponse>								
-						</QuestionSection>
+
+						<Topics topics={allBlog.categories} />
+
 						{ allBlog.image ?
 							<ImageSection edit={false} image={`${url}${allBlog.image}`} /> :
 							<ImageSection edit={false} image={imageDefault} /> 
-						}
-						<ResumeSection>
-							<Subtitle>{words.resume}</Subtitle>
-							<ParagraphResponse>{allBlog.resume}</ParagraphResponse>
-						</ResumeSection> 
-						<TopicsSection>
-							<Subtitle>{words.topics}</Subtitle>
-							<TopicsUl>
-								{allBlog.categories?.map((topic, index)=>(
-									<TopicList key={index}>{topic.category}</TopicList>
-								))}									
-							</TopicsUl>
-						</TopicsSection>
-						{allBlog.subtems?.map((eachSubtem, index)=>(
+						}						
+						
+						<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+							{allBlog.content}
+						</ReactMarkdown>
+						{false && allBlog.subtems?.map((eachSubtem, index)=>(
 							<div key={index}>
 								{eachSubtem.title &&										
 									<SubtitleSection>								
@@ -98,14 +96,12 @@ const Blog = ({ url }) => {
 						<LinksContainer>
 							<TheLinks href={allBlog.link}><AiOutlineLink />{words.link}</TheLinks>
 							<TheLinks href={allBlog.github}><AiOutlineGithub />GitHub</TheLinks>								
-						</LinksContainer>						
+						</LinksContainer>
 					</Content>
-				
-					<Adds />							
 				</Main>				
 			</Container>			
 		</ Layout>
-	)
+	)	
 }
 
 export default Blog 

@@ -1,13 +1,16 @@
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
 import {
 	BlogDiv, DataContainer, ImageContainer, Image, Resume, Link, Title, DateTime
 } from './style'
 
-import { useEffect } from 'react'
 
 import imageDefault from '../../assets/images/Walk.svg'
 
-const BlogContainer = ({ blog, url }) => { 
+const BlogContainer = ({ blog, }) => { 
 	
+	const url = useSelector(store => store.preferences.url)
 
 	useEffect(()=>{
 		blog.resume = blog.resume.slice(0, 80) + '...'
@@ -24,7 +27,7 @@ const BlogContainer = ({ blog, url }) => {
 				</ImageContainer>	
 				<DataContainer>
 					<Title>
-						<Link to={`/Blog/${blog.id}`}>			   	
+						<Link to={`/blog/${blog.id}`}>			   	
 							{blog.title}
 						</Link>
 					</Title>

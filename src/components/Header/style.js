@@ -4,6 +4,9 @@ import { Link as Linked } from 'react-router-dom'
 
 export const HeaderContainer = styled.header`
 	display: flex; 
+	position: sticky;
+	top: 0;
+	z-index: 100;
 	width: 90%;	 
 	height: 8vh;
 	align-items: center; 
@@ -89,6 +92,7 @@ export const MyDataTitle = styled.h3`
 
 export const MyDataDescription = styled.p`
 	font-size: 17px;
+	margin: 0;
 	@media (max-width: 500px) {
 		display: none;		
 	}

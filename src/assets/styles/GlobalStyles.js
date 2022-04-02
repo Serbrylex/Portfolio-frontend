@@ -16,4 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     li {
         list-style: none;
     }
+    p {
+        margin: 5px 0;
+    }
 `
