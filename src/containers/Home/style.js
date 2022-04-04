@@ -197,7 +197,7 @@ export const LastSection = styled.div`
 `
 
 export const LastSectionContainer = styled.div`
-	width: 400px;
+	width: 90%;
 	height: auto;		
 	margin: 30px auto;		
 	padding: 10px 0;
