@@ -29,9 +29,9 @@ export const proyects = () => {
 			'date': new Date('2021', '06', '30'),
 			'description': 'Es un clon de instagram.',
 			'gols': 'Está aplicación fue divertido desarrollarla porque para las bases seguí dos cursos (platzigram y petgram, ambos provenientes en platzi) y ambos dejaban bastante a pulir, en ambos cursos se construia un monolito, por lo que tube que aprender ciertas cosas por mi cuenta, implemente el backend como una API a la que se comunica el frontend.',
-			'tools': ['Django', 'React.js', 'AWS', 'Heroku'],
+			'tools': ['Django', 'React.js', 'Amplify', 'Heroku', 'S3', 'Redux'],
 			'github': 'https://github.com/Serbrylex/instagram_for_my_portfolio',
-			'link': 'https://master.d2wckr9gxsnzjm.amplifyapp.com/',
+			'link': 'https://wondrous-lollipop-4d1a35.netlify.app',
 		},
 		{
 			'name': 'Mi sitio web',
@@ -41,7 +41,7 @@ export const proyects = () => {
 			'gols': 'El principal desafío de está aplicación fue que no seguí ningun curso por primera vez, tenía que seguir el mapa de lo que ya sabía.',
 			'tools': ['React.js', 'AWS'],
 			'github': 'https://github.com/Serbrylex/Portfolio-frontend',
-			'link': 'https://master.dpk3kg6kahbq9.amplifyapp.com/'
+			'link': 'https://serbrylex.com'
 		},		
 		{
 			'name': 'Tooldou',
@@ -51,7 +51,7 @@ export const proyects = () => {
 			'gols': 'Buscar un modelo de negocios y buscar la aceptación de las escuelas para implementar el software.',
 			'tools': ['Django', 'React.js', 'AWS', 'Heroku'],
 			'github': 'https://github.com/Serbrylex/',
-			'link': 'https://master.dpk3kg6kahbq9.amplifyapp.com/'
+			'link': 'https://serbrylex.com'
 		},
 		{
 			'name': 'Comparte Ride',
@@ -61,7 +61,7 @@ export const proyects = () => {
 			'gols': 'El principal desafío de está aplicación es que tuve que sumergirme en python hasta sus bases para poder seguir el desarrollo del backend y lograr desarrollar una api que es consumida en el frontend, lo más interesante es que implementa tokens en el envio de peticiones, por lo que tube que aprender sobre JWT.',
 			'tools': ['Django', 'React.js', 'Celery', 'Redis', 'Docker', 'AWS'],
 			'github': 'https://github.com/Serbrylex/cride_frontend',
-			'link': 'https://master.d39un5rth4eij9.amplifyapp.com/'
+			'link': 'https://serbrylex.com'
 		},
 	]	
 
@@ -72,9 +72,9 @@ export const proyects = () => {
 			'date': new Date('2021', '06', '30'),
 			'description': 'Is an Instagram clon.',
 			'gols': 'This app was fun to develop because for the base i followed two courses on Platzi (platzigram and petgram), both let a lot to the make it better. I developed an API with django and django rest framework, and consume it with fetch, i learned a lot in the process',
-			'tools': ['Django', 'React.js', 'AWS', 'Heroku'],
+			'tools': ['Django', 'React.js', 'Amplify', 'Heroku', 'S3', 'Redux'],
 			'github': 'https://github.com/Serbrylex/instagram_for_my_portfolio',
-			'link': 'https://master.d2wckr9gxsnzjm.amplifyapp.com/',
+			'link': 'https://wondrous-lollipop-4d1a35.netlify.app',
 		},
 		{
 			'name': 'My web site',
@@ -84,7 +84,7 @@ export const proyects = () => {
 			'gols': "The main difficulty was that for the first time I did not follow any tutorial or course, I developed it from scratch, only with the map of what I already knew.",
 			'tools': ['React.js', 'AWS'],
 			'github': 'https://github.com/Serbrylex/Portfolio-frontend',
-			'link': 'https://master.dpk3kg6kahbq9.amplifyapp.com/'
+			'link': 'https://serbrylex.com'
 		},		
 		{
 			'name': 'Tooldou',
@@ -94,7 +94,7 @@ export const proyects = () => {
 			'gols': "Find a real business model and acceptance in schools to implement the software.",			
 			'tools': ['Django', 'React.js', 'AWS', 'Heroku'],
 			'github': 'https://github.com/Serbrylex/',
-			'link': 'https://master.dpk3kg6kahbq9.amplifyapp.com/'
+			'link': 'https://serbrylex.com'
 		},
 		{
 			'name': 'Comparte Ride',
@@ -104,7 +104,7 @@ export const proyects = () => {
 			'gols': "The main challenge was than i have to go deeply in python to keep with the backend development, the more interesting is that implements the use of tokens in each request, the uso of docker, redis and celery for asynchronous tasks.",
 			'tools': ['Django', 'React.js', 'Celery', 'Redis', 'Docker', 'AWS'],
 			'github': 'https://github.com/Serbrylex/cride_frontend',
-			'link': 'https://master.d39un5rth4eij9.amplifyapp.com/'
+			'link': 'https://serbrylex.com'
 		},
 	]	
 
