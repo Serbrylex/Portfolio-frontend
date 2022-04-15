@@ -38,7 +38,11 @@ const Blog = () => {
 
 	
 	const { id } = useParams()
-	const [allBlog, setAllBlog] = useState({content: ''})			
+	const [allBlog, setAllBlog] = useState({
+		content: '',
+		link: '',
+		github: ''
+	})			
 	const { words } = useTranslation({ container: 'blog' })
 	const url = useSelector(store => store.preferences.url)
 
@@ -73,28 +77,9 @@ const Blog = () => {
 						
 						<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
 							{allBlog.content}
-						</ReactMarkdown>
-						{false && allBlog.subtems?.map((eachSubtem, index)=>(
-							<div key={index}>
-								{eachSubtem.title &&										
-									<SubtitleSection>								
-										<HTitle>{eachSubtem.title}</HTitle>
-									</SubtitleSection>
-								}									
-								{eachSubtem.paragraphs?.map((eachParagraph, index)=>(
-									<Fragment key={index}>
-										<ParagraphSectionOne>								
-											<ParagraphResponse>{eachParagraph.paragraph}</ParagraphResponse>			
-										</ParagraphSectionOne>		
-										{eachParagraph.picture &&
-											<ImageSection edit={false} image={url+eachParagraph.picture} />
-										}
-									</ Fragment>
-								))}
-							</div>
-						))}
+						</ReactMarkdown>						
 
-						{allBlog?.link ? allBlog.link.length > 0 || allBlog.github.length > 0 &&
+						{allBlog?.link && allBlog?.link.length > 0 || allBlog?.github.length > 0 &&
 							<LinksContainer>
 								<TheLinks href={allBlog.link}><AiOutlineLink />{words.link}</TheLinks>
 								<TheLinks href={allBlog.github}><AiOutlineGithub />GitHub</TheLinks>								
