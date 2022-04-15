@@ -5,7 +5,7 @@ export const Blog = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 420px;
+	height: auto;
 	background-color: #212930;
 	box-shadow: -5px 5px #14181D;
 	border-radius: 4px;
@@ -51,7 +51,7 @@ export const Title = styled.h3`
 `
 
 export const DatePost = styled.time`
-	height: 5%;	
+	height: 5%;	 
 	font-size: 14px;
 	color: #606c76;
 	margin: 5px 0 5px 10px;
@@ -60,7 +60,7 @@ export const DatePost = styled.time`
 	}
 `
 
-export const Resume = styled.p`	
+export const Resume = styled.div`	
 	height: 136px;		
 	font-size: 17px;
 	color: #f2f2f2;
