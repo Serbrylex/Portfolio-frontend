@@ -18,5 +18,6 @@ export const GlobalStyles = createGlobalStyle`
     }
     p {
         margin: 5px 0;
+        font-weight: bold;
     }
 `

@@ -93,6 +93,7 @@ export const Information = styled.div`
 
 export const Title = styled.h2`
 	cursor: pointer;
+	margin-bottom: 10px;
 `
 
 export const Delete = styled.div`	

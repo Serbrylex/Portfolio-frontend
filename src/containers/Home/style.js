@@ -165,7 +165,7 @@ export const SectionContainerTitle = styled.div`
 	margin: 40px 0 20px 0;
 `
 
-export const SectionSubtitle = styled.h3`
+export const SectionSubtitle = styled.h2`
 	margin: 15px;
 	font-size: 35px;
 	color: white;

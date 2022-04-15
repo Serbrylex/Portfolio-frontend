@@ -38,7 +38,7 @@ export const Link = styled(Linked)`
 	text-decoration: none;
 `
 
-export const Title = styled.h3`
+export const Title = styled.h2`
 	font-size: 20px;	
 	margin: auto;
 	width: 90%;
