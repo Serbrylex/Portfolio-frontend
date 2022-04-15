@@ -94,7 +94,7 @@ const Blog = () => {
 							</div>
 						))}
 
-						{allBlog.link.length > 0 || allBlog.github.length > 0 &&
+						{allBlog?.link ? allBlog.link.length > 0 || allBlog.github.length > 0 &&
 							<LinksContainer>
 								<TheLinks href={allBlog.link}><AiOutlineLink />{words.link}</TheLinks>
 								<TheLinks href={allBlog.github}><AiOutlineGithub />GitHub</TheLinks>								

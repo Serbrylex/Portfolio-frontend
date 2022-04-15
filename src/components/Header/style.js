@@ -92,7 +92,7 @@ export const MyDataTitle = styled.h3`
 
 export const MyDataDescription = styled.p`
 	font-size: 17px;
-	margin: 0;
+	margin: 0 !important;
 	@media (max-width: 500px) {
 		display: none;		
 	}
