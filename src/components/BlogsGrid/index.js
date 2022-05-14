@@ -29,7 +29,7 @@ const Blog = ({ blog, position, handleFirstDelete }) => {
 				<Delete onClick={()=> handleFirstDelete(blog.id, position, blog.title)}><AiFillCloseCircle /></Delete>
 			}
 			<ImageContainer first_blog={position === 0}>
-				<Img src={`${url}${blog.image}`} alt={blog.title} />
+				<Img src={blog.image} alt={blog.title} />
 			</ImageContainer>
 			<Information>
 				<Title onClick={()=>history.push(`/blog/${blog.id}`)}>{blog.title}</Title>				

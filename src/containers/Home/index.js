@@ -47,8 +47,7 @@ const Home = () => {
 	const ApiAsync = async () => {
 		let response = await apiCall({url: `${url}/blog-list/all/`})		
 		if (response.status === 200) {
-			let data = await response.json()
-			console.log(data)
+			let data = await response.json()			
 			if (data.length > 6) {
 				data = data.splice(0, 6)
 			}

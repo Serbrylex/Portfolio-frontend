@@ -21,7 +21,7 @@ const BlogContainer = ({ blog, }) => {
 			<BlogDiv>
 				<ImageContainer>					
 					{ blog.main_image ?
-						<Image src={`${url}${blog.main_image}`} /> :
+						<Image src={blog.main_image} /> :
 						<Image src={imageDefault} /> 
 					}
 				</ImageContainer>	

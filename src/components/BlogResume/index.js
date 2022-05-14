@@ -10,13 +10,13 @@ import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
 
-const BlogResume = ({ blog = false, key = '' }) => {	
+const BlogResume = ({ blog = false }) => {	
 
 	const url = useSelector(store => store.preferences.url)
 
 	return (
-		<Blog {...key}>			
-			<Image src={`${url}${blog.image}`} />
+		<Blog>			
+			<Image src={blog.image} />
 			<Title>
 				<Link to={`/blog/${blog.id}`}>{blog.title}</Link>
 			</Title>
