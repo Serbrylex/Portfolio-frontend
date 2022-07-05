@@ -4,12 +4,10 @@ import { useSelector } from 'react-redux'
 import { 
 	HeaderContainer, HeaderLinksContainer, Link,
 	Logo, MyData, MyDataTitle, MyDataDescription, ContactList,
-	PLinks, Icons
+	PLinks, Line, IconContainer
 } from './style'
 
-import LogoImg from '../../assets/images/Logo.png'
-
-import { BsBook, BsBookmarkPlus } from 'react-icons/bs'
+import { AiOutlineBook } from 'react-icons/ai'
  
 import TokenContext from '../../context/tokens'
 
@@ -22,32 +20,57 @@ const Header = () => {
 
 	return (
 		<HeaderContainer>			
+			<ContactList who="first">
+				<Link to='/blogs/all' title="Blogs">
+					<PLinks>Proyectos</PLinks>					
+				</Link>
+
+				<Line></Line>
+
+				<Link to='/create_blog' title="Add Blog">
+					<PLinks>About</PLinks>					
+				</Link>	
+
+				<Line></Line>
+
+				<Link to='/create_blog' title="Add Blog">
+					<PLinks>Intereses</PLinks>					
+				</Link>	
+			</ContactList>		
+
 			<HeaderLinksContainer>
-				<Link to='/'>
-					<Logo src={LogoImg} alt="" />		
+				<Link to='/'>				
 					<MyData>
-						<MyDataTitle>Bryan Madrid</MyDataTitle>
 						<MyDataDescription>Web Developer</MyDataDescription>
+						<MyDataTitle>Bryan Madrid</MyDataTitle>
 					</MyData>
 				</Link>
 			</HeaderLinksContainer>	
 						
 			<ContactList>
 
-
 				<Link to='/blogs/all' title="Blogs">
-					<PLinks>Blogs</PLinks>
-					<Icons><BsBook color={'white'} /></Icons>				
+					<PLinks>Blogs</PLinks>	
+					<IconContainer>
+						<AiOutlineBook />
+					</IconContainer>
 				</Link>
+		
+				<Line></Line>
+
+				<Link to='/create_blog' title="Add Blog" who='first'>
+					<PLinks>Contact</PLinks>					
+				</Link>	
 
 				{isAuth && 
 					<>
+						<Line></Line>
+
 						<Link to='/create_blog' title="Add Blog">
-							<PLinks>{words.add_blog}</PLinks>
-							<Icons><BsBookmarkPlus color={'white'} /></Icons>
-						</Link>	
+							<PLinks>{words.add_blog}</PLinks>						
+						</Link>						
 					</>
-				}				
+				}
 			</ContactList>		
 		</HeaderContainer>	
 	)	

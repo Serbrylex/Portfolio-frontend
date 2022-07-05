@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { Link as Linked } from 'react-router-dom'
 
+import image from '../../assets/images/wallpaper.jpg'
+
 export const Container = styled.div` 
 	width: 90%;
 	height: auto;
@@ -10,6 +12,7 @@ export const Container = styled.div`
 	@media (max-width: 800px) {
 		width: 100%;
 		padding: 0; 
+		margin: 0;
 	}
 `
 export const BodyContainer = styled.div` 
@@ -19,12 +22,15 @@ export const BodyContainer = styled.div`
 
 export const SectionContainerPath = styled.div`
 	display: flex;	
-	background-color: #3B4956;
+	//background-color: #3B4956;
+	background-image: url(${image});
 	width: 100%;
-	height: 70vh;
+	height: 100vh;
 	color: white;
 	align-items: center;
 	justify-content: center;
+	position: relative;
+	z-index: 100;
 	@media (max-width: 800px) {
 		display: flex;	
 		flex-direction: column;
@@ -41,7 +47,8 @@ export const SectionContainerPathTitle = styled.div`
 	justify-content: center;
 	width: 45%;
 	height: 100%;
-	font-size: 100px;	
+	font-size: 100px;
+	z-index: 100;	
 	@media (max-width: 800px) {
 		width: 90%;
 	}
@@ -123,15 +130,15 @@ export const SectionContainerPathImage = styled.div`
 	justify-content: center;
 	width: 45%;
 	height: 100%;	
+	z-index: 100;
 	@media (max-width: 800px) {
 		display: none;	
 	}
 `
 
 export const Image = styled.img`
-	width: 300px;
-	height: 300px;	
-	border-radius: 100%;
+	width: 80%;
+	height: 80vh;		
 	object-fit: cover;
 	@media (max-width: 800px) {
 		width: 100%;
@@ -183,77 +190,6 @@ export const SectionContainerContent = styled.div`
 	}
 `
 
-export const LastSection = styled.div`
-	display: grid;		
-	width: 100%;
-	height: auto;
-	color: white;
-	background-color: ${props => props.color === "true" ? "#3B4956" : "#212930"};
-	grid-template-columns: repeat(2, 1fr);	
-	@media (max-width: 1000px) {
-		grid-template-columns: 1fr;	
-		height: auto;
-	}
-`
-
-export const LastSectionContainer = styled.div`
-	width: 90%;
-	height: auto;		
-	margin: 30px auto;		
-	padding: 10px 0;
-	border-radius: 4px;
-	background-color: #273139;
-	box-shadow: -15px -15px #1A2026;
-	color: white;	
-	@media (max-width: 2000px) {		
-		box-shadow: -5px -5px #1A2026;
-		height: auto;		
-	}
-`
-
-export const LastSectionContainerTitle = styled.div`
-	width: 100%;
-	height: 50px;	
-	margin: 20px auto;
-	text-align: center;
-	color: white;
-	@media (max-width: 800px) {
-		width: 100%;		
-		font-size: 20px;
-		margin: 10px auto 20px auto;
-	}
-`
-
-export const LastSectionContainerContent = styled.ul`
-	width: 95%;
-	height: auto;
-	display: grid;
-	margin: 0 auto;	
-	grid-template-columns: repeat(2, 1fr);
-	@media (max-width: 800px){
-
-	}
-`
-
-export const LastSectionList = styled.li`
-	display: flex;
-	align-items: center;
-	justify-content: start;
-
-	width: 85%;
-	height: auto;
-
-	text-align: left;
-	font-size: 17px;	
-	background-color: #3B4956;
-	border-radius: 2px;
-	margin: 5px auto;
-	padding: 10px;
-	@media (max-width: 800px) {
-		font-size: 16px;			
-	}
-`
-
 export const SectionContainerContentDescription = styled.div`
 	display: block;
 	width: 70%;
@@ -280,11 +216,6 @@ export const Span = styled.span`
 	font-weight: 1000;
 `
 
-export const IconContainer = styled.i`
-	margin-right: 10px;
-	color: white;
-`
-
 export const Blogs = styled.div`
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -292,4 +223,8 @@ export const Blogs = styled.div`
 	@media (max-width: 800px) {		
 		grid-template-columns: 1fr;
 	}
+`
+
+export const Background = styled.div`
+
 `

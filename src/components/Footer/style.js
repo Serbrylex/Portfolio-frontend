@@ -10,9 +10,10 @@ export const FooterContainer = styled.div`
 	padding: 1vh 5%;	
 
 	@media (max-width: 500px) {
-		width: 100vw;
+		width: 100%;
 		height: 5vh; 
 		padding: 0;
+		margin: 0;
 	}
 `
 
@@ -70,7 +71,7 @@ export const List = styled.li`
 export const Ancor = styled.a`
 	font-size: 30px;
 	color: white;	
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		font-size: 20px;
 		height: 90%;						
 	}

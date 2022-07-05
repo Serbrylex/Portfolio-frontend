@@ -5,7 +5,7 @@ const minHeigth = 'auto'
 
 export const BlogsGridContainer = styled.div`
 	width: 100%;
-	height: 100%;
+	height: auto;
 	margin: 1px solid white;			
 `
 
@@ -43,7 +43,7 @@ export const GroupOfTwo = styled.div`
 
 export const BlogContainer = styled.div`
 	width: 100%;
-	height: 100%;
+	height: 50vh;
 	display: grid;
 	grid-template-rows: 60% 40%;
 	position: relative;
@@ -67,6 +67,7 @@ export const BlogContainer = styled.div`
 
 export const ImageContainer = styled.figure`	
 	margin-bottom: 20px;
+	height: 100%;
 	${props => props.first_blog === true && css`
 		grid-column: 1 / 3;
 		margin-right: 20px;

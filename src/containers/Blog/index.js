@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import remarkGfm from 'remark-gfm'
+import remarkGfm from 'remark-gfm' 
 
 // Components
 import ImageSection from '../../components/ImageSection'
@@ -20,7 +20,8 @@ import apiCall from '../../api'
 import {
 	Container, Main, Content, TitleSection, HTitle, 
 	QuestionSection, ResumeSection, ParagraphResponse, Subtitle, 
-	SubtitleSection, ParagraphSectionOne, LinksContainer, TheLinks
+	SubtitleSection, ParagraphSectionOne, LinksContainer, TheLinks,
+	Left, Right
 } from './style'
 
 import './style.css'
@@ -61,7 +62,8 @@ const Blog = () => {
 	
 	return (
 		<Layout title={`${allBlog.title ? allBlog.title : ''}`} subtitle={`Este es el blog sobre: ${allBlog.title}, ${setAllBlog.categories}`}>
-			<Container>				
+			<Container>	
+				<Left></Left>
 				<Main>
 					<Content>
 						<TitleSection>							
@@ -71,7 +73,7 @@ const Blog = () => {
 						<Topics topics={allBlog.categories} />
 
 						{ allBlog.image ?
-							<ImageSection edit={false} image={`${url}${allBlog.image}`} /> :
+							<ImageSection edit={false} image={allBlog.image} /> :
 							<ImageSection edit={false} image={imageDefault} /> 
 						}						
 						
@@ -86,7 +88,8 @@ const Blog = () => {
 							</LinksContainer>
 						}
 					</Content>
-				</Main>				
+				</Main>		
+				<Right></Right>		
 			</Container>			
 		</ Layout>
 	)	

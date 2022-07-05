@@ -8,7 +8,7 @@ export const Container = styled.div`
 	padding: 0 5%;
 	background-color: #14181D;
 	color: white; 
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		width: 100%;
 		padding: 0;		
 	}
@@ -22,9 +22,10 @@ export const BlogsContainer = styled.div`
 	height: auto;	
 	background-color: #34414C;	
 
-	@media (max-width: 500px) {		
-		width: 96%;		
-		padding: 2%;				
+	@media (max-width: 800px) {		
+		width: 90vw;		
+		padding: 0 2vw;	
+		margin: 0 auto;			
 	}
 `
 
@@ -32,7 +33,7 @@ export const BlogsContainerHeader = styled.div`
 	grid-column: 1/4;	
 	margin-bottom: 30px;
 	text-align: center;	
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		grid-column: 1/3;
 		height: 100px;
 	}
@@ -44,7 +45,7 @@ export const SearchBar = styled.input`
 	padding: 5px 10px;
 	border-radius: 20px;
 	color: black;
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		width: 80%;
 	}
 `
@@ -63,7 +64,7 @@ export const BlogsContainerMap = styled.div`
 	min-height: 100vh;	
 	background-color: #34414C;	
 
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		width: 96%;		
 		padding: 2%;				
 	}
@@ -80,7 +81,7 @@ export const Blog = styled.div`
 	margin: 20px auto;
 	color: #3E4348;	
 	position: relative;
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		width: 92%;
 		height: 350px;
 		margin: 10px 2%;
@@ -94,7 +95,7 @@ export const Image = styled.img`
 	height: 180px;
 	margin: 30px 5%;
 	object-fit: cover;
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		width: 100%;
 		height: 160px;
 		margin: 10px 0;
@@ -111,7 +112,7 @@ export const Title = styled.h3`
 	margin: auto;
 	width: 90%;
 	height: 40px;
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		font-size: 20px;			
 		width: 96%;
 		height: 15%;
@@ -123,7 +124,7 @@ export const DatePost = styled.time`
 	font-size: 14px;
 	color: #606c76;
 	margin: 5px 0 5px 10px;
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		margin: 10px 0 10px 10px;
 	}
 `
@@ -134,7 +135,7 @@ export const Resume = styled.p`
 	color: #f2f2f2;
 	width: 90%;
 	margin: 5px auto;
-	@media (max-width: 500px) {
+	@media (max-width: 800px) {
 		font-size: 16px;	
 		margin: auto;
 		width: 96%;
