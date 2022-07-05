@@ -14,7 +14,7 @@ export const HeaderContainer = styled.header`
 	color: white;		
 	padding: 0 5%;	
 	@media (max-width: 800px) {
-		padding: 5px 0;	
+		padding: 0;	
 		width: 100%;		
 		height: 7vh;
 		grid-template-columns: 20% 60% 20%;	
@@ -32,6 +32,7 @@ export const HeaderLinksContainer = styled.div`
 		width: 100%;
 		margin: 0%;
 		grid-column: 2 / 3;
+		height: 100%;
 	}
 `
 
@@ -107,6 +108,7 @@ export const ContactList = styled.ul`
 	justify-content: space-around;
 	@media (max-width: 800px) {
 		width: auto;
+		height: 100%;
 		display: ${props => props.who == 'first' ? 'none' : 'flex' };
 	}
 `
