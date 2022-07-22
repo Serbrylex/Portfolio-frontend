@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ee1a0854.chunk.css",
+    "main.js": "/static/js/main.dc58b8ca.chunk.js",
+    "main.js.map": "/static/js/main.dc58b8ca.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.33f728f9.js",
+    "runtime-main.js.map": "/static/js/runtime-main.33f728f9.js.map",
+    "static/js/2.b19a18b4.chunk.js": "/static/js/2.b19a18b4.chunk.js",
+    "static/js/2.b19a18b4.chunk.js.map": "/static/js/2.b19a18b4.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.ee1a0854.chunk.css.map": "/static/css/main.ee1a0854.chunk.css.map",
+    "static/js/2.b19a18b4.chunk.js.LICENSE.txt": "/static/js/2.b19a18b4.chunk.js.LICENSE.txt",
+    "static/media/Code.486a70a5.svg": "/static/media/Code.486a70a5.svg",
+    "static/media/Logo.6e4720f5.png": "/static/media/Logo.6e4720f5.png",
+    "static/media/MainImage.e55181a3.png": "/static/media/MainImage.e55181a3.png",
+    "static/media/MyPortafolio.036c151d.png": "/static/media/MyPortafolio.036c151d.png",
+    "static/media/Tooldou.6b07e649.png": "/static/media/Tooldou.6b07e649.png",
+    "static/media/Walk.64e56f62.svg": "/static/media/Walk.64e56f62.svg",
+    "static/media/broke.44e9aa69.jpg": "/static/media/broke.44e9aa69.jpg",
+    "static/media/circle.03a2fc8b.svg": "/static/media/circle.03a2fc8b.svg",
+    "static/media/comparteride.73875a22.png": "/static/media/comparteride.73875a22.png",
+    "static/media/instagram.1a68ecf7.png": "/static/media/instagram.1a68ecf7.png",
+    "static/media/loading.69614e75.gif": "/static/media/loading.69614e75.gif",
+    "static/media/yomero.f394a247.png": "/static/media/yomero.f394a247.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.33f728f9.js",
+    "static/js/2.b19a18b4.chunk.js",
+    "static/css/main.ee1a0854.chunk.css",
+    "static/js/main.dc58b8ca.chunk.js"
+  ]
+}
