@@ -17,7 +17,7 @@
 			"subtitle": "This is the @Serbrylex's web site / portfolio",
 			"whoiam": "I am an eternal student who seeks to change the world through code.",			
 			"download_cv": "Download CV",
-			"proyects": "Projects",
+			"projects": "Projects",
 			"about_me": "About me",
 			"who": "¿Who am i?",
 			"iam": [
@@ -42,7 +42,7 @@
 		"image_section": {
 			"upload_image": "Upload image"
 		},		
-		"proyect": {
+		"project": {
 			"description": "Description",
 			"dificulties": "Dificulties"
 		}	

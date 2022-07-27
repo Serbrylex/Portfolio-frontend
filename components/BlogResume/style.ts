@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link as Linked } from 'react-router-dom'
+import Linked from 'next/link'
 
 export const Blog = styled.div`
 	display: flex;

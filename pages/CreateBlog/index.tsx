@@ -1,17 +1,17 @@
 // React
 import { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
+import Head from 'next/Head'
 
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
 // Components
-import Layout from '../../components/Layout'
-import Subtopic from '../../components/Subtopic'
-import ImageSection from '../../components/ImageSection'
-import Loading from '../../components/Loading'
+import Subtopic from '@components/Subtopic'
+import ImageSection from '@components/ImageSection'
+import Loading from '@components/Loading'
 
 // Assets 
 import { 
@@ -26,19 +26,19 @@ import {
 } from 'react-icons/ai'
 
 // API
-import apiCall, { blogData } from '../../api' 
+import apiCall from '@api';
 
 // Hooks
-import { useTranslation } from '../../hooks/useTranslation'
-import { useInputValue } from '../../hooks/useInputValue'  
-import { useImage } from '../../hooks/useImage'
+import { useTranslation } from '@hooks/useTranslation'
+import { useInputValue } from '@hooks/useInputValue'  
+import { useImage } from '@hooks/useImage'
 
 
 const CreateBlog = () => {
 	
 	const user = useSelector(store => store.user)
 	const url = useSelector(store => store.preferences.url)
-	const history = useHistory()	
+	const history = useRouter()	
 
 	if (!user.isAuth){
 		history.push("/admin")
@@ -93,9 +93,12 @@ const CreateBlog = () => {
 		history.push("/")		
 	}
 
-	return (
-		<Layout title={`Create Blog`} subtitle={`Crea tu blog`}>		
+	return (		
 			<Container>
+				<Head>
+					<title>Create Blog</title>
+					<meta name="description" content="Create Blog" />
+				</Head>
 				<SecondContainer>
 					<Main>
 						<Content>												
@@ -124,7 +127,7 @@ const CreateBlog = () => {
 								</TopicsUl>
 							</TopicsSection>							
 
-							<ImageSection {...imagen} />			
+							<ImageSection {...imagen} edit={true} />			
 
 							<ResumeSection>
 								<Subtitle>Resume</Subtitle>
@@ -167,10 +170,8 @@ const CreateBlog = () => {
 						</Content>						
 					</Main>
 				</SecondContainer>
-			</Container>			
-
-			{loading && <Loading /> }
-		</Layout>
+				{loading && <Loading /> }
+			</Container>								
 	)
 }
 

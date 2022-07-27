@@ -2,7 +2,7 @@ import {
 	AddsContainer, Add, AddImage, AddTitle, AddDescription
 } from './style'
 
-import Code from '../../assets/images/Code.svg'
+import Code from '@public/images/Code.svg'
 
 
 const Adds = () => { 

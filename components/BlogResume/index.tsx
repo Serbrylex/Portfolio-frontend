@@ -10,17 +10,17 @@ import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
 
-const BlogResume = ({ blog = false }) => {	
+const BlogResume = ({ blog } : { blog: TBlog }) => {	
 
 	const url = useSelector(store => store.preferences.url)
 
 	return (
 		<Blog>			
 			<Image src={blog.image} />
-			<Title>
-				<Link to={`/blog/${blog.id}`}>{blog.title}</Link>
+			<Title>				
+				<Link href={`/blog/${blog.id}`}><a>{blog.title}</a></Link>				
 			</Title>
-			<DatePost>{blog.date}</DatePost>
+			<DatePost>{blog.date.toString()}</DatePost>
 			<Resume>
 				<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
 					{blog.content.slice(0, 150) + '...'}

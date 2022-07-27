@@ -17,7 +17,7 @@
 			"subtitle": "Este es el sitio web / portafolio de @Serbrylex",
 			"whoiam": "Soy un eterno estudiante que busca algún día poder cambiar el mundo a través de la tecnología.",
 			"download_cv": "Descargar CV",
-			"proyects": "Proyectos",
+			"projects": "Proyectos",
 			"about_me": "Sobre mi",
 			"who": "¿Quién soy?",
 			"iam": [
@@ -42,7 +42,7 @@
 		"image_section": {
 			"upload_image": "Subir Imagen"
 		},		
-		"proyect": {
+		"project": {
 			"description": "Descripción",
 			"dificulties": "Dificultades"
 		}	

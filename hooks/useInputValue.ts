@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react'
 
-export const useInputValue = initialValue => {
+export const useInputValue = (initialValue: string) => {
   const [value, setValue] = useState(initialValue)
   const [show, setShow] = useState(false)
 
-  const onChange = useCallback(function (e) {
+  const onChange = useCallback(function (e: any) {
     setValue(e.currentTarget.value)    
   }, []) 
 

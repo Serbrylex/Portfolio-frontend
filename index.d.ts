@@ -7,6 +7,7 @@ type TUser = {
 }
 
 type TBlog = {
+  id: number,
   user: number,
   title: string,
   image: string,
@@ -14,8 +15,21 @@ type TBlog = {
   date: Date,  
   views: number,
   github: string,
-  link: string
-  categories?: string[]
+  link: string,
+  categories?: string[],
+  resume?: string
 }
 
 type TBlogs = Blog[];
+
+type TProject = {
+  name: string,
+  image: string,
+  date: Date,
+  description: string,
+  gols: string,
+  tools: string[],
+  github: string,
+  link: string,
+  url?: string
+}

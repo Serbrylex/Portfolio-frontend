@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import { Link as Linked } from 'react-router-dom'
-
 export const HeaderContainer = styled.header`
 	display: grid; 
 	grid-template-columns: 1fr 1fr 1fr;
@@ -46,7 +44,7 @@ export const PLinks = styled.p`
 	}
 `
 
-export const Link = styled(Linked)`
+export const Link = styled.a`
 	color: white;
 	text-decoration: none;	
 	display: flex;

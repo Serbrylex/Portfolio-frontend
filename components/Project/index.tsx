@@ -11,40 +11,40 @@ import {
 	AiOutlineGithub 
 } from 'react-icons/ai'
 
-import { useResetDate } from '../../hooks/useResetDate'
+import { useResetDate } from '@hooks/useResetDate'
+import { useTranslation } from '@hooks/useTranslation'
 
-import { useTranslation } from '../../hooks/useTranslation'
 
-const Proyect = ({ proyect }) => {
+const Project = ({ project }: {project: TProject}) => {
  
-	const date = useResetDate({ date: proyect.date })
-	const { words, loading } = useTranslation({ component: "proyect" })
+	const date = useResetDate({ date: project.date })
+	const { words, loading } = useTranslation({ component: "project", container: undefined })
 	
 	return( 
 		<ProyectContainer>
 			<ImageDataContainer>
-				<ImageLink href={proyect.link}>
-					<Image src={proyect.image} /> 					
+				<ImageLink href={project.link}>
+					<Image src={project.image} />
 				</ImageLink>
 				<DateProyect>{date}</DateProyect>
 			</ImageDataContainer>
 			<ProyectInformation>
 				<TitleSection>
-					<Title href={proyect.link}>{proyect.name}</Title>
-					<Ancor href={proyect.github} title="GitHub"><AiOutlineGithub /></Ancor>
+					<Title href={project.link}>{project.name}</Title>
+					<Ancor href={project.github} title="GitHub"><AiOutlineGithub /></Ancor>
 				</TitleSection>
 				<Tools>
-					{proyect.tools.map((element, index)=>(
+					{project.tools.map((element, index)=>(
 						<Element key={index}>{element}</Element>
 					))}
 				</Tools>		
 				<ToolsTitle>{words.description}</ToolsTitle>
-				<Info>{proyect.description}</Info>
+				<Info>{project.description}</Info>
 				<ToolsTitle>{words.dificulties}</ToolsTitle>
-				<Info>{proyect.gols}</Info>
+				<Info>{project.gols}</Info>
 			</ProyectInformation>
 		</ProyectContainer>
 	)
 }
 
-export default Proyect
+export default Project

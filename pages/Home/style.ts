@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import Link from 'next/link';
 
-import image from '@public/images/wallpaper.jpg'
+//import image from '../../public/images/wallpaper.jpg'
 
 export const Container = styled.div` 
 	width: 90%;
@@ -23,7 +22,7 @@ export const BodyContainer = styled.div`
 export const SectionContainerPath = styled.div`
 	display: flex;	
 	//background-color: #3B4956;
-	background-image: url(${image});
+	background-image: url("/images/wallpaper.jpg");
 	width: 100%;
 	height: 100vh;
 	color: white;
@@ -118,7 +117,7 @@ export const WeAreImage = styled.div`
 	}		
 `
 
-export const Link= styled.h1`
+export const Name= styled.h1`
 	color: white;
 	text-decoration: none;
 	font-size: 30px;
@@ -136,10 +135,10 @@ export const SectionContainerPathImage = styled.div`
 	}
 `
 
-export const Image = styled.img`
+export const Figure = styled.div`
 	width: 80%;
 	height: 80vh;		
-	object-fit: cover;
+	position: relative;	
 	@media (max-width: 800px) {
 		width: 100%;
 		height: 100%;	

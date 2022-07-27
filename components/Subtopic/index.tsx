@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react'
 import {useSelector} from 'react-redux'
 
-import Paragraph from '../../components/Paragraph'
+import Paragraph from '@components/Paragraph'
 
 import {
 	SubtitleSection, InputTitle, HTitle, AddParagraph, PlusParagraph
 } from './style'
  
-import { useInputValue } from '../../hooks/useInputValue'  
-import TokenContext from '../../context/tokens'
+import { useInputValue } from '@hooks/useInputValue';
 
-import apiCall from '../../api'
+import apiCall from '@api'
 
 
 const Subtopic = ({ idPost = null, send = false }) => {	

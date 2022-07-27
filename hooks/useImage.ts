@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import imageDefault from '../assets/images/MainImage.png'
+import imageDefault from '@public/images/MainImage.png'
 
 
 export const useImage = ({ defaultImage = imageDefault }) => {

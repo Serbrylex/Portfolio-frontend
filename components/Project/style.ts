@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import { Link as Linked } from 'react-router-dom'
-
 export const ProyectContainer = styled.div`
 	display: flex;
 	width: 90%;

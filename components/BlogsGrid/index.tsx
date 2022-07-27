@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
-import apiCall from '../../api'
+import apiCall from '@api'
 
 // Assets
 import {
@@ -17,9 +17,13 @@ import {
 import { AiFillCloseCircle } from 'react-icons/ai'
 
 
-const Blog = ({ blog, position, handleFirstDelete }) => {
+const Blog = ({ blog, position, handleFirstDelete }: {
+	blog: TBlog,
+	position: number,
+	handleFirstDelete: Function
+}) => {
 
-	const history = useHistory()
+	const history = useRouter()
 	const user = useSelector(store => store.user)
 	const url = useSelector(store => store.preferences.url)
 
@@ -41,7 +45,10 @@ const Blog = ({ blog, position, handleFirstDelete }) => {
 	)
 }
 
-const BlogsGrid = ({ blogs, handleFirstDelete }) => {	
+const BlogsGrid = ({ blogs, handleFirstDelete }: {
+	blogs: TBlog[],
+	handleFirstDelete: Function
+}) => {	
 	
 	const [elements, setElements] = useState([])
 	const user = useSelector(store => store.user)
@@ -75,10 +82,9 @@ const BlogsGrid = ({ blogs, handleFirstDelete }) => {
 					</>
 				)
 			}
-			setElements([...aux_elements])
+			setElements(aux_elements)
 		}	
 	}, [blogs.length])	
-
 	return (
 		<BlogsGridContainer>	
 			{elements}

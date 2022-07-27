@@ -14,7 +14,7 @@ import { FiHeadphones } from 'react-icons/fi'
 // Styles
 
 import {
-	LastSectionContainer, LastSectionContainerTitle, DownloadButton,
+	LastSectionContainer, LastSectionContainerTitle,
 	LastSectionContainerContent, LastSection, LastSectionList, IconContainer,
 	SectionSubtitle
 } from './style'
@@ -22,7 +22,7 @@ import {
 const ToolsInterestings = () => {
 
 	return(
-		<LastSection color="true">
+		<LastSection color="true" id="interestings">
 			<LastSectionContainer>
 				<LastSectionContainerTitle>
 					<SectionSubtitle>Tools</SectionSubtitle>

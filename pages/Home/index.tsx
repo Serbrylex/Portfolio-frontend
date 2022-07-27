@@ -2,29 +2,29 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import Head from 'next/head'
+import Head from 'next/Head'
+import Image from 'next/image'
 
 // Assets
 import {  
 	Container, BodyContainer, SectionContainerPath, SectionContainerPathTitle, 
-	SectionContainerPathImage, Image, SectionContainer, SectionContainerTitle, 
+	SectionContainerPathImage, SectionContainer, SectionContainerTitle, 
 	SectionSubtitle, SectionContainerContent, WeAre, WeAreTitle, WeAreWho, 
-	Link, WeAreImage, SectionContainerContentDescription, DownloadButton,
+	Name, WeAreImage, SectionContainerContentDescription, DownloadButton,
 	SectionContainerContentDescriptionTitle, SectionContainerContentDescriptionInformation, 
-	ParagraphDescription, Span, Background, Blogs
+	ParagraphDescription, Span, Background, Blogs, Figure
 } from './style' 
 
 import image from '@public/images/yomero.png' 
 
 // Components
-import Layout from '@components/Layout'
-import Proyect from '@components/Proyect'
+import Project from '@components/Project'
 import Loading from '@components/Loading'
 import BlogResume from '@components/BlogResume' 
 import ToolsInterestings from '@components/ToolsInterestings'
 
 // API
-import apiCall, { proyects } from '@api' 
+import apiCall, { projects } from '@api' 
 
 // Hooks
 import { useTranslation } from '@hooks/useTranslation'
@@ -34,8 +34,8 @@ const Home = () => {
 	const url = useSelector(store => store.preferences.url)
 
 	const [allBlogs, setAllBlogs] = useState([])	
-	const { words } = useTranslation({ container: "home" })
-	const [loading, setLoading] = useState(true)
+	const { words } = useTranslation({ container: "home", component: undefined })
+	const [loading, setLoading] = useState<boolean>(true)
 
 	const ApiAsync = async () => {
 		let response = await apiCall({url: `${url}/blog-list/all/`})		
@@ -61,23 +61,28 @@ const Home = () => {
 
 		// Hace falta configurar los idiomas y el tema, así como agregar los eventos aslfjas
 		// se va a guardar en un contexto
-		return( 
-			<Layout>
+		return( 							
+				<Container>
 				<Head>
-					<title>Home</title>					
+					<title>Serbrylex | Home</title>					
 					<meta name='description' content={words.subtitle} />
 				</Head>
-				<Container>
 					<BodyContainer>
 						<SectionContainerPath>
 							<Background></Background>
 							<SectionContainerPathTitle>
 								<WeAre>
 									<WeAreTitle>
-										<Link>Sergio Bryan Madrid Nuñez</Link>
+										<Name>Sergio Bryan Madrid Nuñez</Name>
 									</WeAreTitle>
-									<WeAreImage>
-										<Image src={image} alt='@Serbrylex' />
+									<WeAreImage>										
+										<Figure>
+											<Image
+												src={image}
+												alt='@Serbrylex'
+												layout='fixed'
+											/>										
+										</Figure>
 									</WeAreImage>
 									<WeAreWho>
 										{words.whoiam}
@@ -87,18 +92,25 @@ const Home = () => {
 									</DownloadButton>								
 								</WeAre>
 							</SectionContainerPathTitle>
-							<SectionContainerPathImage>
-								<Image src={image} alt="@Serbrylex" />
+							<SectionContainerPathImage>							
+								<Figure>
+									<Image 
+										src={image} 
+										alt="@Serbrylex" 
+										layout="fill"
+										objectFit="cover"
+									/>
+								</Figure>	
 							</SectionContainerPathImage>
 						</SectionContainerPath>
 
-						<SectionContainer color="false">
+						<SectionContainer color="false" id="projects">
 							<SectionContainerTitle align='left'>
-								<SectionSubtitle>{words.proyects}</SectionSubtitle>
+								<SectionSubtitle>{words.projects}</SectionSubtitle>
 							</SectionContainerTitle>
 							<SectionContainerContent>
-								{proyects().map((proyect, index)=>(
-									<Proyect key={index} proyect={proyect}/>
+								{projects().map((project, index)=>(
+									<Project key={index} project={project}/>
 								))}
 							</SectionContainerContent>						
 						</SectionContainer>				
@@ -118,7 +130,7 @@ const Home = () => {
 							</SectionContainer>
 						}
 
-						<SectionContainer color="false">
+						<SectionContainer color="false" id="about">
 							<SectionContainerTitle align='left'>
 								<SectionSubtitle>{words.about_me}</SectionSubtitle>
 							</SectionContainerTitle>
@@ -142,11 +154,10 @@ const Home = () => {
 							</SectionContainerContent>
 						</SectionContainer>	
 
-						<ToolsInterestings />
+						<ToolsInterestings/>
 
 					</BodyContainer>
-				</Container>							
-			</Layout>
+				</Container>										
 		)
 	}
 }

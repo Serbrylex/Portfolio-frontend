@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { useInputValue } from '../../hooks/useInputValue'  
-import { useImage } from '../../hooks/useImage'	
+import { useInputValue } from '@hooks/useInputValue'  
+import { useImage } from '@hooks/useImage'	
 
-import ImageSection from '../../components/ImageSection'
-import apiCall from '../../api'
+import ImageSection from '@components/ImageSection'
+import apiCall from '@api'
 
 import { ParagraphContainer, ParagraphSection, TextArea, ParagraphResponse } from './style'
 

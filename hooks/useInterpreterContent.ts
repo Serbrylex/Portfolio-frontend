@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+/*import React, { useState, useEffect } from 'react'
 
 const useInterpreterContent = ({ content }) => {
 
@@ -7,7 +7,6 @@ const useInterpreterContent = ({ content }) => {
 
 	const interpretaText = (content) => {
 		const data = content.split('\n')
-
 		/*
 			Cases:
 				+ 'S.'
@@ -16,7 +15,7 @@ const useInterpreterContent = ({ content }) => {
 					...
 				+ 'Code.'
 				+ ''
-		*/
+		/
 	}
 
 	useEffect(()=>{
@@ -26,4 +25,4 @@ const useInterpreterContent = ({ content }) => {
 	}, [content])
 
 	return { elements, loading }
-}
+}*/

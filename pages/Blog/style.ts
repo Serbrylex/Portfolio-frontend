@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link as Linked } from 'react-router-dom'
+import Linked from 'next/link'
 
 import ads from '../../assets/images/ads.jpg'
 
@@ -28,8 +28,9 @@ export const Left = styled.div`
 		display: none;
 	}
 `
-export const Right = styled.div`
-	background-image: url(${ads});
+
+//background-image: url(${ads});
+export const Right = styled.div`	
 	@media (max-width: 800px) {		
 		width: 95%;
 		height: 50vh;

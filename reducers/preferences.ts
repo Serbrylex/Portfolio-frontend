@@ -1,7 +1,7 @@
 import { SET_LANGUAGE, SET_THEME } from '../actions/type'
 
 
-const miStorage: string | null = window.localStorage.getItem('preference');
+const miStorage: string | null = typeof window !== "undefined" ? window.localStorage.getItem('preference') : null;
 
 type State = {
 	language: string,

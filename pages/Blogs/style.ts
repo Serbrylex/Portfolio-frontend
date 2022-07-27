@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Link as Linked } from 'react-router-dom'
+import Linked from 'next/link'
 
 export const Container = styled.div`
 	width: 90%;
@@ -145,7 +145,7 @@ export const Resume = styled.p`
 
 export const WindowAlert = styled.div`
 
-	${props => props.show === 'true' ? 'display: flex' : 'display: none'};
+	${(props: {show: string}) => props.show === 'true' ? 'display: flex' : 'display: none'};
 	width: 100vw;
 	height: 100vh;
 	background-color: rgba(0,0,0,0.8);

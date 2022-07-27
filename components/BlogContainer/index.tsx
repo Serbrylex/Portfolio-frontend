@@ -8,12 +8,14 @@ import {
 
 import imageDefault from '../../assets/images/Walk.svg'
 
-const BlogContainer = ({ blog, }) => { 
+const BlogContainer = ({ blog }: { blog: TBlog }) => { 
 	
 	const url = useSelector(store => store.preferences.url)
 
 	useEffect(()=>{
-		blog.resume = blog.resume.slice(0, 80) + '...'
+		if (blog.resume !== undefined) {
+			blog.resume = blog.resume.slice(0, 80) + '...'
+		}
 	}, [])
  
 
@@ -27,8 +29,10 @@ const BlogContainer = ({ blog, }) => {
 				</ImageContainer>	
 				<DataContainer>
 					<Title>
-						<Link to={`/blog/${blog.id}`}>			   	
-							{blog.title}
+						<Link href={`/blog/${blog.id}`}>			   	
+							<a>
+								{blog.title}
+							</a>
 						</Link>
 					</Title>
 					<DateTime>{blog.date}</DateTime>

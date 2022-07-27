@@ -4,7 +4,11 @@ import {
 
 import { BsArrowRight } from 'react-icons/bs'
 
-const SeeMore = ({ link, title, color }) => {	
+const SeeMore = ({ link, title, color }: {
+	link: string,
+	title: string,
+	colo: string
+}) => {	
 
 	return(
 		<Container>

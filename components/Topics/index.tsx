@@ -4,13 +4,18 @@ import {
 	TopicsSection, TopicsUl, TopicList
 } from './style'
 
-const Topics = ({ topics }) => {
+
+type Topic = {
+	category: string;
+}
+
+const Topics = ({ topics }: { topics: Topic[] }) => {
 
 	return(
 		<TopicsSection>							
 			<TopicsUl>
 				{topics?.map((topic, index)=>(
-					<TopicList key={index} to={`/blogs/${topic.category}`}>{topic.category}</TopicList>
+					<TopicList key={index} href={`/blogs/${topic.category}`}><a>{topic.category}</a></TopicList>
 				))}									
 			</TopicsUl>
 		</TopicsSection>

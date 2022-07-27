@@ -7,7 +7,9 @@
         "@hooks/*": ["hooks/*"],
         "@api": ["api"],
         "@public/*": ["public/*"],        
-        "@reducers/*": ["reducers/*"]
+        "@reducers/*": ["reducers/*"],
+        "@routes/*": ["routes/*"],
+        "@actions/*": ["actions/*"]
       },
       "target": "es6",
       "lib": [

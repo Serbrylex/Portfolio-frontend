@@ -14,7 +14,7 @@ import { SiPlatzi } from 'react-icons/si'
 const Footer = () => { 
 
 	return(
-		<FooterContainer>
+		<FooterContainer id="contact">
 			<ContactTitleLarge>Sergio Bryan Madrid Nuñez @Serbrylex</ContactTitleLarge>
 			<ContactTitleShort>@Serbrylex</ContactTitleShort>
 			<ContactList>

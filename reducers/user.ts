@@ -1,6 +1,6 @@
 import { SET_LOGIN, CLOSE_SESSION } from '../actions/type'
 
-const miStorage = window.localStorage.getItem('user');
+const miStorage: string | null = typeof window !== "undefined" ? window.localStorage.getItem('user') : null;
 
 const initialState = JSON.parse(miStorage) || {	
 	isAuth: false,

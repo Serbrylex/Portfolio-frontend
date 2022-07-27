@@ -6,12 +6,12 @@ import {
 	Contaier, LoginContainer, Input, Button, Title
 } from './style'
 
-import { useInputValue } from '../../hooks/useInputValue'
+import { useInputValue } from '@hooks/useInputValue';
 
-import { setLogin } from '../../actions'
+import { setLogin } from '@actions';
 
 // Api
-import apiCall from '../../api' 
+import apiCall from '@api' 
 
 
 const Login = () => {

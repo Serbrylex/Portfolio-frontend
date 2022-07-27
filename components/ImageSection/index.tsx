@@ -1,24 +1,29 @@
-import { useRef } from 'react'
+import { useRef, MutableRefObject, Dispatch, SetStateAction } from 'react'
 
 import {
 	ImageContainer, Image, Button, Input
 } from './style'
 
-import { useTranslation } from '../../hooks/useTranslation'
+import { useTranslation } from '@hooks/useTranslation'
 
-const ImageSection = ({ edit = true, image, setImage, setFileImage}) => {
+const ImageSection = ({ edit = true, image, setImage, setFileImage}: {
+	edit: boolean,
+	image: StaticImageData,
+	setImage: Dispatch<SetStateAction<string>>,
+	setFileImage: Dispatch<SetStateAction<string>>,
+}) => {
 	
-	const hiddenFileInput = useRef(null);	
-	const { words } = useTranslation({ component: "image_section" })
+	const hiddenFileInput: MutableRefObject<any> = useRef(null);	
+	const { words } = useTranslation({ component: "image_section", container: undefined })
 
-	const handleClick = e => {
+	const handleClick = (e: any) => {
 		hiddenFileInput.current.click();
 	}
 
-	const handleChange = e => {
-		const fileUploaded = e.target.files[0]		
+	const handleChange = (e: any) => {
+		const fileUploaded = e.target.files[0]				
 		setFileImage(fileUploaded)
-		setImage(URL.createObjectURL(fileUploaded))
+		setImage(URL.createObjectURL(fileUploaded))		
 	}
 
 	return (
