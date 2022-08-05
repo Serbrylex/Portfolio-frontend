@@ -52,6 +52,7 @@ export const Link = styled.a`
 	justify-content: center;
 	width: auto;
 	margin: 0 auto;
+	cursor: pointer;
 	@media (max-width: 800px) {
 		font-size: 16px;
 		margin: 0 auto;

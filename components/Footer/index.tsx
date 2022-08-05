@@ -1,25 +1,48 @@
 import React from 'react'
 
 import {
-	FooterContainer, ContactTitleLarge, ContactTitleShort, ContactList, List, Ancor
+	FooterContainer, ContactTitleLarge, ContactList, List, Ancor
 } from './style' 
 
 import { 
-	AiOutlineFacebook, AiFillTwitterCircle, AiOutlineGithub, AiOutlineWhatsApp, AiOutlineMail, AiOutlineLinkedin 
+	AiOutlineFacebook, AiFillTwitterCircle, AiOutlineGithub, AiOutlineWhatsApp, AiOutlineMail, AiOutlineLinkedin
 } from 'react-icons/ai'
 
-import { SiPlatzi } from 'react-icons/si'
+import { SiPlatzi, SiEthereum } from 'react-icons/si'
 
 
-const Footer = () => { 
+const Footer = () => { 		
+
+	function fallbackCopyTextToClipboard() {		
+		try {
+			var successful = document.execCommand('copy');    
+		} catch (err) {
+			console.error('Fallback: Oops, unable to copy', err);
+		}
+		
+	}
+	function copyTextToClipboard(text: string) {
+		if (!navigator.clipboard) {
+			fallbackCopyTextToClipboard();
+			return;
+		}
+		navigator.clipboard.writeText(text).then(function() {
+			console.log('Async: Copying to clipboard was successful!');
+		}, function(err) {
+			console.error('Async: Could not copy text: ', err);
+		});
+	}
 
 	return(
-		<FooterContainer id="contact">
-			<ContactTitleLarge>Sergio Bryan Madrid Nuñez @Serbrylex</ContactTitleLarge>
-			<ContactTitleShort>@Serbrylex</ContactTitleShort>
+		<FooterContainer id="contact">						
+			<ContactTitleLarge onClick={()=>copyTextToClipboard('0xe9a5312043de79cd5dDa75BA1932E47dD659e110')}>				
+				Consider supporting: 
+				<SiEthereum/>
+				0xe9a5312043de79cd5dDa75BA1932E47dD659e110
+			</ContactTitleLarge>
 			<ContactList>
 				<List>
-					<Ancor href="https://platzi.com/p/bryan-madrid-nunez/"><SiPlatzi /></Ancor>
+					<Ancor href="https://platzi.com/p/Serbrylex/"><SiPlatzi /></Ancor>
 				</List>
 				<List>
 					<Ancor href="https://www.facebook.com/bryan.madridnunez"><AiOutlineFacebook /></Ancor>

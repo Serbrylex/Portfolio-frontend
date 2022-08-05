@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Linked from 'next/link'
 
 export const TopicsSection = styled.div`
 	width: 100%;
@@ -19,11 +18,12 @@ export const TopicsUl = styled.ul`
 	}
 `
 
-export const TopicList = styled(Linked)`
+export const TopicList = styled.a`
 	box-shadow: -5px -5px #1A2026;
 	border: 1px solid black;
 	padding: 2px 5px;
 	margin: 5px;
 	border-radius: 5px;
 	text-decoration: none;
+	cursor: pointer;
 `

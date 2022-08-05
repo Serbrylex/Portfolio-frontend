@@ -9,38 +9,20 @@ export const Container = styled.div`
 	padding: 0;	
 	color: white; 
 	margin: 0 auto;
-	display: grid;
-	grid-template-columns: 3% 60% 28% 3%;
-	grid-gap: 2%;
+	display: flex;
 
 	@media (max-width: 800px) {
 		width: 100%;
 		padding: 0; 
 		margin: 0;
-		grid-template-columns: 1fr;
-		grid-gap: 0;
-		grid-template-rows: auto auto;
-	}
-`
-
-export const Left = styled.div`
-	@media (max-width: 800px) {
-		display: none;
-	}
-`
-
-//background-image: url(${ads});
-export const Right = styled.div`	
-	@media (max-width: 800px) {		
-		width: 95%;
-		height: 50vh;
-		margin: 20px auto;
 	}
 `
 
 export const Main = styled.div`
 	display: flex;	
 	background-color: #212930;
+	width: 80%;
+	margin: 0 auto;
 	@media (max-width: 800px) {
 		flex-direction: column;
 		width: 100%;

@@ -24,7 +24,8 @@ export const ContactTitleLarge = styled.h4`
 	width: 50%
 	height: 100%;	
 	align-items: center;
-	justify-content: center;		
+	justify-content: center;	
+	cursor: pointer;	
 	@media (max-width: 500px) {
 		font-size: 16px;		
 		width: 40%;
@@ -32,22 +33,6 @@ export const ContactTitleLarge = styled.h4`
 		display: none;
 	}
 `
-
-export const ContactTitleShort = styled.h4`
-	display: none;
-	font-size: 20px;
-	color: white;
-	width: 50%
-	height: 100%;	
-	align-items: center;
-	justify-content: center;		
-	@media (max-width: 500px) {
-		font-size: 16px;		
-		width: 40%;
-		justify-content: center;		
-		display: flex;
-	}
-` 
 
 export const ContactList = styled.ul`
 	display: flex;

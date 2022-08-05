@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import Head from 'next/Head'
-import Image from 'next/image'
 
 // Assets
 import {  
@@ -12,10 +11,9 @@ import {
 	SectionSubtitle, SectionContainerContent, WeAre, WeAreTitle, WeAreWho, 
 	Name, WeAreImage, SectionContainerContentDescription, DownloadButton,
 	SectionContainerContentDescriptionTitle, SectionContainerContentDescriptionInformation, 
-	ParagraphDescription, Span, Background, Blogs, Figure
+	ParagraphDescription, Span, Background, Blogs, Figure, Image
 } from './style' 
 
-import image from '@public/images/yomero.png' 
 
 // Components
 import Project from '@components/Project'
@@ -32,7 +30,7 @@ import { useTranslation } from '@hooks/useTranslation'
 const Home = () => {
 
 	const url = useSelector(store => store.preferences.url)
-
+	const image = '/images/yomero.png'
 	const [allBlogs, setAllBlogs] = useState([])	
 	const { words } = useTranslation({ container: "home", component: undefined })
 	const [loading, setLoading] = useState<boolean>(true)
@@ -80,7 +78,6 @@ const Home = () => {
 											<Image
 												src={image}
 												alt='@Serbrylex'
-												layout='fixed'
 											/>										
 										</Figure>
 									</WeAreImage>
@@ -96,9 +93,7 @@ const Home = () => {
 								<Figure>
 									<Image 
 										src={image} 
-										alt="@Serbrylex" 
-										layout="fill"
-										objectFit="cover"
+										alt="@Serbrylex" 																				
 									/>
 								</Figure>	
 							</SectionContainerPathImage>

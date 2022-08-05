@@ -4,6 +4,8 @@ import {
 	TopicsSection, TopicsUl, TopicList
 } from './style'
 
+import Linked from 'next/link'
+
 
 type Topic = {
 	category: string;
@@ -11,11 +13,13 @@ type Topic = {
 
 const Topics = ({ topics }: { topics: Topic[] }) => {
 
-	return(
+	return( 
 		<TopicsSection>							
 			<TopicsUl>
-				{topics?.map((topic, index)=>(
-					<TopicList key={index} href={`/blogs/${topic.category}`}><a>{topic.category}</a></TopicList>
+				{topics?.map((topic, index)=>(	
+					<Linked key={index} href={`/blogs/${topic.category}`}>
+						<TopicList>{topic.category}</TopicList>
+					</Linked>
 				))}									
 			</TopicsUl>
 		</TopicsSection>

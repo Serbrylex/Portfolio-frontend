@@ -60,7 +60,7 @@ const BlogsGrid = ({ blogs, handleFirstDelete }: {
 		const aux_elements = []
 		if (blogs.length > 0) {
 			aux_elements.push(
-				<Blog blog={blogs[0]} position={0} handleFirstDelete={handleFirstDelete}/>
+				<Blog blog={blogs[0]} position={0} handleFirstDelete={handleFirstDelete} key={0}/>
 				
 			)
 			for (var i = 1; i < blogs.length; i+=5) {
@@ -68,15 +68,15 @@ const BlogsGrid = ({ blogs, handleFirstDelete }: {
 					<>	
 						{blogs.length > i &&
 						<GroupOfThree>
-							{blogs.length > i && <Blog blog={blogs[i]} position={i} handleFirstDelete={handleFirstDelete}/>}
-							{blogs.length > i+1 && <Blog blog={blogs[i+1]} position={i+1} handleFirstDelete={handleFirstDelete}/>}
-							{blogs.length > i+2 && <Blog blog={blogs[i+2]} position={i+2} handleFirstDelete={handleFirstDelete}/>}
+							{blogs.length > i && <Blog blog={blogs[i]} key={i} position={i} handleFirstDelete={handleFirstDelete}/>}
+							{blogs.length > i+1 && <Blog blog={blogs[i+1]} key={i+1} position={i+1} handleFirstDelete={handleFirstDelete}/>}
+							{blogs.length > i+2 && <Blog blog={blogs[i+2]} key={i+2} position={i+2} handleFirstDelete={handleFirstDelete}/>}
 						</GroupOfThree>		
 						}
 						{blogs.length > i+3 &&
 						<GroupOfTwo>
-							{blogs.length > i+3 && <Blog blog={blogs[i+3]} position={i+3} handleFirstDelete={handleFirstDelete}/>}
-							{blogs.length > i+4 && <Blog blog={blogs[i+4]} position={i+4} handleFirstDelete={handleFirstDelete}/>}
+							{blogs.length > i+3 && <Blog blog={blogs[i+3]} key={i+3} position={i+3} handleFirstDelete={handleFirstDelete}/>}
+							{blogs.length > i+4 && <Blog blog={blogs[i+4]} key={i+4} position={i+4} handleFirstDelete={handleFirstDelete}/>}
 						</GroupOfTwo>		
 						}					
 					</>

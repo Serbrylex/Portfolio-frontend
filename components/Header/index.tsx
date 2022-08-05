@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Linked from 'next/link'
+import { useRouter } from 'next/router'
 
 import { 
 	HeaderContainer, HeaderLinksContainer, Link,
@@ -13,26 +14,29 @@ import { AiOutlineBook } from 'react-icons/ai'
 import { useTranslation } from '@hooks/useTranslation'
 
 const Header = () => {
- 
+	
+	const router = useRouter()
 	const isAuth: boolean = useSelector(store => store.user.isAuth)
 	const { words } = useTranslation({ component: "header", container: undefined })
+	// serbrylex.com: prefix = ''; serbrylex.com/blogs/1: prefix = '/'
+	const [prefix] = useState(router.pathname === '/' ? '' : '/'); 
 
 	return (
 		<HeaderContainer>			
 			<ContactList who="first">
-				<Linked href='#projects' title="Blogs">
+				<Linked href={`${prefix}#projects`} title="Blogs">
 					<Link><PLinks>Proyectos</PLinks></Link>
 				</Linked>
 
 				<Line></Line>
 
-				<Linked href='#about' title="Add Blog">
+				<Linked href={`${prefix}#about`} title="Add Blog">
 					<Link><PLinks>About</PLinks></Link>
 				</Linked>	
 
 				<Line></Line>
 
-				<Linked href='#interestings' title="Add Blog">
+				<Linked href={`${prefix}#interestings`} title="Add Blog">
 					<Link><PLinks>Intereses</PLinks></Link>
 				</Linked>	
 			</ContactList>		

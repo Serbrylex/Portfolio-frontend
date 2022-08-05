@@ -11,8 +11,8 @@ import remarkGfm from 'remark-gfm'
 
 // Components
 import ImageSection from '@components/ImageSection'
-import Adds from '@components/Adds'
 import Topics from '@components/Topics'
+import Loading from '@components/Loading'
  
 // Api
 import apiCall from '@api' 
@@ -23,9 +23,10 @@ import {
 	QuestionSection, ResumeSection, ParagraphResponse, Subtitle, 
 	SubtitleSection, ParagraphSectionOne, LinksContainer, TheLinks,
 	Left, Right
-} from './style'
+} from './style';
 
-import './style.css'
+import style from './markdown-styles.module.css';
+
 
 import imageDefault from '@public/images/Walk.svg'
 
@@ -39,8 +40,10 @@ import { useTranslation } from '@hooks/useTranslation'
 const Blog = () => {
 
 	
-	const { query: { id } } = useRouter()
+	const router = useRouter()
+	const [isLoading, setIsLoading] = useState<boolean>(true)
 	const [allBlog, setAllBlog] = useState<TBlog>({
+		id: 1,
 		user: 25,
 		title: '',
 		image: '',
@@ -55,26 +58,30 @@ const Blog = () => {
 	const { words } = useTranslation({ container: 'blog', component: undefined })
 	const url = useSelector(store => store.preferences.url)
 
-	const blogDetail = async () => {
-		const response = await apiCall({url: `${url}/blog/${id}/`})		
-		const data = await response.json()		
-		console.log(data)
+	const blogDetail = async (refe: string) => {		
+		const response = await apiCall({url: `${url}/blog/${refe}/`})		
+		const data = await response.json()				
 		setAllBlog(data)
+		setIsLoading(false)
 	}
 
-
-	useEffect(()=>{
-		blogDetail()
-	}, [])
+	useEffect(()=>{		
+		if (router.query.id !== 'object' && router.query.id !== undefined ) {
+			const refe: string = router.query.id as string;
+			if (parseInt(refe) !== NaN) {
+				blogDetail(refe);
+			}		
+		}
+	}, [router.query.id])
 
 	
 	return (		
-		<Container>	
+		<Container>					
 			<Head>
 				<title>{allBlog.title ? allBlog.title : 'Serbrylex blog post'}</title>
 				<meta name="description" content={`Este es el blog sobre: ${allBlog.title}, ${allBlog.categories}`}/>
 			</Head>
-			<Left></Left>
+			{isLoading ? <Loading /> :
 			<Main>
 				<Content>
 					<TitleSection>							
@@ -86,9 +93,8 @@ const Blog = () => {
 					{ allBlog.image ?
 						<ImageSection edit={false} image={allBlog.image} /> :
 						<ImageSection edit={false} image={imageDefault} /> 
-					}						
-					
-					<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+					}														
+					<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} className={style.reactMarkDown}>
 						{allBlog.content}
 					</ReactMarkdown>						
 
@@ -98,9 +104,9 @@ const Blog = () => {
 							<TheLinks href={allBlog.github}><AiOutlineGithub />GitHub</TheLinks>								
 						</LinksContainer>
 					}
-				</Content>
+				</Content>				
 			</Main>		
-			<Right></Right>		
+			}						
 		</Container>					
 	)	
 }

@@ -56,7 +56,7 @@ const ToolsInterestings = () => {
 						<IconContainer>
 							<FaFont />
 						</IconContainer>
-						English C1
+						English B1
 					</LastSectionList>
 					<LastSectionList>
 						<IconContainer>
