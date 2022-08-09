@@ -1,7 +1,7 @@
 // React
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Head from 'next/Head'
+import Head from 'next/head'
 
 // Components
 import Loading from '@components/Loading'

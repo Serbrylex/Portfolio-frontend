@@ -48,8 +48,7 @@ const Login = () => {
 	return(
 		<Contaier>		
 			<Head>
-                <title>Admin Login</title>
-				<meta name='description' content={`Login of Admin`} />
+                <title>Admin Login</title>				
 			</Head>	
 			<LoginContainer>				
 				<Title>Login</Title>			

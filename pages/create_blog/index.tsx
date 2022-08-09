@@ -1,7 +1,7 @@
 // React
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Head from 'next/Head'
+import Head from 'next/head'
 
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'

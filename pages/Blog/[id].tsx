@@ -1,7 +1,7 @@
 // React
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import Head from 'next/Head'
+import Head from 'next/head'
 
 // React Markdown
 import ReactMarkdown from 'react-markdown'
