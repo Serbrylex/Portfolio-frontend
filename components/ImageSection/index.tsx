@@ -6,10 +6,6 @@ import {
 
 import { useTranslation } from '@hooks/useTranslation'
 
-type File = {
-	'name': string
-}
-
 const ImageSection = ({ edit = true, image, setImage=()=>{}, setFileImage=()=>{}}: {
 	edit: boolean,
 	image: string,

@@ -38,9 +38,11 @@ const CreateBlog = () => {
 	const url = useAppSelector(store => store.preferences.url)
 	const history = useRouter()	
 
-	if (!user.isAuth){
-		history.push("/admin")
-	}
+	useEffect(()=>{
+		if (!user.isAuth){
+			history.push("/admin")
+		}
+	}, [user.isAuth])
 		
 	const [loading, setLoading] = useState(false)
 
