@@ -1,14 +1,20 @@
 import { SET_LOGIN, CLOSE_SESSION } from '../actions/type'
 
+type State = {
+	isAuth: boolean,
+	user: object,
+	access_token: null | string
+}
+
 const miStorage: string | null = typeof window !== "undefined" ? window.localStorage.getItem('user') : null;
 
-const initialState = JSON.parse(miStorage) || {	
+const initialState: State = miStorage !== null ? JSON.parse(miStorage as string) : {	
 	isAuth: false,
 	user: {},
 	access_token: null
 }
 
-const userReducer = (state = initialState, action) => {	
+const userReducer = (state = initialState, action: TAction) => {	
 
 	switch(action.type) {				
 

@@ -53,3 +53,8 @@ declare var Blob: {
   prototype: Blob;
   new(blobParts?: BlobPart[], options?: BlobPropertyBag): Blob;
 };
+
+type TAction = {
+	type: string,
+	payload: any
+}
