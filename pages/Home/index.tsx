@@ -1,7 +1,5 @@
 // React dependencies
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-
 import Head from 'next/Head'
 
 // Assets
@@ -26,13 +24,14 @@ import apiCall, { projects } from '@api'
 
 // Hooks
 import { useTranslation } from '@hooks/useTranslation'
+import { useAppSelector } from '@hooks/useReduxH'
 
 const Home = () => {
 
-	const url = useSelector(store => store.preferences.url)
+	const url = useAppSelector(store => store.preferences.url);
 	const image = '/images/yomero.png'
 	const [allBlogs, setAllBlogs] = useState([])	
-	const { words } = useTranslation({ container: "home", component: undefined })
+	const { words } = useTranslation({ container: "home", component: '' })
 	const [loading, setLoading] = useState<boolean>(true)
 
 	const ApiAsync = async () => {
@@ -53,6 +52,12 @@ const Home = () => {
 		ApiAsync()
 	},[])
 
+	const renderParagraphs = (array: string | string[]) => {
+		const para = array as string[]
+		return para.map((text, index)=>(
+			<ParagraphDescription key={index}>{text}</ParagraphDescription>									
+		))}
+
 	if (loading) {
 		return <Loading />
 	} else {
@@ -63,7 +68,7 @@ const Home = () => {
 				<Container>
 				<Head>
 					<title>Serbrylex | Home</title>					
-					<meta name='description' content={words.subtitle} />
+					<meta name='description' content={words.subtitle as string} />
 				</Head>
 					<BodyContainer>
 						<SectionContainerPath>
@@ -99,8 +104,8 @@ const Home = () => {
 							</SectionContainerPathImage>
 						</SectionContainerPath>
 
-						<SectionContainer color="false" id="projects">
-							<SectionContainerTitle align='left'>
+						<SectionContainer tcolor={false} id="projects">
+							<SectionContainerTitle>
 								<SectionSubtitle>{words.projects}</SectionSubtitle>
 							</SectionContainerTitle>
 							<SectionContainerContent>
@@ -111,39 +116,35 @@ const Home = () => {
 						</SectionContainer>				
 
 						{allBlogs.length > 0 &&
-							<SectionContainer color="true">
-								<SectionContainerTitle align='right'>
+							<SectionContainer tcolor={true}>
+								<SectionContainerTitle>
 									<SectionSubtitle>{words.blogs}</SectionSubtitle>
 								</SectionContainerTitle>
 								<SectionContainerContent>
 									<Blogs>																
 										{allBlogs?.map((blog, index)=>(
-											<BlogResume blog={blog} url={url} key={index}/>
+											<BlogResume blog={blog} key={index}/>
 										))}
 									</Blogs>
 								</SectionContainerContent>						
 							</SectionContainer>
 						}
 
-						<SectionContainer color="false" id="about">
-							<SectionContainerTitle align='left'>
+						<SectionContainer tcolor={false} id="about">
+							<SectionContainerTitle>
 								<SectionSubtitle>{words.about_me}</SectionSubtitle>
 							</SectionContainerTitle>
 							<SectionContainerContent>
 								<SectionContainerContentDescription>
 									<SectionContainerContentDescriptionTitle>{words.who}</SectionContainerContentDescriptionTitle>
 									<SectionContainerContentDescriptionInformation>
-										{words.iam.map((text, index)=>(
-											<ParagraphDescription key={index}>{text}</ParagraphDescription>									
-										))}
+										{renderParagraphs(words.iam)}
 									</SectionContainerContentDescriptionInformation>
 								</SectionContainerContentDescription>							
 								<SectionContainerContentDescription>
 									<SectionContainerContentDescriptionTitle>{words.trayectory}</SectionContainerContentDescriptionTitle>
 									<SectionContainerContentDescriptionInformation>
-										{words.trayecotry_description.map((text, index)=>(
-											<ParagraphDescription key={index}>{text}</ParagraphDescription>																				
-										))}
+										{renderParagraphs(words.trayecotry_description)}
 									</SectionContainerContentDescriptionInformation>
 								</SectionContainerContentDescription>
 							</SectionContainerContent>

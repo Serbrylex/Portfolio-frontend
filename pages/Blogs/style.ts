@@ -143,9 +143,13 @@ export const Resume = styled.p`
 	}	
 `
 
-export const WindowAlert = styled.div`
+interface Props {
+	show: boolean
+}
 
-	${(props: {show: string}) => props.show === 'true' ? 'display: flex' : 'display: none'};
+export const WindowAlert = styled.div<Props>`
+
+	${(props) => props.show ? 'display: flex' : 'display: none'};
 	width: 100vw;
 	height: 100vh;
 	background-color: rgba(0,0,0,0.8);

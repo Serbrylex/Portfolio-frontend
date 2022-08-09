@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 import espanol from "@public/translations/es.json"
 import english from "@public/translations/en.json"
 
-export const useTranslation = ({ container = undefined, component = undefined }: { container: string | undefined, component: string | undefined }) => {
+
+export const useTranslation = ({ container = '', component = '' }: { container: string, component: string }) => {
 	const [loading, setLoading] = useState(true)
 	const [language] = useState(()=>{
 		// By default is
@@ -12,18 +13,55 @@ export const useTranslation = ({ container = undefined, component = undefined }:
 		if (typeof languageShort === "string" && languageShort.includes('es')) {
 			return 'es'
 		}
-		return 'en'
+		return 'en' 
 	})
-	const [words, setWords] = useState({})
 
-	useEffect(()=>{		
-		let data = language === 'en' ? english : espanol;
-		let response: object = {};
+	interface Ele {
+		[key: string]: string | string[]
+	}
+
+	const [words, setWords] = useState<Ele>({
+		"questions": '',
+		"resume": '',
+		"topics": '',
+		"link": '',
+		"subtitle": '',
+		"delete_message": '',
+		"si": '',
+		"no": '',
+		"search": '',		
+		"whoiam": '',
+		"download_cv": '',
+		"projects": '',
+		"about_me": '',
+		"who": '',
+		"iam": [],
+		"trayectory": '',
+		"trayecotry_description": [],
+		"tools": '',
+		"interestings": '',
+		"blogs": '',
+		"add_blog": '',
+		"upload_image": '',
+		"description": '',
+		"dificulties": ''
+	})
+
+	useEffect(()=>{			
+		interface CE {
+			[key: string]: Ele
+		}
+
+		interface CC {
+			[key: string]: CE
+		}
+
+		let response: Ele = {};
+		let data: CC = language === 'en' ? english : espanol;
 		
-		
-		if (typeof container !== 'undefined' && container.length > 0) {
+		if (container.length > 0) {
 			response = data.containers[container]
-		} else if (typeof component !== 'undefined' && component.length > 0) {
+		} else if (component.length > 0) {
 			response = data.components[component]
 		}
 		

@@ -1,18 +1,18 @@
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+/*import { useEffect } from 'react'
 
 import { useInputValue } from '@hooks/useInputValue'  
 import { useImage } from '@hooks/useImage'	
+import { useAppSelector } from '@hooks/useReduxH'
 
 import ImageSection from '@components/ImageSection'
 import apiCall from '@api'
 
 import { ParagraphContainer, ParagraphSection, TextArea, ParagraphResponse } from './style'
 
-const Paragraph = ({ idSubtopic, send }) => {
+const Paragraph = ({ idSubtopic, send }: {idSubtopic: number, send: boolean}) => {
 
-	const url = useSelector(store => store.preferences.url)
-	const user = useSelector(store => store.user)
+	const url = useAppSelector(store => store.preferences.url)
+	const user = useAppSelector(store => store.user)
 
 	const paragraph = useInputValue('This will be a paragraph')
 	const imagen = useImage('')	
@@ -21,10 +21,9 @@ const Paragraph = ({ idSubtopic, send }) => {
 		let objectOne = new FormData()	    				
 	
 		objectOne.append('paragraph', paragraph.value)
-		objectOne.append('id', idSubtopic)
-		if (imagen.fileImage.name?.length){
-			objectOne.append('picture', imagen.fileImage, imagen.fileImage.name)
-		}
+		objectOne.append('id', idSubtopic)		
+		objectOne.append('picture', imagen.fileImage, imagen.image)
+		
 
 		await apiCall({
 			url: `${url}/blog/subtem/paragraph/`, 
@@ -47,18 +46,17 @@ const Paragraph = ({ idSubtopic, send }) => {
 		<ParagraphContainer>
 			<ParagraphSection>
 				{ paragraph.show ? 			
-					<TextArea 
-						type="text" 									
-						maxlength='500'
+					<TextArea  									
 						onBlur={() => paragraph.setShow(false)}									
-						{...paragraph}
-					/> : 
+						{...paragraph}						
+					></TextArea>
+					: 
 					<ParagraphResponse onClick={() => paragraph.setShow(true)}>{paragraph.value}</ParagraphResponse>						
 				}
 			</ParagraphSection>
-			<ImageSection {...imagen} />	
+			<ImageSection edit={false} {...imagen} />	
 		</ParagraphContainer>
 	)
 }
 
-export default Paragraph
+export default Paragraph*/

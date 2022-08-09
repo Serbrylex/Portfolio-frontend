@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import Head from 'next/Head'
 
 import Header from '@components/Header'
 import Footer from '@components/Footer'

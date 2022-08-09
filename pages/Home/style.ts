@@ -149,16 +149,19 @@ export const Image = styled.img`
 	height: 100%;
 	object-fit: cover;
 `
+interface Props {
+	tcolor: boolean
+}
 
-export const SectionContainer = styled.div`
+export const SectionContainer = styled.div<Props>`
 	display: flex;
 	align-items: center;	
 	width: 90%;
 	height: auto;
 	color: white;
 	flex-direction: column;	  
-	padding: 1% 5%;
-    background-color: ${props => props.color === "true" ? "#3B4956" : "#212930"};
+	padding: 1% 5%;	
+    background-color: ${props => props.tcolor ? "#3B4956" : "#212930"};
     @media (max-width: 800px) {
 		padding: 1% 4%;	
 		width: 92%;

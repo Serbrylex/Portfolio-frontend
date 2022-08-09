@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+/*import React, { useEffect } from 'react'
 
 import {
 	BlogDiv, DataContainer, ImageContainer, Image, Resume, Link, Title, DateTime
 } from './style'
 
 
-import imageDefault from '../../assets/images/Walk.svg'
+import { useAppSelector } from '@hooks/useReduxH'
 
 const BlogContainer = ({ blog }: { blog: TBlog }) => { 
 	
-	const url = useSelector(store => store.preferences.url)
+	const url = useAppSelector(store => store.preferences.url)
+	const imageDefault = '/images/Walk.svg'
 
 	useEffect(()=>{
 		if (blog.resume !== undefined) {
@@ -19,11 +19,11 @@ const BlogContainer = ({ blog }: { blog: TBlog }) => {
 	}, [])
  
 
-	return(
+	/*return(
 			<BlogDiv>
 				<ImageContainer>					
-					{ blog.main_image ?
-						<Image src={blog.main_image} /> :
+					{ blog.image ?
+						<Image src={blog.image} /> :
 						<Image src={imageDefault} /> 
 					}
 				</ImageContainer>	
@@ -40,6 +40,8 @@ const BlogContainer = ({ blog }: { blog: TBlog }) => {
 				</DataContainer>
 			</BlogDiv>
 	)
+
+	return <div></div>
 }
 
-export default BlogContainer
+export default BlogContainer*/

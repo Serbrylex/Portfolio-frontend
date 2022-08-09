@@ -7,11 +7,7 @@ import {
 import Linked from 'next/link'
 
 
-type Topic = {
-	category: string;
-}
-
-const Topics = ({ topics }: { topics: Topic[] }) => {
+const Topics = ({ topics }: { topics: TTopic[] }) => {
 
 	return( 
 		<TopicsSection>							

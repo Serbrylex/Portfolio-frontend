@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 import Linked from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -12,12 +11,13 @@ import {
 import { AiOutlineBook } from 'react-icons/ai'
 
 import { useTranslation } from '@hooks/useTranslation'
+import { useAppSelector } from '@hooks/useReduxH'
 
 const Header = () => {
 	
 	const router = useRouter()
-	const isAuth: boolean = useSelector(store => store.user.isAuth)
-	const { words } = useTranslation({ component: "header", container: undefined })
+	const isAuth: boolean = useAppSelector(store => store.user.isAuth)
+	const { words } = useTranslation({ component: "header", container: '' })
 	// serbrylex.com: prefix = ''; serbrylex.com/blogs/1: prefix = '/'
 	const [prefix] = useState(router.pathname === '/' ? '' : '/'); 
 
@@ -25,25 +25,25 @@ const Header = () => {
 		<HeaderContainer>			
 			<ContactList who="first">
 				<Linked href={`${prefix}#projects`} title="Blogs">
-					<Link><PLinks>Proyectos</PLinks></Link>
+					<Link who='none'><PLinks>Proyectos</PLinks></Link>
 				</Linked>
 
 				<Line></Line>
 
 				<Linked href={`${prefix}#about`} title="Add Blog">
-					<Link><PLinks>About</PLinks></Link>
+					<Link who='none'><PLinks>About</PLinks></Link>
 				</Linked>	
 
 				<Line></Line>
 
 				<Linked href={`${prefix}#interestings`} title="Add Blog">
-					<Link><PLinks>Intereses</PLinks></Link>
+					<Link who='none'><PLinks>Intereses</PLinks></Link>
 				</Linked>	
 			</ContactList>		
 
 			<HeaderLinksContainer>
 				<Linked href='/'>
-					<Link>
+					<Link who='none'>
 					<MyData>
 						<MyDataDescription>Web Developer</MyDataDescription>
 						<MyDataTitle>Bryan Madrid</MyDataTitle>
@@ -52,10 +52,10 @@ const Header = () => {
 				</Linked>
 			</HeaderLinksContainer>	
 						
-			<ContactList>
+			<ContactList who='none'>
 
 				<Linked href='/blogs/all' title="Blogs">
-					<Link>
+					<Link who='none'>
 					<PLinks>Blogs</PLinks>	
 					<IconContainer>
 						<AiOutlineBook />
@@ -65,8 +65,8 @@ const Header = () => {
 		
 				<Line></Line>
 
-				<Linked href='#contact' title="Add Blog" who='first'>
-					<Link><PLinks>Contact</PLinks></Link>
+				<Linked href='#contact' title="Add Blog">
+					<Link who='first'><PLinks>Contact</PLinks></Link>
 				</Linked>	
 
 				{isAuth && 
@@ -74,7 +74,7 @@ const Header = () => {
 						<Line></Line>
 
 						<Linked href='/create_blog' title="Add Blog">
-							<Link><PLinks>{words.add_blog}</PLinks></Link>
+							<Link who='dif'><PLinks>{words.add_blog}</PLinks></Link>
 						</Linked>						
 					</>
 				}

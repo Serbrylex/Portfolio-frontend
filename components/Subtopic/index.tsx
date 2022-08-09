@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import {useSelector} from 'react-redux'
+/*import { useState, useEffect } from 'react'
 
 import Paragraph from '@components/Paragraph'
 
@@ -8,17 +7,18 @@ import {
 } from './style'
  
 import { useInputValue } from '@hooks/useInputValue';
+import { useAppSelector } from '@hooks/useReduxH'
 
 import apiCall from '@api'
 
 
 const Subtopic = ({ idPost = null, send = false }) => {	
 		
-	const user = useSelector(store => store.user)
-	const url = useSelector(store => store.preferences.url)
+	const user = useAppSelector(store => store.user)
+	const url = useAppSelector(store => store.preferences.url)
 
 	const title = useInputValue('Subtitle')	
-	const [idSubtopic, setIdSubtopic] = useState(undefined)		
+	const [idSubtopic, setIdSubtopic] = useState<number>(999)		
 	const [paragraphsSend, setParagraphsSend] = useState([false])	
 
 	const sendData = async () => {
@@ -85,7 +85,7 @@ const Subtopic = ({ idPost = null, send = false }) => {
 				{title.show ? 
 					<InputTitle 
 						type="text"
-						maxlength='50'
+						max-length='50'
 						onBlur={() => title.setShow(false)}									
 						{...title}
 					/> : 
@@ -103,4 +103,4 @@ const Subtopic = ({ idPost = null, send = false }) => {
 
 }
 
-export default Subtopic
+export default Subtopic*/

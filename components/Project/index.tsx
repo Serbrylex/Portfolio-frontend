@@ -18,7 +18,7 @@ import { useTranslation } from '@hooks/useTranslation'
 const Project = ({ project }: {project: TProject}) => {
  
 	const date = useResetDate({ date: project.date })
-	const { words, loading } = useTranslation({ component: "project", container: undefined })
+	const { words, loading } = useTranslation({ component: "project", container: '' })
 	
 	return( 
 		<ProyectContainer>

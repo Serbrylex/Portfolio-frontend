@@ -1,12 +1,10 @@
 // React
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import Head from 'next/Head'
 
 // Components
 import Loading from '@components/Loading'
-import Layout from '@components/Layout'
 import Topics from '@components/Topics'
 import BlogsGrid from '@components/BlogsGrid'
 
@@ -23,6 +21,7 @@ import apiCall from '@api'
 // Hooks
 import { useInputValue } from '@hooks/useInputValue'
 import { useTranslation } from '@hooks/useTranslation'
+import { useAppSelector } from '@hooks/useReduxH'
 
 type Element = {
 	id: number,
@@ -33,7 +32,7 @@ type Element = {
 const Blogs = () => {
  
 	const { query: { filters } }  = useRouter()
-	const [blogs, setBlogs] = useState([])
+	const [blogs, setBlogs] = useState<TBaseBlog[]>([])
 	const [isLoading, setIsLoading] = useState(true)
 	const [showDelete, setShowDelete] = useState<boolean>(false)
 	const [element, setElement] = useState<Element>({
@@ -42,11 +41,11 @@ const Blogs = () => {
 		title: 'hi'
 	})	
 
-	const user = useSelector(store => store.user)
-	const url = useSelector(store => store.preferences.url)
+	const user = useAppSelector(store => store.user)
+	const url = useAppSelector(store => store.preferences.url)
 
 	const search = useInputValue('')
-	const {words, loading} = useTranslation({ container: 'blogs', component: undefined })
+	const {words, loading} = useTranslation({ container: 'blogs', component: '' })
 	const [topics, setTopics] = useState([])	
 
 	const handleFirstDelete = (id: number, index: number, title: string) => {
@@ -69,7 +68,7 @@ const Blogs = () => {
 				'Content-Type': 'application/json',				
 			}, 
 			method: 'DELETE' 
-		})
+		})	
 
 		let newBlog = blogs
 		
@@ -93,7 +92,7 @@ const Blogs = () => {
 		if (response.status !== 200) {
 			setBlogs([])
 		} else {
-			const data = await response.json()						
+			const data: TBaseBlog[] = await response.json()						
 			setBlogs(data)			
 		}
 		setIsLoading(false)
@@ -130,7 +129,7 @@ const Blogs = () => {
 					<title>{filters}</title>
 					<meta name="description" content={`${words.subtitle}: ${filters}`} />
 				</Head>
-				<WindowAlert show={showDelete.toString()}>
+				<WindowAlert show={showDelete}>
 					<WindowAlertItems>
 						<AlerText>{words.delete_message}: {element.title}?</AlerText>
 						<Buttons>
@@ -139,10 +138,10 @@ const Blogs = () => {
 						</Buttons>
 					</WindowAlertItems>
 				</WindowAlert>
-				<BlogsContainer show={showDelete.toString()}>
+				<BlogsContainer>
 					<BlogsContainerHeader>						
 						<MainTitle>{filters}</MainTitle>
-						<SearchBar {...search} placeholder={words.search} />
+						<SearchBar {...search} placeholder={words.search as string} />
 					</BlogsContainerHeader>
 					<Topics topics={topics}/>
 					<BlogsContainerMap>

@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
 
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
-
-import apiCall from '@api'
 
 // Assets
 import {
@@ -16,16 +13,18 @@ import {
 
 import { AiFillCloseCircle } from 'react-icons/ai'
 
+import { useAppSelector, useAppDispatch } from '@hooks/useReduxH'
+
 
 const Blog = ({ blog, position, handleFirstDelete }: {
-	blog: TBlog,
+	blog: TBaseBlog,
 	position: number,
 	handleFirstDelete: Function
 }) => {
 
 	const history = useRouter()
-	const user = useSelector(store => store.user)
-	const url = useSelector(store => store.preferences.url)
+	const user = useAppSelector(store => store.user)
+	const url = useAppSelector(store => store.preferences.url)
 
 	return (
 		<BlogContainer first_blog={position === 0}>
@@ -46,17 +45,15 @@ const Blog = ({ blog, position, handleFirstDelete }: {
 }
 
 const BlogsGrid = ({ blogs, handleFirstDelete }: {
-	blogs: TBlog[],
+	blogs: TBaseBlog[],
 	handleFirstDelete: Function
 }) => {	
 	
-	const [elements, setElements] = useState([])
-	const user = useSelector(store => store.user)
-	const url = useSelector(store => store.preferences.url)	
+	const [elements, setElements] = useState<JSX.Element[]>([])
+	const user = useAppSelector(store => store.user)
+	const url = useAppSelector(store => store.preferences.url)	
 
-	useEffect(()=>{
-		console.log('Im inside')
-		console.log(blogs)
+	useEffect(()=>{	
 		const aux_elements = []
 		if (blogs.length > 0) {
 			aux_elements.push(
@@ -67,14 +64,14 @@ const BlogsGrid = ({ blogs, handleFirstDelete }: {
 				aux_elements.push(				
 					<>	
 						{blogs.length > i &&
-						<GroupOfThree>
+						<GroupOfThree key={i}>
 							{blogs.length > i && <Blog blog={blogs[i]} key={i} position={i} handleFirstDelete={handleFirstDelete}/>}
 							{blogs.length > i+1 && <Blog blog={blogs[i+1]} key={i+1} position={i+1} handleFirstDelete={handleFirstDelete}/>}
 							{blogs.length > i+2 && <Blog blog={blogs[i+2]} key={i+2} position={i+2} handleFirstDelete={handleFirstDelete}/>}
 						</GroupOfThree>		
 						}
 						{blogs.length > i+3 &&
-						<GroupOfTwo>
+						<GroupOfTwo key={i+1}>
 							{blogs.length > i+3 && <Blog blog={blogs[i+3]} key={i+3} position={i+3} handleFirstDelete={handleFirstDelete}/>}
 							{blogs.length > i+4 && <Blog blog={blogs[i+4]} key={i+4} position={i+4} handleFirstDelete={handleFirstDelete}/>}
 						</GroupOfTwo>		

@@ -43,8 +43,10 @@ export const PLinks = styled.p`
 		display: none;
 	}
 `
-
-export const Link = styled.a`
+interface Props {
+	who: string;
+}
+export const Link = styled.a<Props>`
 	color: white;
 	text-decoration: none;	
 	display: flex;
@@ -99,7 +101,11 @@ export const MyDataDescription = styled.p`
 	}
 `
 
-export const ContactList = styled.ul`
+interface Props {
+	who: string;
+}
+
+export const ContactList = styled.ul<Props>`
 	display: flex;
 	align-items: center;
 	width: auto;

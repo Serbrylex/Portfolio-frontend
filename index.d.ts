@@ -6,21 +6,21 @@ type TUser = {
   isAuth?: boolean
 }
 
-type TBlog = {
+type TBaseBlog = {
   id: number,
   user: number,
   title: string,
   image: string,
   content: string,
-  date: Date,  
+  date: string,  
   views: number,
   github: string,
   link: string,
-  categories?: string[],
-  resume?: string
 }
 
-type TBlogs = Blog[];
+type TBlog = TBaseBlog & {
+  categories: TTopic[],
+}
 
 type TProject = {
   name: string,
@@ -33,3 +33,23 @@ type TProject = {
   link: string,
   url?: string
 }
+
+type TTopic = {
+	category: string;
+}
+
+declare module "*.json" {
+  const dataValue: any;
+  export default dataValue;
+}
+
+interface Blob {
+  readonly size: number;
+  readonly type: string;
+  slice(start?: number, end?: number, contentType?: string): Blob;
+}
+
+declare var Blob: {
+  prototype: Blob;
+  new(blobParts?: BlobPart[], options?: BlobPropertyBag): Blob;
+};

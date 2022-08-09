@@ -41,7 +41,12 @@ export const GroupOfTwo = styled.div`
 	}
 `
 
-export const BlogContainer = styled.div`
+interface Props {
+	first_blog: boolean;
+}
+    
+
+export const BlogContainer = styled.div<Props>`
 	width: 100%;
 	height: 50vh;
 	display: grid;
@@ -65,7 +70,7 @@ export const BlogContainer = styled.div`
 	`}		
 `
 
-export const ImageContainer = styled.figure`	
+export const ImageContainer = styled.figure<Props>`	
 	margin-bottom: 20px;
 	height: 100%;
 	${props => props.first_blog === true && css`

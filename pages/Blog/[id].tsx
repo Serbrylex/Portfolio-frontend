@@ -1,10 +1,9 @@
 // React
 import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 import Head from 'next/Head'
 
-import { useState, useEffect, Fragment } from 'react'
-import { useSelector } from 'react-redux'
-
+// React Markdown
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm' 
@@ -19,14 +18,10 @@ import apiCall from '@api'
 
 // Assets
 import {
-	Container, Main, Content, TitleSection, HTitle, 
-	QuestionSection, ResumeSection, ParagraphResponse, Subtitle, 
-	SubtitleSection, ParagraphSectionOne, LinksContainer, TheLinks,
-	Left, Right
+	Container, Main, Content, TitleSection, HTitle, LinksContainer, TheLinks
 } from './style';
 
 import style from './markdown-styles.module.css';
-
 
 import imageDefault from '@public/images/Walk.svg'
 
@@ -36,6 +31,7 @@ import {
 
 // Hooks
 import { useTranslation } from '@hooks/useTranslation'
+import { useAppSelector } from '@hooks/useReduxH'
 
 const Blog = () => {
 
@@ -48,15 +44,14 @@ const Blog = () => {
 		title: '',
 		image: '',
 		content: '',
-		date: new Date(),
+		date: new Date().toString(),
 		views: 25,
 		github: '',
 		link: '',
-		categories: [],
-		resume: ''
+		categories: []
 	});
-	const { words } = useTranslation({ container: 'blog', component: undefined })
-	const url = useSelector(store => store.preferences.url)
+	const { words } = useTranslation({ container: 'blog', component: '' })
+	const url = useAppSelector(store => store.preferences.url)
 
 	const blogDetail = async (refe: string) => {		
 		const response = await apiCall({url: `${url}/blog/${refe}/`})		
@@ -91,8 +86,8 @@ const Blog = () => {
 					<Topics topics={allBlog.categories} />
 
 					{ allBlog.image ?
-						<ImageSection edit={false} image={allBlog.image} /> :
-						<ImageSection edit={false} image={imageDefault} /> 
+						<ImageSection edit={false} image={allBlog.image} setImage={()=>{}} setFileImage={()=>{}}/> :
+						<ImageSection edit={false} image={imageDefault} setImage={()=>{}} setFileImage={()=>{}}/> 
 					}														
 					<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} className={style.reactMarkDown}>
 						{allBlog.content}

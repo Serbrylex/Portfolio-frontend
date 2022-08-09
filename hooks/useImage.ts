@@ -1,11 +1,17 @@
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 
-import imageDefault from '@public/images/MainImage.png'
+const imageDefault = '/images/MainImage.png'
 
+type ImageR = {
+	image: string;
+	setImage: Dispatch<SetStateAction<string>>;
+	fileImage: File;
+	setFileImage: Dispatch<SetStateAction<string | Blob>>;
+};
 
-export const useImage = ({ defaultImage = imageDefault }) => {
-	const [image, setImage] = useState(defaultImage)
-	const [fileImage, setFileImage] = useState('')
+export const useImage = <ImageR>(defaultImage: string) => {
+	const [image, setImage] = useState(defaultImage.length === 0 ? imageDefault : defaultImage)
+	const [fileImage, setFileImage] = useState<string | Blob>(new File([""], ""))
 
 	return {
 		image,
