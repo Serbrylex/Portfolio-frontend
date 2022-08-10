@@ -17,26 +17,24 @@ const Header = () => {
 	
 	const router = useRouter()
 	const isAuth: boolean = useAppSelector(store => store.user.isAuth)
-	const { words } = useTranslation({ component: "header", container: '' })
-	// serbrylex.com: prefix = ''; serbrylex.com/blogs/1: prefix = '/'
-	const [prefix] = useState(router.pathname === '/' ? '' : '/'); 
+	const { words } = useTranslation({ component: "header", container: '' })	
 
 	return (
 		<HeaderContainer>			
 			<ContactList who="first">
-				<Linked href={`${prefix}#projects`} title="Blogs">
+				<Linked href='/#projects' title="Blogs">
 					<Link who='none'><PLinks>Proyectos</PLinks></Link>
 				</Linked>
 
 				<Line></Line>
 
-				<Linked href={`${prefix}#about`} title="Add Blog">
+				<Linked href='/#about' title="Add Blog">
 					<Link who='none'><PLinks>About</PLinks></Link>
 				</Linked>	
 
 				<Line></Line>
 
-				<Linked href={`${prefix}#interestings`} title="Add Blog">
+				<Linked href='/#interestings' title="Add Blog">
 					<Link who='none'><PLinks>Intereses</PLinks></Link>
 				</Linked>	
 			</ContactList>		
