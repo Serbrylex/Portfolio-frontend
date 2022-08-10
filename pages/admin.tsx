@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import {
 	Contaier, LoginContainer, Input, Button, Title
-} from './style'
+} from '@styles/admin'
 
 import { useInputValue } from '@hooks/useInputValue';
 import { useAppSelector, useAppDispatch } from '@hooks/useReduxH'

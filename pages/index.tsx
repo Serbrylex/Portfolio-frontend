@@ -10,7 +10,7 @@ import {
 	Name, WeAreImage, SectionContainerContentDescription, DownloadButton,
 	SectionContainerContentDescriptionTitle, SectionContainerContentDescriptionInformation, 
 	ParagraphDescription, Span, Background, Blogs, Figure, Image
-} from './style' 
+} from '@styles/home' 
 
 
 // Components

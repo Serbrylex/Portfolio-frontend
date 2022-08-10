@@ -19,9 +19,9 @@ import apiCall from '@api'
 // Assets
 import {
 	Container, Main, Content, TitleSection, HTitle, LinksContainer, TheLinks
-} from './style';
+} from '@styles/blog';
 
-import style from './markdown-styles.module.css';
+import style from '@styles/markdown-styles.module.css';
 
 import imageDefault from '@public/images/Walk.svg'
 

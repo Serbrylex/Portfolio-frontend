@@ -13,7 +13,7 @@ import {
 	Container, BlogsContainer, MainTitle, Blog, Image, Title, DatePost, Resume, Link, 
 	ImageLoading, WindowAlert, AlerText, Acept, Declite, WindowAlertItems, Buttons,
 	BlogsContainerHeader, SearchBar, BlogsContainerMap
-} from './style'
+} from '@styles/blogs'
 
 // API
 import apiCall from '@api'

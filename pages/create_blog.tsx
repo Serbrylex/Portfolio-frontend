@@ -17,7 +17,7 @@ import {
 	QuestionSection, ResumeSection, TopicsSection, TextArea, ParagraphResponse, Subtitle,
 	InputList, TopicList, TopicsUl, SendPost, SendPostContainer, LinksContainer, InputLinks, TheLinks,
 	AddSubtopic, PlusSubtopic
-} from './style' 
+} from '@styles/create_blog' 
    
 import { 
 	AiOutlineGithub, AiOutlineLink
