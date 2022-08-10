@@ -26,6 +26,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "exec": "next build && next start",
     "type-check": "tsc --noEmit",
     "dev:inspect": "npm --node-options=--inspect=0.0.0.0:9229 run dev"
   },
