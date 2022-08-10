@@ -10,7 +10,7 @@ const ImageSection = ({ edit = true, image, setImage=()=>{}, setFileImage=()=>{}
 	edit: boolean,
 	image: string,
 	setImage: Dispatch<SetStateAction<string>>,
-	setFileImage: Dispatch<SetStateAction<string | Blob>>,
+	setFileImage: Dispatch<React.SetStateAction<string | import("buffer").Blob>>,
 }) => {
 	
 	const hiddenFileInput: MutableRefObject<any> = useRef(null);	
@@ -25,7 +25,7 @@ const ImageSection = ({ edit = true, image, setImage=()=>{}, setFileImage=()=>{}
 			if (e.target.files != null) {				
 				const fileUploaded: Blob | string = e.target.files[0]  
 				console.log(fileUploaded)           		
-				setFileImage(fileUploaded)
+				setFileImage(fileUploaded as Blob)
 				setImage(URL.createObjectURL(fileUploaded))		
 
 				const reader = new FileReader();

@@ -59,7 +59,7 @@ const CreateBlog = () => {
 		let objectOne = new FormData()	    				
 			
 		objectOne.append('title', title.value)				
-		objectOne.append('image', imagen.fileImage, imagen.image)
+		objectOne.append('image', imagen.fileImage as Blob, imagen.image)
 		objectOne.append('content', resume.value)				
 		objectOne.append('github', linkGitHub.value)
 		objectOne.append('link', linkPage.value)
