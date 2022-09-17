@@ -15,8 +15,7 @@ export const GroupOfThree = styled.div`
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);	
 	grid-gap: 20px;
-	padding: 20px 0;
-	border-bottom: 1px solid white;
+	padding: 20px 0;	
 
 	@media (max-width: 800px) {
 		grid-template-columns: 1fr;		
@@ -31,8 +30,7 @@ export const GroupOfTwo = styled.div`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);	
 	grid-gap: 20px;
-	padding: 5vh 0;	
-	border-bottom: 1px solid white;
+	padding: 5vh 0;		
 
 	@media (max-width: 800px) {
 		grid-template-columns: 1fr;
@@ -60,8 +58,7 @@ export const BlogContainer = styled.div<Props>`
 		margin: 0;
 		grid-template-rows: 1fr;
 		grid-template-columns: repeat(3, 1fr);
-		padding: 20px 0;
-		border-bottom: 1px solid white;
+		padding: 20px 0;		
 
 		@media (max-width: 800px) {		
 			grid-template-rows: 60% 40%;

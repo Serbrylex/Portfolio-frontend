@@ -20,7 +20,7 @@ export const BlogsContainer = styled.div`
 	border-radius: 2px;
 	border: 1px solid black;
 	height: auto;	
-	background-color: #34414C;	
+	background-color: #34414C;
 
 	@media (max-width: 800px) {		
 		width: 90vw;		
@@ -39,17 +39,8 @@ export const BlogsContainerHeader = styled.div`
 	}
 `
 export const SearchBar = styled.input`
-	background-color: white;
-	height: 20px;
+	height: 30px;
 	width: 80%;
-	padding: 5px 10px;
-	border-radius: 20px;
-	color: black;
-	@media (max-width: 800px) {
-		width: 80%;
-	}
-`
-export const MainTitle = styled.h1`	
 	margin: 20px auto;
 	box-shadow: -5px -5px #1A2026;
 	border: 1px solid black;
@@ -57,6 +48,10 @@ export const MainTitle = styled.h1`
 	border-radius: 5px;
 	text-decoration: none;
 	min-width: 200px;
+	padding: 5px 10px;
+	background-color: #34414C;
+	resize: none;
+    outline: none;
 `
 
 export const BlogsContainerMap = styled.div`

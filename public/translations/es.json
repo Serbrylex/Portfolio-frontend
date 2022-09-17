@@ -7,7 +7,7 @@
 			"link": "Sitio web"
 		},
 		"blogs": {
-			"subtitle": "Estás buscando publicaciones sobre",
+			"subtitle": "Blogs",
 			"delete_message": "¿Quiéres borrar esta publicación",
 			"si": "Sí",
 			"no": "No",

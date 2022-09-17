@@ -3,7 +3,6 @@ import '../global.css'
 
 import Layout from '@components/Layout'
 
-
 import { Provider } from 'react-redux'
 import store from '@reducers/rootReducer'
 

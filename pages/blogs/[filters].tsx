@@ -10,7 +10,7 @@ import BlogsGrid from '@components/BlogsGrid'
 
 // Assets
 import {
-	Container, BlogsContainer, MainTitle, Blog, Image, Title, DatePost, Resume, Link, 
+	Container, BlogsContainer, Blog, Image, Title, DatePost, Resume, Link, 
 	ImageLoading, WindowAlert, AlerText, Acept, Declite, WindowAlertItems, Buttons,
 	BlogsContainerHeader, SearchBar, BlogsContainerMap
 } from '@styles/blogs'
@@ -126,7 +126,7 @@ const Blogs = () => {
 	return(		
 			<Container>
 				<Head>
-					<title>{filters}</title>
+					<title>{words.subtitle} | {filters}</title>
 					<meta name="description" content={`${words.subtitle}: ${filters}`} />
 				</Head>
 				<WindowAlert show={showDelete}>
@@ -139,8 +139,7 @@ const Blogs = () => {
 					</WindowAlertItems>
 				</WindowAlert>
 				<BlogsContainer>
-					<BlogsContainerHeader>						
-						<MainTitle>{filters}</MainTitle>
+					<BlogsContainerHeader>												
 						<SearchBar {...search} placeholder={words.search as string} />
 					</BlogsContainerHeader>
 					<Topics topics={topics}/>
