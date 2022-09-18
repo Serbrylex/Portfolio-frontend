@@ -24,9 +24,16 @@
     align-items: center;
     justify-content: center;	
     margin: 0;
+    width: 350px;
 }
 
 .reactMarkDown img {
-    border-radius: 5px;
-    width: 100% !important;
+    border-radius: 5px;    
+    width: 350px;
+    height: 350px;
+}
+
+.reactMarkDown #image {
+    width: 350px;
+    display: inline;    
 }

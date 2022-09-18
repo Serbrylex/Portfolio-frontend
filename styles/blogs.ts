@@ -30,12 +30,12 @@ export const BlogsContainer = styled.div`
 `
 
 export const BlogsContainerHeader = styled.div`
-	grid-column: 1/4;	
-	margin-bottom: 30px;
+	grid-column: 1/4;		
 	text-align: center;	
 	@media (max-width: 800px) {
 		grid-column: 1/3;
-		height: 100px;
+		height: 50px;
+		margin-bottom: 30px;
 	}
 `
 export const SearchBar = styled.input`
@@ -61,7 +61,8 @@ export const BlogsContainerMap = styled.div`
 
 	@media (max-width: 800px) {
 		width: 96%;		
-		padding: 2%;				
+		padding: 2%;
+		margin: 50px 0;				
 	}
 `
 

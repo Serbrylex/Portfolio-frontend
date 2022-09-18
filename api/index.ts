@@ -36,7 +36,7 @@ export const projects = () => {
 		},	
 		{
 			'name': 'PlatziPunks',
-			'image': '/images/Tooldou.png',
+			'image': '/images/PlatziPunks.png',
 			'date': new Date(2021, 7, 13),
 			'description': "This project was part of the Ethereum Developer Program. We were learning about how to create NFTs and watching them in the frontend.",
 			'gols': "This was the first time that I was trying to see the complete picture ethereum flow.",			
@@ -65,7 +65,7 @@ export const projects = () => {
 			'link': 'https://wondrous-lollipop-4d1a35.netlify.app',
 		},
 		{
-			'name': 'My web site',
+			'name': 'My website',
 			'image': '/images/MyPortafolio.png',
 			'date': new Date(2021, 9, 3),
 			'description': "It's my website, it has a description of my projects, links to them, and a blog where I write weekly and every time I learn something interesting, it's in English because I want to improve my word selection.",

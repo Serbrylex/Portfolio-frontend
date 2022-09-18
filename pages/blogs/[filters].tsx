@@ -39,7 +39,7 @@ const Blogs = () => {
 		id: 9999,
 		index: 9999,
 		title: 'hi'
-	})	
+	})
 
 	const user = useAppSelector(store => store.user)
 	const url = useAppSelector(store => store.preferences.url)

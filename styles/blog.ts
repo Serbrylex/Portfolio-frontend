@@ -33,7 +33,8 @@ export const Main = styled.div`
 export const Content = styled.div`
 	width: 90%;
 	height: auto;	
-	padding: 0 5%;
+	padding: 0 5%;	
+
 	@media (max-width: 800px) {
 		width: 94vw;
 		padding: 3vw;

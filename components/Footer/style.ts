@@ -41,7 +41,7 @@ export const ContactList = styled.ul`
 	height: 100%;
 	justify-content: space-around;
 	@media (max-width: 500px) {
-		width: 60%;
+		width: 100%;
 		justify-content: space-evenly;
 		align-items: end;
 		height: auto;
@@ -56,8 +56,10 @@ export const List = styled.li`
 export const Ancor = styled.a`
 	font-size: 30px;
 	color: white;	
+	display: flex;
+	align-items: center;
 	@media (max-width: 800px) {
-		font-size: 20px;
-		height: 90%;						
+		font-size: 25px;
+		height: 90%;					
 	}
 `

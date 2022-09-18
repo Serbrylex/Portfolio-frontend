@@ -20,7 +20,8 @@ export const GroupOfThree = styled.div`
 	@media (max-width: 800px) {
 		grid-template-columns: 1fr;		
 		height: ${minHeigth};
-		border-bottom: none;
+		border-bottom: 0;
+		padding: 0;
 	}
 `
 
@@ -36,6 +37,7 @@ export const GroupOfTwo = styled.div`
 		grid-template-columns: 1fr;
 		height: ${minHeigth};
 		border-bottom: none;
+		padding: 0;
 	}
 `
 
@@ -48,36 +50,42 @@ export const BlogContainer = styled.div<Props>`
 	width: 100%;
 	height: 50vh;
 	display: grid;
-	grid-template-rows: 60% 40%;
+	grid-template-rows: 50% 48%;
+	grid-gap: 2%;
 	position: relative;
-	margin: auto 0;
+	margin: 10px 0;
+	box-shadow: -5px -5px #1A2026;
+	border: 1px solid black;
+	border-radius: 5px;
 
 	${props => props.first_blog === true && css`
 		width: 100%;
 		height: 100%;
 		margin: 0;
 		grid-template-rows: 1fr;
-		grid-template-columns: repeat(3, 1fr);
-		padding: 20px 0;		
+		grid-template-columns: 55% 40%;
+		grid-gap: 5%;		
 
-		@media (max-width: 800px) {		
-			grid-template-rows: 60% 40%;
-			grid-template-columns: 1fr;
+		@media (max-width: 800px) {								
+			width: 100%;
+			height: 50vh;
+			grid-template-columns: 100% !important;
+			grid-template-rows: 50% 48% !important;
+			grid-gap: 2%;
+			position: relative;			
+			box-shadow: -5px -5px #1A2026;
+			border: 1px solid black;
+			border-radius: 5px;
 		}	
 	`}		
 `
 
-export const ImageContainer = styled.figure<Props>`	
-	margin-bottom: 20px;
+export const ImageContainer = styled.figure<Props>`		
 	height: 100%;
-	${props => props.first_blog === true && css`
-		grid-column: 1 / 3;
-		margin-right: 20px;
-		margin-bottom: 0;
+	${props => props.first_blog === true && css`						
 
 		@media (max-width: 800px) {		
-			grid-column: 1;
-			margin-bottom: 20px;
+			grid-column: 1;			
 			margin-right: 0;
 		}	
 	`}	
@@ -90,13 +98,28 @@ export const Img = styled.img`
 `
 
 export const Information = styled.div`
-	width: 100%;
+	width: 96%;
 	height: auto;
+	padding: 2%;
+	font-size: 1rem;
+	line-height: 1.3rem;
+
+	& > h3 {
+		font-size: 1rem;
+	}
+
+	& > p {
+		font-size: 1rem;
+	}
+
+	& > li {
+		font-size: 1rem;
+	}
 `
 
 export const Title = styled.h2`
 	cursor: pointer;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 `
 
 export const Delete = styled.div`	
@@ -104,7 +127,7 @@ export const Delete = styled.div`
 	color: #FE5F55;
 	width: 30px;
 	height: 30px;
-	font-size: 30px;	
+	font-size: 3rem;	
 	position: absolute;
 	top: -15px;
 	right: -15px;

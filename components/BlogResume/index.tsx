@@ -24,7 +24,7 @@ const BlogResume = ({ blog } : { blog: TBlog }) => {
 			<DatePost>{blog.date}</DatePost>
 			<Resume>
 				<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-					{blog.content.slice(0, 150) + '...'}
+					{blog.content.slice(0, 100) + '...'}
 				</ReactMarkdown>
 			</Resume>
 		</Blog>

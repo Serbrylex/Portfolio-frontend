@@ -14,7 +14,7 @@ export const TopicsUl = styled.ul`
 	align-items: center;
 	@media (max-width: 500px) {
 		display: grid;
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 	}
 `
 

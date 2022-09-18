@@ -13,7 +13,7 @@ import {
 
 import { AiFillCloseCircle } from 'react-icons/ai'
 
-import { useAppSelector, useAppDispatch } from '@hooks/useReduxH'
+import { useAppSelector } from '@hooks/useReduxH'
 
 
 const Blog = ({ blog, position, handleFirstDelete }: {
@@ -26,6 +26,16 @@ const Blog = ({ blog, position, handleFirstDelete }: {
 	const user = useAppSelector(store => store.user)
 	const url = useAppSelector(store => store.preferences.url)
 
+	const content = () => {
+		let data: string = blog.content.slice(0, 500) + '...'
+
+		if (position !== 0 || window.screen.width < 800) {			
+			data = data.slice(0, 150) + '...'
+		}
+
+		return data
+	}
+
 	return (
 		<BlogContainer first_blog={position === 0}>
 			{user.isAuth &&
@@ -37,7 +47,7 @@ const Blog = ({ blog, position, handleFirstDelete }: {
 			<Information>
 				<Title onClick={()=>history.push(`/blog/${blog.id}`)}>{blog.title}</Title>				
 				<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-					{blog.content.slice(0, 150) + '...'}
+					{content()}
 				</ReactMarkdown>				
 			</Information>
 		</BlogContainer>
