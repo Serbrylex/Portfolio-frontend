@@ -9,7 +9,7 @@ import {
 	SectionSubtitle, SectionContainerContent, WeAre, WeAreTitle, WeAreWho, 
 	Name, WeAreImage, SectionContainerContentDescription, DownloadButton,
 	SectionContainerContentDescriptionTitle, SectionContainerContentDescriptionInformation, 
-	ParagraphDescription, Span, Background, Blogs, Figure, Image
+	ParagraphDescription, Background, Blogs, Figure, Image
 } from '@styles/home' 
 
 
@@ -35,15 +35,19 @@ const Home = () => {
 	const [loading, setLoading] = useState<boolean>(true)
 
 	const ApiAsync = async () => {
-		let response = await apiCall({url: `${url}/blog-list/all/`})		
-		if (response.status === 200) {
-			let data = await response.json()			
-			if (data.length > 6) {
-				data = data.splice(0, 6)
+		try {
+			let response = await apiCall({url: `${url}/blog-list/all/`})		
+			if (response.status === 200) {
+				let data = await response.json()			
+				if (data.length > 6) {
+					data = data.splice(0, 6)
+				}
+				if (data.length !== 0) {
+					setAllBlogs(data)		
+				}			
 			}
-			if (data.length !== 0) {
-				setAllBlogs(data)		
-			}			
+		} catch (error) {
+
 		}
 		setLoading(false)
 	}
@@ -58,9 +62,7 @@ const Home = () => {
 			<ParagraphDescription key={index}>{text}</ParagraphDescription>									
 		))}
 
-	if (loading) {
-		return <Loading />
-	} else {
+	
 
 		// Hace falta configurar los idiomas y el tema, así como agregar los eventos aslfjas
 		// se va a guardar en un contexto
@@ -89,7 +91,7 @@ const Home = () => {
 									<WeAreWho>
 										{words.whoiam}
 									</WeAreWho>
-									<DownloadButton href={`${url}/media/extras/CV.pdf`} download="CV">
+									<DownloadButton href={`/cv/CVGA.pdf`} download="CV">
 										{words.download_cv}
 									</DownloadButton>								
 								</WeAre>
@@ -155,7 +157,7 @@ const Home = () => {
 					</BodyContainer>
 				</Container>										
 		)
-	}
+	
 }
 
 export default Home

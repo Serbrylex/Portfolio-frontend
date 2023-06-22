@@ -7,7 +7,7 @@ type ImageR = {
 	image: string;
 	setImage: Dispatch<SetStateAction<string>>;
 	fileImage: string | Blob;
-	setFileImage: Dispatch<React.SetStateAction<string | import("buffer").Blob>>;
+	setFileImage: Dispatch<React.SetStateAction<string | Blob>>;
 };
 
 export const useImage = <ImageR>(defaultImage: string) => {

@@ -59,51 +59,63 @@ const Blogs = () => {
 		})
 	}
 
-	const handleDeleteBlog = () => {		
-		const newToken = `Token ${user.access_token}`
-		apiCall({
-			url: `${url}/blog/delete/${element.id}/`, 
-			headers: {
-				'Authorization': newToken,
-				'Content-Type': 'application/json',				
-			}, 
-			method: 'DELETE' 
-		})	
+	const handleDeleteBlog = () => {
+		try {
+			const newToken = `Token ${user.access_token}`
+			apiCall({
+				url: `${url}/blog/delete/${element.id}/`, 
+				headers: {
+					'Authorization': newToken,
+					'Content-Type': 'application/json',				
+				}, 
+				method: 'DELETE' 
+			})	
 
-		let newBlog = blogs
-		
-		newBlog.splice(element.index, 1)
-		if (newBlog.length !== 0) {
-			setBlogs([...newBlog])
-		} else {
-			setBlogs([])
-		}
-		setElement({
-			id: 9999,
-			index: 9999,
-			title: 'hi'
-		})
-		setShowDelete(false)
+			let newBlog = blogs
+			
+			newBlog.splice(element.index, 1)
+			if (newBlog.length !== 0) {
+				setBlogs([...newBlog])
+			} else {
+				setBlogs([])
+			}
+			setElement({
+				id: 9999,
+				index: 9999,
+				title: 'hi'
+			})
+			setShowDelete(false)
+		} catch (error) {
+			
+		}		
 	}
 
-	const ApiAsync = async (filter: string) => {		
-		const response = await apiCall({url: `${url}/blog-list/${filter}/`})
+	const ApiAsync = async (filter: string) => {
+		try {		
+			const response = await apiCall({url: `${url}/blog-list/${filter}/`})
 
-		if (response.status !== 200) {
-			setBlogs([])
-		} else {
-			const data: TBaseBlog[] = await response.json()						
-			setBlogs(data)			
+			if (response.status !== 200) {
+				setBlogs([])
+			} else {
+				const data: TBaseBlog[] = await response.json()						
+				setBlogs(data)			
+			}
+		} catch (error) {
+
 		}
 		setIsLoading(false)
 	}
 
 	const getTopics = async () => {
-		const response = await apiCall({url: `${url}/categories/`})
-
-		if (response.status === 200) {			
-			const data = await response.json()						
-			setTopics(data)			
+		try {
+			const response = await apiCall({url: `${url}/categories/`})
+			
+			if (response.status === 200) {			
+				const data = await response.json()						
+				setTopics(data)			
+			}
+		} catch (error) {
+			
 		}
 		setIsLoading(false)	
 	}
@@ -144,9 +156,11 @@ const Blogs = () => {
 					</BlogsContainerHeader>
 					<Topics topics={topics}/>
 					<BlogsContainerMap>
-						{isLoading || blogs.length === 0? 
-							<Loading />
-						: <BlogsGrid blogs={blogs} handleFirstDelete={handleFirstDelete} />}
+						{/*isLoading || blogs.length === 0? 
+							<Loading /> : 
+							<BlogsGrid blogs={blogs} handleFirstDelete={handleFirstDelete} />
+						*/}
+						<div style={{ width:'fit-content', margin: 'auto', fontSize: '25px' }}>En mantenimiento...</div>
 					</BlogsContainerMap>
 				</BlogsContainer>
 			</Container>		

@@ -63,7 +63,7 @@ const Blog = () => {
 	useEffect(()=>{		
 		if (router.query.id !== 'object' && router.query.id !== undefined ) {
 			const refe: string = router.query.id as string;
-			if (parseInt(refe) !== NaN) {
+			if (!Number.isNaN(parseInt(refe))) {
 				blogDetail(refe);
 			}		
 		}
