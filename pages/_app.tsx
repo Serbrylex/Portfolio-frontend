@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 import '../global.css'
 
 import Layout from '@components/Layout'
@@ -12,6 +13,17 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   // Manejar errores - componentDidCatch
   return (
     <Provider store={store}>
+      <Head>
+          <meta
+						name="keywords"
+						content="Portafolio, Sergio Bryan Madrid Nuñez, Serbrylex, Blog Tech"
+					/>
+					<meta name="author" content="Sergio Bryan Madrid Nuñez" />
+					<meta property="og:url" content="https://serbrylex.com/" />
+					<meta property="og:type" content="website" />
+					<meta property="og:title" content="Serbrylex Portafolio " />
+					<meta property="og:image" content="images/porfolio.png" />
+      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>    

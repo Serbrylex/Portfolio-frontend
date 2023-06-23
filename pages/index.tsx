@@ -64,8 +64,6 @@ const Home = () => {
 
 	
 
-		// Hace falta configurar los idiomas y el tema, así como agregar los eventos aslfjas
-		// se va a guardar en un contexto
 		return( 							
 				<Container>
 				<Head>
