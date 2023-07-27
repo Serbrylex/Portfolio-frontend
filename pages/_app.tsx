@@ -22,7 +22,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 					<meta property="og:url" content="https://serbrylex.com/" />
 					<meta property="og:type" content="website" />
 					<meta property="og:title" content="Serbrylex Portafolio " />
-					<meta property="og:image" content="images/porfolio.png" />
+					<meta property="og:image" content="images/MyPortafolio" />
       </Head>
       <Layout>
         <Component {...pageProps} />
