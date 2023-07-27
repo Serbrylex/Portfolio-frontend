@@ -17,7 +17,6 @@ import {
 
 // Components
 import Project from '@components/Project'
-import Loading from '@components/Loading'
 import BlogResume from '@components/BlogResume' 
 import ToolsInterestings from '@components/ToolsInterestings'
 
@@ -28,7 +27,7 @@ import apiCall, { projects } from '@api'
 import { useTranslation } from '@hooks/useTranslation'
 import { useAppSelector } from '@hooks/useReduxH'
 
-export async function getServerSideProps() {
+export async function getInitialProps() {
     return {
         props: {}
     }
