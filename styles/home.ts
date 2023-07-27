@@ -24,7 +24,7 @@ export const SectionContainerPath = styled.div`
 	//background-color: #3B4956;
 	background-image: url("/images/wallpaper.jpg");
 	width: 100%;
-	height: 100vh;
+	height: 90vh;
 	color: white;
 	align-items: center;
 	justify-content: center;
@@ -136,8 +136,8 @@ export const SectionContainerPathImage = styled.div`
 `
 
 export const Figure = styled.div`
-	width: 80%;
-	height: 80vh;		
+	width: 400px;
+	height: 575px;		
 	position: relative;	
 	@media (max-width: 800px) {
 		width: 100%;

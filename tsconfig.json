@@ -10,7 +10,8 @@
         "@reducers/*": ["reducers/*"],
         "@routes/*": ["routes/*"],
         "@actions/*": ["actions/*"],
-        "@styles/*": ["styles/*"]
+        "@styles/*": ["styles/*"],
+        "@services/*": ["services/*"]
       },
       "target": "es6",
       "lib": [

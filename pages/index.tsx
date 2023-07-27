@@ -12,6 +12,8 @@ import {
 	ParagraphDescription, Background, Blogs, Figure, Image
 } from '@styles/home' 
 
+//import Image from 'next/image'
+
 
 // Components
 import Project from '@components/Project'
@@ -26,13 +28,19 @@ import apiCall, { projects } from '@api'
 import { useTranslation } from '@hooks/useTranslation'
 import { useAppSelector } from '@hooks/useReduxH'
 
+export async function getServerSideProps() {
+    return {
+        props: {}
+    }
+}
+
 const Home = () => {
 
 	const url = useAppSelector(store => store.preferences.url);
-	const image = '/images/yomero.png'
+	const image = '/images/me.jpg'
 	const [allBlogs, setAllBlogs] = useState([])	
 	const { words } = useTranslation({ container: "home", component: '' })
-	const [loading, setLoading] = useState<boolean>(true)
+	const [loading, setLoading] = useState<boolean>(false)
 
 	const ApiAsync = async () => {
 		try {
@@ -76,7 +84,7 @@ const Home = () => {
 							<SectionContainerPathTitle>
 								<WeAre>
 									<WeAreTitle>
-										<Name>Sergio Bryan Madrid Nuñez</Name>
+										<Name>Full stack web developer</Name>
 									</WeAreTitle>
 									<WeAreImage>										
 										<Figure>

@@ -10,16 +10,63 @@ import { GiMaterialsScience, GiRobotAntennas, GiDatabase } from 'react-icons/gi'
 import { BiRocket, BiBrain, BiTestTube } from 'react-icons/bi'
 import { VscServerProcess } from 'react-icons/vsc'
 import { FiHeadphones } from 'react-icons/fi'
+import { TbBrandNextjs, TbBrandCypress } from 'react-icons/tb'
+import { MdOutlineWeb } from 'react-icons/md'
 
 // Styles
 
 import {
 	LastSectionContainer, LastSectionContainerTitle,
 	LastSectionContainerContent, LastSection, LastSectionList, IconContainer,
-	SectionSubtitle
+	SectionSubtitle, TitleIcon
 } from './style'
 
+type StackType = {
+	title: string,
+	icon: JSX.Element
+}
+
 const ToolsInterestings = () => {
+
+    const handleCreateObject = (title: string, icon: JSX.Element) => {
+        return { title, icon }
+    }
+	const Stack : StackType[] = [
+        handleCreateObject('React', <FaReact/>),
+        handleCreateObject('Next js', <TbBrandNextjs />),
+        handleCreateObject('Django', <SiDjango />),
+        handleCreateObject('JavaScript', <SiJavascript />),
+        handleCreateObject('Python', <SiPython />),
+        handleCreateObject('English B1', <FaFont />),
+        handleCreateObject('MySQL', <GrMysql />),
+        handleCreateObject('Mongo DB', <SiMongodb />),
+        handleCreateObject('Responsive Web', <BsPhone />),
+        handleCreateObject('Scraping', <MdOutlineWeb />),
+        handleCreateObject('Git and GitHub', <AiOutlineGithub />),
+        handleCreateObject('HTML5', <AiOutlineHtml5 />),
+        handleCreateObject('CSS', <SiCss3 />),
+        handleCreateObject('Jest', <BiTestTube />),
+        handleCreateObject('Cypress', <TbBrandCypress />),
+        handleCreateObject('Selenium', <FaFirefox />),
+        handleCreateObject('Node js', <GrNode />),
+        handleCreateObject('Logical thinking', <AiOutlineBook />),
+	]
+	const Interestings : StackType[] = [
+        handleCreateObject('Read', <AiOutlineBook />),
+        handleCreateObject('Science', <GiMaterialsScience />),
+        handleCreateObject('Entrepreneur', <SiSpacex />),
+        handleCreateObject('Space', <BiRocket />),
+        handleCreateObject('Web Development', <VscServerProcess />),
+        handleCreateObject('Stoicism', <BiBrain />),
+        handleCreateObject('Languages', <SiDuolingo />),
+        handleCreateObject('I love music', <FiHeadphones />),
+        handleCreateObject('Maths', <AiOutlineBook />),
+        handleCreateObject('AI', <GiRobotAntennas />),
+        handleCreateObject('Cryptocurrency', <SiEthereum />),
+        handleCreateObject('Machine Learnig', <SiPython />),
+        handleCreateObject('Big Data', <GiDatabase />),
+        handleCreateObject('Engineering', <BiRocket />),
+	]
 
 	return(
 		<LastSection color="true" id="interestings">
@@ -27,104 +74,17 @@ const ToolsInterestings = () => {
 				<LastSectionContainerTitle>
 					<SectionSubtitle>Tools</SectionSubtitle>
 				</LastSectionContainerTitle>
-		 		<LastSectionContainerContent>						
-					<LastSectionList>
-						<IconContainer>
-							<FaReact />
-						</IconContainer>
-						React
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<SiDjango />
-						</IconContainer>
-						Django
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<SiJavascript />
-						</IconContainer>
-						JavaScript
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<SiPython />
-						</IconContainer>
-						Python
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<FaFont />
-						</IconContainer>
-						English B1
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<GrMysql />
-						</IconContainer>
-						MySQL
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<SiMongodb/>
-						</IconContainer>
-						Mongo DB
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<BsPhone/>
-						</IconContainer>
-						Responsive Web
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<SiPython />
-						</IconContainer>
-						Scraping
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<AiOutlineGithub />
-						</IconContainer>
-						Git and GitHub
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<AiOutlineHtml5 />
-						</IconContainer>
-						HTML5
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<SiCss3 />
-						</IconContainer>
-						CSS
-					</LastSectionList>
-
-					<LastSectionList>
-						<IconContainer>
-							<BiTestTube />
-						</IconContainer>
-						Jest
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<FaFirefox />
-						</IconContainer>
-						Selenium
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<GrNode />
-						</IconContainer>
-						Node js
-					</LastSectionList>
-					<LastSectionList>
-						<IconContainer>
-							<AiOutlineBook />
-						</IconContainer>
-						Logical thinking
-					</LastSectionList>
+		 		<LastSectionContainerContent>
+					{Stack.map(( item, ind ) => (
+						<LastSectionList key={ind}>
+							<IconContainer>
+								{item.icon}
+							</IconContainer>
+							<TitleIcon>
+								{item.title}
+							</TitleIcon>
+						</LastSectionList>
+					))}
 				</LastSectionContainerContent>
 			</LastSectionContainer>
 
@@ -133,91 +93,16 @@ const ToolsInterestings = () => {
 					<SectionSubtitle>Interestings</SectionSubtitle>
 				</LastSectionContainerTitle>
 				<LastSectionContainerContent>						
-					<LastSectionList>
-						<IconContainer>
-							<AiOutlineBook />
-						</IconContainer>
-							Read
-						</LastSectionList>
-						<LastSectionList>
-						<IconContainer>
-							<GiMaterialsScience />
-						</IconContainer>
-							Science
-						</LastSectionList>
-						<LastSectionList>
-						<IconContainer>
-							<SiSpacex />
-						</IconContainer>
-							Entrepreneur
-						</LastSectionList>
-						<LastSectionList>
-						<IconContainer>
-							<BiRocket />
-						</IconContainer>
-							Space
-						</LastSectionList>
-						<LastSectionList>
-						<IconContainer>
-								<VscServerProcess />
-						</IconContainer>
-							Web Development
-						</LastSectionList>
-						<LastSectionList>
-						<IconContainer>
-								<BiBrain />
-						</IconContainer>
-							Stoicism
-						</LastSectionList>
-						<LastSectionList>
-						<IconContainer>
-								<SiDuolingo/>
-						</IconContainer>
-							Languages
-						</LastSectionList>
-						<LastSectionList>
+					{Interestings.map(( item, ind ) => (
+						<LastSectionList key={ind}>
 							<IconContainer>
-								<FiHeadphones />
+								{item.icon}
 							</IconContainer>
-							I love music
+							<TitleIcon>
+								{item.title}
+							</TitleIcon>
 						</LastSectionList>
-
-						<LastSectionList>
-							<IconContainer>
-								<AiOutlineBook />
-							</IconContainer>
-							Maths
-						</LastSectionList>
-						<LastSectionList>
-							<IconContainer>
-								<GiRobotAntennas />
-							</IconContainer>
-							IA
-						</LastSectionList>
-						<LastSectionList>
-							<IconContainer>
-								<SiEthereum />
-							</IconContainer>
-							Cryptocurrency
-						</LastSectionList>
-						<LastSectionList>
-							<IconContainer>
-								<SiPython />
-							</IconContainer>
-							Machine Learnig
-						</LastSectionList>
-						<LastSectionList>
-							<IconContainer>
-								<GiDatabase />
-							</IconContainer>
-							Big Data											
-						</LastSectionList>
-						<LastSectionList>
-							<IconContainer>
-								<BiRocket />
-							</IconContainer>											
-							Engineering
-						</LastSectionList>
+					))}
 				</LastSectionContainerContent>
 			</LastSectionContainer>
 		</LastSection>

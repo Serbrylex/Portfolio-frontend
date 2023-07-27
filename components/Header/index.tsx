@@ -15,7 +15,6 @@ import { useAppSelector } from '@hooks/useReduxH'
 
 const Header = () => {
 	
-	const router = useRouter()
 	const isAuth: boolean = useAppSelector(store => store.user.isAuth)
 	const { words } = useTranslation({ component: "header", container: '' })	
 

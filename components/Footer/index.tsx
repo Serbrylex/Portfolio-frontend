@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-	FooterContainer, ContactTitleLarge, ContactList, List, Ancor
+	FooterContainer, ContactTitleLarge, ContactList, List, Ancor, EtherAcccountText
 } from './style' 
 
 import { 
@@ -35,10 +35,16 @@ const Footer = () => {
 
 	return(
 		<FooterContainer id="contact">						
-			<ContactTitleLarge onClick={()=>copyTextToClipboard('0xe9a5312043de79cd5dDa75BA1932E47dD659e110')}>				
-				Consider supporting: 
-				<SiEthereum/>
-				0xe9a5312043de79cd5dDa75BA1932E47dD659e110
+			<ContactTitleLarge
+				onClick={()=>copyTextToClipboard('0xe9a5312043de79cd5dDa75BA1932E47dD659e110')}
+				title='Copy to clipboard'	
+			>
+				Consider supporting
+				<SiEthereum />
+				<EtherAcccountText>
+				 
+					0xe9a5312043de79cd5dDa75BA1932E47dD659e110
+				</EtherAcccountText>
 			</ContactTitleLarge>
 			<ContactList>
 				<List>

@@ -47,34 +47,35 @@ export const LastSectionContainerContent = styled.ul`
 	height: auto;
 	display: grid;
 	margin: 0 auto;	
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 	@media (max-width: 800px){
-
+		grid-template-columns: repeat(3, 1fr);
 	}
 `
 
 export const LastSectionList = styled.li`
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: start;
+	justify-content: space-around;
+	text-align: center;
 
-	width: 85%;
-	height: auto;
+	width: 100px;
+	height: fit-content;
 
-	text-align: left;
-	font-size: 17px;	
-	background-color: #3B4956;
+	font-size: 17px;
 	border-radius: 2px;
-	margin: 5px auto;
+	margin: 10px auto;
 	padding: 10px;
 	@media (max-width: 800px) {
-		font-size: 16px;			
+		font-size: 16px;
+        width: 50px;
 	}
 `
 
 export const IconContainer = styled.i`
-	margin-right: 10px;
 	color: white;
+	font-size: 35px;
 `
 
 export const SectionSubtitle = styled.h2`
@@ -84,4 +85,17 @@ export const SectionSubtitle = styled.h2`
 	@media (max-width: 800px) {
 		font-size: 25px;
 	}	
+`
+
+export const TitleIcon = styled.span`
+	width: fit-content;
+	color: transparent;
+
+	${LastSectionList}:hover & {
+		color: white;
+	}
+
+    @media (max-width: 800px) {
+		display: none;
+	}
 `

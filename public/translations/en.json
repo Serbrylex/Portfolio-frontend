@@ -15,20 +15,20 @@
 		},
 		"home": {
 			"subtitle": "This is the @Serbrylex's web site / portfolio",
-			"whoiam": "I am an eternal student who seeks to change the world through code.",			
+			"whoiam": "I am an eternal student who seeks to change the world through coding.",			
 			"download_cv": "Download CV",
 			"projects": "Projects",
 			"about_me": "About me",
 			"who": "¿Who am i?",
 			"iam": [
-				"I'm a young man in my 20s who uses technology to shape the world.",			
-				"I'm a person fascinated by the infinite human potential, who seeks to surrender to the limit to achieve its goal."
+				"I am a young man in my 20s who utilizes technology to shape the world.",			
+				"A person fascinated by the infinite potential of humanity, who seeks to push myself to the limits in order to achieve my goals."
 			],
 			"trayectory": "Trajectory",
 			"trayecotry_description": [
-				"My first toutch with programming was while I was at the highschool, I studied programming in CBTis # 111 where i learned pseudocode, the C ++ basics, Java and something about mobile apps with Android Studio and with a friend i learn a little bit about Kotlin, by my own I learned the web development basics.",
-				"When I finished high school I had to work and saving a little money I bought an annual subscription at Platzi, that's where I improved exponentially. I learned HTML, CSS, JavaScript, React, Python, Django.",
-				"I learn every day and even today I know more about frontend in the near future, I plan to be completely fullstack. My goal is to pay for the university with the money that I will save working as a software developer, I will enter the University of the Caribbean in the Bachelor's Degree: Data Engineering and Organizational Intelligence, because in their study plan they have economics, some physics, mathematics and a lot of programming. As long as I study there, I hope to get a scholarship to study in the United States and when I finish university I plan to live there and work in the space dream."
+				"My first encounter with programming occurred during my time in high school. I studied programming at CBTis #111, where I learned pseudocode, the fundamentals of C++, Java, and gained some knowledge about mobile app development using Android Studio. Additionally, with the help of a friend, I delved into Kotlin. On my own, I also learned the basics of web development",
+				"After finishing high school, I had to start working, and with the money I saved, I purchased an annual subscription at Platzi. That's where my exponential improvement began. I learned HTML, CSS, JavaScript, React, Python, and Django through the courses and resources available on the platform.",
+				"I learn every day, and even today, I am acquiring more knowledge about frontend development. In the near future, my plan is to become a fully-fledged full-stack developer. My goal is to finance my university education by saving money from my work as a software developer. I intend to enroll in the Bachelor's Degree program in Industrial Engineering and at the University of the Caribbean. This program appeals to me because it includes subjects like economics, physics, mathematics, and extensive programming. During my time at the university, I hope to secure a scholarship to study in the United States. Upon completing my degree, my plan is to reside there and pursue a career in the space industry, fulfilling my dream."
 			],
 			"tools": "Tools",
 			"interestings": "Interestings",

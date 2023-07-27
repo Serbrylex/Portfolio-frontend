@@ -11,13 +11,13 @@ import {
 	AiOutlineGithub 
 } from 'react-icons/ai'
 
-import { useResetDate } from '@hooks/useResetDate'
 import { useTranslation } from '@hooks/useTranslation'
+import { formatDate } from '@services/formatDate'
 
 
 const Project = ({ project }: {project: TProject}) => {
  
-	const date = useResetDate({ date: project.date })
+	const date = formatDate({ date: project.date })
 	const { words, loading } = useTranslation({ component: "project", container: '' })
 	
 	return( 
@@ -30,17 +30,17 @@ const Project = ({ project }: {project: TProject}) => {
 			</ImageDataContainer>
 			<ProyectInformation>
 				<TitleSection>
-					<Title href={project.link}>{project.name}</Title>
-					<Ancor href={project.github} title="GitHub"><AiOutlineGithub /></Ancor>
+					<Title href={project.link} target='_blank'>{project.name}</Title>
+					<Ancor href={project.github} target='_blank' title="GitHub"><AiOutlineGithub /></Ancor>
 				</TitleSection>
 				<Tools>
 					{project.tools.map((element, index)=>(
 						<Element key={index}>{element}</Element>
 					))}
 				</Tools>		
-				<ToolsTitle>{words.description}</ToolsTitle>
+				<ToolsTitle>{words.description}:</ToolsTitle>
 				<Info>{project.description}</Info>
-				<ToolsTitle>{words.dificulties}</ToolsTitle>
+				<ToolsTitle>{words.dificulties}:</ToolsTitle>
 				<Info>{project.gols}</Info>
 			</ProyectInformation>
 		</ProyectContainer>

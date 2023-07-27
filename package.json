@@ -27,9 +27,10 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "deploy": "npm run build && npm run export",
+    "deploy": "pnpm run build && pnpm run export",
     "type-check": "tsc --noEmit",
-    "dev:inspect": "npm --node-options=--inspect=0.0.0.0:9229 run dev"
+    "dev:inspect": "pnpm --node-options=--inspect=0.0.0.0:9229 run dev",
+    "preinstall": "npx only-allow pnpm"
   },
   "eslintConfig": {
     "extends": [

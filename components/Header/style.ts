@@ -36,7 +36,7 @@ export const HeaderLinksContainer = styled.div`
 
 export const PLinks = styled.p`
 	margin: 0 5px;
-	width: 50px;	
+	width: fit-content;	
 	cursor: pointer;
 	text-align: center;	
 	@media (max-width: 800px) {

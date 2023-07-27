@@ -72,9 +72,9 @@ export const Title = styled.a`
 `
 
 export const ToolsTitle = styled.h5`
-	font-size: 1em;
+	font-size: 1.2em;
 	color: #bec5cb;	
-	margin: 10px 0;
+	margin: 5px 0;
 	@media (max-width: 900px) {
 		font-size: 1em;	
 		margin: 10px 0;
@@ -85,9 +85,9 @@ export const Tools = styled.div`
 	color: #bec5cb;
 	display: flex;
 	align-items: center;
-	justify-content: space-evenly;
-	width: auto;		
-	margin: 0 auto;
+	justify-content: start;
+	width: 100%;		
+	margin: 10px auto;
 	@media (max-width: 900px) {
 		display: grid;
 		grid-template-columns: repeat(3,1fr);
@@ -106,7 +106,7 @@ export const Element = styled.li`
 	box-shadow: -5px -5px #1A2026;
 	border: 1px solid black;
 	padding: 2px 5px;
-	margin: 5px;
+	margin-right: 10px;
 	border-radius: 5px;
 	text-decoration: none;
 	display: flex;
@@ -144,5 +144,7 @@ export const ImageLink = styled.a`
 `
 
 export const Info = styled.p`
-	margin: 5px 0;
+	margin: 5px 0 10px 0;
+	font-weight: 200;
+	line-height: 1.5rem;
 `

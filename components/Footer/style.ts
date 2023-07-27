@@ -21,11 +21,11 @@ export const ContactTitleLarge = styled.h4`
 	display: flex;
 	font-size: 20px;
 	color: white;
-	width: 50%
-	height: 100%;	
+	width: fit-content;
+	height: 100%;
 	align-items: center;
 	justify-content: center;	
-	cursor: pointer;	
+	cursor: pointer;
 	@media (max-width: 500px) {
 		font-size: 16px;		
 		width: 40%;
@@ -61,5 +61,11 @@ export const Ancor = styled.a`
 	@media (max-width: 800px) {
 		font-size: 25px;
 		height: 90%;					
+	}
+`
+
+export const EtherAcccountText = styled.span`
+	@media (max-width: 800px) {
+		display: none;					
 	}
 `
